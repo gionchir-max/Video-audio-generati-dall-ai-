@@ -7,6 +7,8 @@
     "studio": "remotion studio",
     "render": "remotion render MainVideo out/video.mp4 --codec=h264",
     "make": "node scripts/make.mjs",
+    "make-map": "node scripts/make-map.mjs",
+    "map-plan": "node scripts/map-plan.mjs",
     "script": "node scripts/script.mjs",
     "tts": "node scripts/tts.mjs",
     "download": "node scripts/download.mjs",
@@ -20,6 +22,7 @@
     "@remotion/cli": "4.0.448",
     "@remotion/google-fonts": "^4.0.448",
     "@remotion/media-utils": "4.0.448",
+    "maplibre-gl": "^4.7.1",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "remotion": "4.0.448"

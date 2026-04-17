@@ -1,0 +1,59 @@
+{
+  "topic": "Come la guerra con l'Iran ha rivelato una verità sul gas",
+  "timeline": [
+    {"date": "2026-01-26", "event": "Consiglio UE approva risoluzione: ban totale import LNG russo dal 1 gennaio 2027"},
+    {"date": "2026-02-28", "event": "USA e Israele lanciano guerra aerea contro l'Iran"},
+    {"date": "2026-03", "event": "Iran chiude lo Stretto di Hormuz bloccando il traffico di metaniere"},
+    {"date": "2026-03", "event": "Attacchi danneggiano il complesso LNG di Ras Laffan in Qatar: perdita stimata 12,8 milioni di tonnellate/anno (-17% capacità)"},
+    {"date": "2026-03", "event": "Dutch TTF gas raddoppia fino a oltre 60 EUR/MWh"},
+    {"date": "2026-03", "event": "Prezzi gas Europa +63% in una settimana, Asia +54%"},
+    {"date": "2026-03", "event": "UE importa 2,46 miliardi di metri cubi di LNG russo, +38% rispetto marzo 2025 — record assoluto"},
+    {"date": "2026-Q1", "event": "Import LNG russo in UE sale a 6,8 miliardi di metri cubi (+19% vs Q1 2025), 5 milioni di tonnellate da Yamal LNG (+17%)"},
+    {"date": "2026-04", "event": "Ultime metaniere del Golfo raggiungono l'Europa, analisti prevedono ulteriore impennata dei prezzi"}
+  ],
+  "geography": {
+    "choke_points": [
+      {"name": "Stretto di Hormuz", "lng": 56.25, "lat": 26.6, "note": "Passano 20 milioni di barili/giorno di petrolio (~20% consumo globale) e il 20% del commercio globale di LNG"},
+      {"name": "Mar Rosso / Bab el-Mandeb", "lng": 43.3, "lat": 12.6, "note": "Rotta alternativa per oil via pipeline Yanbu"}
+    ],
+    "lng_terminals": [
+      {"name": "Ras Laffan (Qatar)", "lng": 51.6, "lat": 25.9, "role": "secondo esportatore LNG mondiale, 112 bcm nel 2025, danneggiato 2026"},
+      {"name": "Sabetta / Yamal LNG (Russia)", "lng": 72.05, "lat": 71.27, "role": "hub LNG russo artico — record export verso UE nel 2026"},
+      {"name": "Arzew (Algeria)", "lng": -0.32, "lat": 35.83, "role": "LNG verso Italia e Spagna"},
+      {"name": "Rotterdam GATE terminal", "lng": 4.0, "lat": 51.95, "role": "principale hub di rigassificazione UE"},
+      {"name": "Piombino FSRU (Italia)", "lng": 10.52, "lat": 42.92, "role": "rigassificatore galleggiante Italia"},
+      {"name": "Zeebrugge (Belgio)", "lng": 3.2, "lat": 51.33, "role": "terminale di rigassificazione che riceve LNG russo da Yamal"},
+      {"name": "Montoir-de-Bretagne (Francia)", "lng": -2.15, "lat": 47.32, "role": "terminale francese che ha ricevuto cargo russi"}
+    ],
+    "oil_bypass_pipelines": [
+      {"name": "East-West Pipeline (Arabia Saudita, Abqaiq → Yanbu)", "from": [49.67, 25.94], "to": [38.06, 24.08], "capacity": "5 milioni barili/giorno"},
+      {"name": "ADCOP (UAE, Habshan → Fujairah)", "from": [53.7, 23.77], "to": [56.33, 25.1], "capacity": "1,8 milioni barili/giorno"}
+    ],
+    "gas_routes": [
+      {"from": "Ras Laffan", "to": "Rotterdam GATE", "product": "LNG via mare attraverso Hormuz e Canale di Suez"},
+      {"from": "Sabetta (Yamal)", "to": "Zeebrugge", "product": "LNG russo via rotta artica e Mare del Nord"},
+      {"from": "Sabetta (Yamal)", "to": "Montoir-de-Bretagne", "product": "LNG russo che l'UE ufficialmente bannerà"},
+      {"from": "Abqaiq", "to": "Yanbu", "product": "petrolio via pipeline per bypassare Hormuz"}
+    ],
+    "consumer_hubs": [
+      {"name": "Milano", "lng": 9.19, "lat": 45.46},
+      {"name": "Berlino", "lng": 13.4, "lat": 52.52},
+      {"name": "Madrid", "lng": -3.7, "lat": 40.41},
+      {"name": "Parigi", "lng": 2.35, "lat": 48.85}
+    ]
+  },
+  "numeri_chiave": {
+    "LNG_russo_UE_marzo_2026_bcm": 2.46,
+    "LNG_russo_UE_Q1_2026_bcm": 6.8,
+    "variazione_vs_2025_percent": 38,
+    "ban_ue_russo_data": "1 gennaio 2027",
+    "TTF_prezzo_eur_mwh": 60,
+    "quota_LNG_mondiale_Hormuz_percent": 20,
+    "quota_LNG_europeo_da_Qatar_percent": 13,
+    "capacità_persa_Ras_Laffan_mln_ton": 12.8,
+    "stoccaggio_UE_marzo_2026_percent": 30,
+    "Yamal_export_UE_mln_ton_Q1_2026": 5,
+    "aumento_prezzo_settimanale_EU_percent": 63
+  },
+  "verita_nascosta": "Per anni ci hanno raccontato che l'Europa sarebbe diventata indipendente dal gas russo. La UE ha firmato a gennaio 2026 il ban totale di LNG russo dal 1 gennaio 2027. Pochi mesi dopo, al primo scossone di mercato reale - la chiusura di Hormuz e il danneggiamento di Ras Laffan - l'Europa non ha diversificato: ha comprato il 38% di LNG russo in più dallo stesso terminale (Yamal LNG a Sabetta) che dovrebbe bandire. La guerra con l'Iran non ha causato la dipendenza energetica europea, l'ha solo smascherata. L'indipendenza era teatro politico."
+}

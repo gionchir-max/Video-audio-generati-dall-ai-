@@ -15,3 +15,4 @@ src/meta.json
 src/sfx.json
 src/script.txt
 src/captions.whisper.bak.json
+public/countries.geojson

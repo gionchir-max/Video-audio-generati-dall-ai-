@@ -1,0 +1,932 @@
+{
+  "duration": 171.22,
+  "fps": 30,
+  "style": "satellite-hybrid",
+  "scenes": [
+    {
+      "startTime": 0,
+      "endTime": 6.4,
+      "description": "Apertura mondiale sul Qatar, zoom su Ras Laffan.",
+      "camera": {
+        "start": {
+          "center": [
+            51.6,
+            25.9
+          ],
+          "zoom": 2.5,
+          "bearing": 0,
+          "pitch": 0
+        },
+        "end": {
+          "center": [
+            51.6,
+            25.9
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 45
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 51.6,
+          "lat": 25.9,
+          "label": "RAS LAFFAN",
+          "appearAt": 0
+        },
+        {
+          "type": "highlight",
+          "country": "QA",
+          "label": "QATAR",
+          "appearAt": 1.8
+        }
+      ]
+    },
+    {
+      "startTime": 6.4,
+      "endTime": 16.4,
+      "description": "Transizione a Bruxelles per il ban UE.",
+      "camera": {
+        "start": {
+          "center": [
+            51.6,
+            25.9
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 45
+        },
+        "end": {
+          "center": [
+            4.35,
+            50.85
+          ],
+          "zoom": 7,
+          "bearing": 0,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "26 GEN 2026",
+          "appearAt": 6.4,
+          "durationSec": 2.5,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 4.35,
+          "lat": 50.85,
+          "label": "BRUXELLES",
+          "appearAt": 8
+        },
+        {
+          "type": "highlight",
+          "country": "BE",
+          "label": "BELGIO",
+          "appearAt": 10
+        }
+      ]
+    },
+    {
+      "startTime": 16.4,
+      "endTime": 23,
+      "description": "Transizione all'Iran per la guerra.",
+      "camera": {
+        "start": {
+          "center": [
+            4.35,
+            50.85
+          ],
+          "zoom": 7,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            53,
+            32
+          ],
+          "zoom": 5,
+          "bearing": 0,
+          "pitch": 40
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "28 FEB 2026",
+          "appearAt": 16.4,
+          "durationSec": 2.5,
+          "position": "top"
+        },
+        {
+          "type": "highlight",
+          "country": "IR",
+          "label": "IRAN",
+          "appearAt": 18
+        },
+        {
+          "type": "pulse",
+          "lng": 53,
+          "lat": 32,
+          "appearAt": 20,
+          "color": "#ff3b3b"
+        }
+      ]
+    },
+    {
+      "startTime": 23,
+      "endTime": 31.5,
+      "description": "Panoramica Europa-Russia, domanda retorica.",
+      "camera": {
+        "start": {
+          "center": [
+            40,
+            50
+          ],
+          "zoom": 3.5,
+          "bearing": 0,
+          "pitch": 0
+        },
+        "end": {
+          "center": [
+            40,
+            55
+          ],
+          "zoom": 3.5,
+          "bearing": 0,
+          "pitch": 0
+        }
+      },
+      "overlays": [
+        {
+          "type": "highlight",
+          "country": "RU",
+          "label": "RUSSIA",
+          "appearAt": 24
+        },
+        {
+          "type": "highlight",
+          "country": "DE",
+          "label": "GERMANIA",
+          "appearAt": 26
+        },
+        {
+          "type": "highlight",
+          "country": "FR",
+          "label": "FRANCIA",
+          "appearAt": 28
+        }
+      ]
+    },
+    {
+      "startTime": 31.5,
+      "endTime": 38.7,
+      "description": "Zoom drammatico sullo Stretto di Hormuz.",
+      "style": "dark",
+      "camera": {
+        "start": {
+          "center": [
+            56.25,
+            26.6
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 0
+        },
+        "end": {
+          "center": [
+            56.25,
+            26.6
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 50
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 56.25,
+          "lat": 26.6,
+          "label": "STRETTO DI HORMUZ",
+          "appearAt": 31.5
+        },
+        {
+          "type": "label",
+          "lng": 56.25,
+          "lat": 26.6,
+          "text": "BLOCCATO",
+          "appearAt": 38,
+          "size": "lg"
+        }
+      ]
+    },
+    {
+      "startTime": 38.7,
+      "endTime": 44.5,
+      "description": "Panoramica del Golfo Persico, quota 20%.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            56.25,
+            26.6
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 50
+        },
+        "end": {
+          "center": [
+            52,
+            26
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 56.25,
+          "lat": 27,
+          "text": "20% LNG GLOBALE",
+          "appearAt": 39,
+          "size": "md"
+        },
+        {
+          "type": "highlight",
+          "country": "SA",
+          "label": "ARABIA SAUDITA",
+          "appearAt": 42
+        }
+      ]
+    },
+    {
+      "startTime": 44.5,
+      "endTime": 54.2,
+      "description": "Mostra la pipeline Abqaiq-Yanbu.",
+      "camera": {
+        "start": {
+          "center": [
+            49.67,
+            25.94
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            43.5,
+            25
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 49.67,
+          "lat": 25.94,
+          "label": "ABQAIQ",
+          "appearAt": 48.1
+        },
+        {
+          "type": "pin",
+          "lng": 38.06,
+          "lat": 24.08,
+          "label": "YANBU",
+          "appearAt": 50
+        },
+        {
+          "type": "route",
+          "coords": [
+            [
+              49.67,
+              25.94
+            ],
+            [
+              38.06,
+              24.08
+            ]
+          ],
+          "label": "EAST-WEST PIPELINE",
+          "startLabel": "ABQAIQ",
+          "endLabel": "YANBU",
+          "drawFrom": 49,
+          "drawTo": 53.5,
+          "color": "#00e5ff"
+        }
+      ]
+    },
+    {
+      "startTime": 54.2,
+      "endTime": 63.1,
+      "description": "Ritorno a Hormuz, contrasto gas vs petrolio.",
+      "camera": {
+        "start": {
+          "center": [
+            43.5,
+            25
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            56.25,
+            26.6
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 45
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 56.25,
+          "lat": 26.3,
+          "text": "5 Mln barili/g",
+          "appearAt": 54.2,
+          "size": "sm"
+        },
+        {
+          "type": "label",
+          "lng": 56.25,
+          "lat": 26,
+          "text": "LNG: NO",
+          "appearAt": 58.2,
+          "size": "lg"
+        }
+      ]
+    },
+    {
+      "startTime": 63.1,
+      "endTime": 71.3,
+      "description": "Attacco a Ras Laffan e perdita di capacità.",
+      "style": "dark",
+      "camera": {
+        "start": {
+          "center": [
+            56.25,
+            26.6
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 45
+        },
+        "end": {
+          "center": [
+            51.6,
+            25.9
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 50
+        }
+      },
+      "overlays": [
+        {
+          "type": "pulse",
+          "lng": 51.6,
+          "lat": 25.9,
+          "appearAt": 63.1,
+          "color": "#ff3b3b"
+        },
+        {
+          "type": "label",
+          "lng": 51.6,
+          "lat": 25.7,
+          "text": "-17%",
+          "appearAt": 65.3,
+          "size": "lg"
+        },
+        {
+          "type": "label",
+          "lng": 51.6,
+          "lat": 25.5,
+          "text": "12.8 MLN T",
+          "appearAt": 67,
+          "size": "md"
+        }
+      ]
+    },
+    {
+      "startTime": 71.3,
+      "endTime": 82.4,
+      "description": "Transizione all'Europa, esplosione prezzi.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            51.6,
+            25.9
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 50
+        },
+        "end": {
+          "center": [
+            4,
+            51.95
+          ],
+          "zoom": 7,
+          "bearing": 0,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 4,
+          "lat": 51.95,
+          "label": "ROTTERDAM TTF",
+          "appearAt": 71.3
+        },
+        {
+          "type": "label",
+          "lng": 4,
+          "lat": 52.1,
+          "text": "60€/MWh",
+          "appearAt": 75,
+          "size": "lg"
+        },
+        {
+          "type": "highlight",
+          "country": "NL",
+          "label": "OLANDA",
+          "appearAt": 77
+        }
+      ]
+    },
+    {
+      "startTime": 82.4,
+      "endTime": 89.6,
+      "description": "Zoom sulle città europee, bollette esplose.",
+      "camera": {
+        "start": {
+          "center": [
+            4,
+            51.95
+          ],
+          "zoom": 7,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            9.19,
+            45.46
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 40
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 10,
+          "lat": 50,
+          "text": "+63%",
+          "appearAt": 78.6,
+          "size": "lg"
+        },
+        {
+          "type": "pin",
+          "lng": 9.19,
+          "lat": 45.46,
+          "label": "MILANO",
+          "appearAt": 82.4
+        },
+        {
+          "type": "pin",
+          "lng": 13.4,
+          "lat": 52.52,
+          "label": "BERLINO",
+          "appearAt": 83.5
+        },
+        {
+          "type": "pin",
+          "lng": 2.35,
+          "lat": 48.85,
+          "label": "PARIGI",
+          "appearAt": 84.5
+        }
+      ]
+    },
+    {
+      "startTime": 89.6,
+      "endTime": 97.3,
+      "description": "Transizione epica all'Artico russo, Sabetta.",
+      "style": "dark",
+      "camera": {
+        "start": {
+          "center": [
+            9.19,
+            45.46
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 40
+        },
+        "end": {
+          "center": [
+            72.05,
+            71.27
+          ],
+          "zoom": 5,
+          "bearing": 0,
+          "pitch": 40
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 72.05,
+          "lat": 71.27,
+          "label": "SABETTA",
+          "appearAt": 91.9
+        },
+        {
+          "type": "highlight",
+          "country": "RU",
+          "label": "RUSSIA",
+          "appearAt": 93
+        }
+      ]
+    },
+    {
+      "startTime": 97.3,
+      "endTime": 107.1,
+      "description": "Disegna la rotta artica da Sabetta all'Europa.",
+      "camera": {
+        "start": {
+          "center": [
+            72.05,
+            71.27
+          ],
+          "zoom": 5,
+          "bearing": 0,
+          "pitch": 40
+        },
+        "end": {
+          "center": [
+            3.2,
+            51.33
+          ],
+          "zoom": 4,
+          "bearing": 0,
+          "pitch": 20
+        }
+      },
+      "overlays": [
+        {
+          "type": "route",
+          "coords": [
+            [
+              72.05,
+              71.27
+            ],
+            [
+              65,
+              70
+            ],
+            [
+              40,
+              70
+            ],
+            [
+              10,
+              55
+            ],
+            [
+              3.2,
+              51.33
+            ]
+          ],
+          "label": "ROTTA ARTICA",
+          "startLabel": "YAMAL",
+          "endLabel": "ZEEBRUGGE",
+          "drawFrom": 97.3,
+          "drawTo": 103.2,
+          "color": "#00e5ff"
+        },
+        {
+          "type": "pin",
+          "lng": 3.2,
+          "lat": 51.33,
+          "label": "ZEEBRUGGE",
+          "appearAt": 103.2
+        },
+        {
+          "type": "pin",
+          "lng": -2.15,
+          "lat": 47.32,
+          "label": "MONTOIR",
+          "appearAt": 104.7
+        }
+      ]
+    },
+    {
+      "startTime": 107.1,
+      "endTime": 122.5,
+      "description": "Focus su Europa, dati record marzo 2026.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            10,
+            50
+          ],
+          "zoom": 4,
+          "bearing": 0,
+          "pitch": 20
+        },
+        "end": {
+          "center": [
+            10,
+            50
+          ],
+          "zoom": 4,
+          "bearing": 0,
+          "pitch": 20
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "MARZO 2026",
+          "appearAt": 107.1,
+          "durationSec": 2.5,
+          "position": "top"
+        },
+        {
+          "type": "label",
+          "lng": 10,
+          "lat": 52,
+          "text": "2.46 BCM",
+          "appearAt": 112,
+          "size": "lg"
+        },
+        {
+          "type": "label",
+          "lng": 10,
+          "lat": 50,
+          "text": "+38%",
+          "appearAt": 118.4,
+          "size": "lg"
+        },
+        {
+          "type": "highlight",
+          "country": "EU",
+          "label": "UNIONE EUROPEA",
+          "appearAt": 115
+        }
+      ]
+    },
+    {
+      "startTime": 122.5,
+      "endTime": 134.9,
+      "description": "Dati primo trimestre e rotte verso Italia/Olanda.",
+      "camera": {
+        "start": {
+          "center": [
+            10,
+            50
+          ],
+          "zoom": 4,
+          "bearing": 0,
+          "pitch": 20
+        },
+        "end": {
+          "center": [
+            10.52,
+            42.92
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 12,
+          "lat": 52,
+          "text": "6.8 BCM",
+          "appearAt": 122.5,
+          "size": "md"
+        },
+        {
+          "type": "label",
+          "lng": 12,
+          "lat": 51,
+          "text": "+19%",
+          "appearAt": 128.1,
+          "size": "md"
+        },
+        {
+          "type": "route",
+          "coords": [
+            [
+              72.05,
+              71.27
+            ],
+            [
+              10.52,
+              42.92
+            ]
+          ],
+          "label": "YAMAL → PIOMBINO",
+          "startLabel": "SABETTA",
+          "endLabel": "PIOMBINO",
+          "drawFrom": 129.3,
+          "drawTo": 132,
+          "color": "#00e5ff"
+        },
+        {
+          "type": "pin",
+          "lng": 10.52,
+          "lat": 42.92,
+          "label": "PIOMBINO",
+          "appearAt": 132
+        },
+        {
+          "type": "pin",
+          "lng": 4,
+          "lat": 51.95,
+          "label": "ROTTERDAM",
+          "appearAt": 133
+        },
+        {
+          "type": "label",
+          "lng": 10.52,
+          "lat": 42.7,
+          "text": "+17%",
+          "appearAt": 134.9,
+          "size": "lg"
+        }
+      ]
+    },
+    {
+      "startTime": 134.9,
+      "endTime": 144.5,
+      "description": "Rivelazione: contrapposizione Bruxelles vs Sabetta.",
+      "style": "dark",
+      "camera": {
+        "start": {
+          "center": [
+            10.52,
+            42.92
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            40,
+            60
+          ],
+          "zoom": 3,
+          "bearing": 0,
+          "pitch": 0
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 4.35,
+          "lat": 50.85,
+          "label": "BRUXELLES",
+          "appearAt": 138
+        },
+        {
+          "type": "pin",
+          "lng": 72.05,
+          "lat": 71.27,
+          "label": "SABETTA",
+          "appearAt": 140
+        },
+        {
+          "type": "route",
+          "coords": [
+            [
+              72.05,
+              71.27
+            ],
+            [
+              4.35,
+              50.85
+            ]
+          ],
+          "label": "LA VERITÀ",
+          "startLabel": "YAMAL",
+          "endLabel": "UE",
+          "drawFrom": 141,
+          "drawTo": 143.5,
+          "color": "#ff3b3b"
+        }
+      ]
+    },
+    {
+      "startTime": 144.5,
+      "endTime": 155,
+      "description": "Conclusione: mappa completa dipendenza.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            40,
+            60
+          ],
+          "zoom": 3,
+          "bearing": 0,
+          "pitch": 0
+        },
+        "end": {
+          "center": [
+            20,
+            50
+          ],
+          "zoom": 3,
+          "bearing": 0,
+          "pitch": 0
+        }
+      },
+      "overlays": [
+        {
+          "type": "highlight",
+          "country": "RU",
+          "label": "RUSSIA",
+          "appearAt": 145
+        },
+        {
+          "type": "highlight",
+          "country": "DE",
+          "label": "GERMANIA",
+          "appearAt": 147
+        },
+        {
+          "type": "highlight",
+          "country": "FR",
+          "label": "FRANCIA",
+          "appearAt": 149
+        },
+        {
+          "type": "highlight",
+          "country": "IT",
+          "label": "ITALIA",
+          "appearAt": 151
+        }
+      ]
+    },
+    {
+      "startTime": 155,
+      "endTime": 171.22,
+      "description": "Chiusura, call to action.",
+      "camera": {
+        "start": {
+          "center": [
+            20,
+            50
+          ],
+          "zoom": 3,
+          "bearing": 0,
+          "pitch": 0
+        },
+        "end": {
+          "center": [
+            20,
+            50
+          ],
+          "zoom": 3,
+          "bearing": 0,
+          "pitch": 0
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 10,
+          "lat": 55,
+          "text": "CHI È IL PADRONE?",
+          "appearAt": 161.5,
+          "size": "lg"
+        }
+      ]
+    }
+  ]
+}

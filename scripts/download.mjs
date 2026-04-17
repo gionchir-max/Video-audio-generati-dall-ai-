@@ -108,6 +108,7 @@ async function ytSearch(query, minDuration, n = 25) {
     '--no-download',
     '--print', '%(id)s\t%(channel)s\t%(duration)s\t%(width)s\t%(height)s\t%(title)s',
     '--no-warnings',
+    '--js-runtimes', 'node',
   ]);
   return out.trim().split('\n').filter(Boolean).map((line) => {
     const [id, channel, duration, width, height, ...titleParts] = line.split('\t');
@@ -168,6 +169,7 @@ async function downloadVideo(videoId, neededSeconds) {
     '-o', outTmpl,
     '--no-warnings',
     '--quiet',
+    '--js-runtimes', 'node',
   ];
   if (neededSeconds && neededSeconds > 0) {
     // Scarica solo 0..neededSeconds (yt-dlp richiede ffmpeg per il cut; lo forniamo esplicito)
@@ -222,6 +224,7 @@ async function main() {
       '--no-download',
       '--print', '%(id)s\t%(channel)s\t%(duration)s\t%(width)s\t%(height)s\t%(title)s',
       '--no-warnings',
+      '--js-runtimes', 'node',
     ]);
     const [vid, channel, duration, width, height, ...titleParts] = out.trim().split('\t');
     best = {

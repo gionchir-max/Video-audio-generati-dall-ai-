@@ -10,6 +10,7 @@ if (args.length === 0) {
 
 const force = args.includes('--force');
 const skipRender = args.includes('--skip-render');
+const positive = args.includes('--positive');
 const urlArg = args.find((a) => a.startsWith('--url='));
 const topic = args.filter((a) => !a.startsWith('--')).join(' ');
 
@@ -22,12 +23,13 @@ function step(name, cmd, cmdArgs) {
 }
 
 const passForce = force ? ['--force'] : [];
+const passPositive = positive ? ['--positive'] : [];
 
 async function main() {
   const t0 = Date.now();
 
   // 1. Genera script
-  await step('script', 'node', ['scripts/script.mjs', topic, ...passForce]);
+  await step('script', 'node', ['scripts/script.mjs', topic, ...passForce, ...passPositive]);
 
   // 2. TTS
   await step('tts', 'node', ['scripts/tts.mjs', ...passForce]);

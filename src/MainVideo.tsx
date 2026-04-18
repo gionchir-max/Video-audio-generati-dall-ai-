@@ -2,6 +2,7 @@ import {AbsoluteFill, Audio, OffthreadVideo, staticFile, useVideoConfig} from 'r
 import {Subtitles} from './Subtitles';
 import {TopBanner} from './TopBanner';
 import {SoundEffects} from './SoundEffects';
+import {QuestionOverlay} from './QuestionOverlay';
 import banner from './banner.json';
 
 export const MainVideo: React.FC = () => {
@@ -35,6 +36,8 @@ export const MainVideo: React.FC = () => {
       <SoundEffects />
 
       <TopBanner text={banner.text} durationInFrames={bannerDurationFrames} />
+
+      <QuestionOverlay />
 
       <Subtitles />
     </AbsoluteFill>

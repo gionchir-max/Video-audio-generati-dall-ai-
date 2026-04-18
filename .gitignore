@@ -15,4 +15,5 @@ src/meta.json
 src/sfx.json
 src/script.txt
 src/captions.whisper.bak.json
+src/open-loop.json
 public/countries.geojson

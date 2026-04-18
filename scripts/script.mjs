@@ -12,7 +12,7 @@ const SCRIPT_TXT = path.join(SRC, 'script.txt');
 const BANNER_JSON = path.join(SRC, 'banner.json');
 const SCRIPT_META = path.join(OUT, 'script.meta.json');
 
-const topic = process.argv.slice(2).join(' ').trim();
+const topic = process.argv.slice(2).filter((a) => !a.startsWith('--')).join(' ').trim();
 if (!topic) {
   console.error('Usage: node scripts/script.mjs "<topic o città>"');
   process.exit(1);
@@ -27,9 +27,22 @@ if (!API_KEY) {
 
 const FORCE = process.argv.includes('--force');
 const POSITIVE = process.argv.includes('--positive');
+const factsArg = process.argv.find((a) => a.startsWith('--facts='));
+const FACTS = factsArg ? factsArg.slice('--facts='.length).trim() : '';
+
+function shortHash(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) {
+    h = ((h << 5) - h) + s.charCodeAt(i);
+    h |= 0;
+  }
+  return (h >>> 0).toString(36).slice(0, 8);
+}
+const FACTS_HASH = FACTS ? shortHash(FACTS) : '';
+
 if (!FORCE && existsSync(SCRIPT_TXT) && existsSync(BANNER_JSON) && existsSync(SCRIPT_META)) {
   const meta = JSON.parse(readFileSync(SCRIPT_META, 'utf8'));
-  if (meta.topic === topic) {
+  if (meta.topic === topic && (meta.factsHash || '') === FACTS_HASH) {
     console.log(`[script] cache hit per "${topic}" — skip (use --force per rigenerare)`);
     process.exit(0);
   }
@@ -138,7 +151,11 @@ Scrivi il voice-over secondo le regole. STRUTTURA OBBLIGATORIA:
 - Ultime 2 frasi: CTA positivo ai commenti (tagga, salva, dimmi il tuo preferito).
 Tono: appassionato, colto, coinvolgente. Celebra il luogo con fatti concreti e dettagli sensoriali. Zero retorica vuota.`;
 
-const USER = POSITIVE ? USER_POSITIVE : USER_AGGRESSIVE;
+const FACTS_BLOCK = FACTS
+  ? `\n\nFATTI DA RISPETTARE (AUTORITATIVI, freschi, potenzialmente successivi al tuo knowledge cutoff — NON sostituirli con le tue conoscenze pregresse, NON inventare date/persone/numeri alternativi, NON menzionare predecessori se il fatto nomina una persona specifica):\n${FACTS}\n\nSe i fatti nominano una persona/evento/cifra, DEVI usarli esattamente come scritti qui. Lo script costruito intorno a questi fatti.`
+  : '';
+
+const USER = (POSITIVE ? USER_POSITIVE : USER_AGGRESSIVE) + FACTS_BLOCK;
 
 async function callOpenRouter() {
   const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
@@ -178,7 +195,18 @@ function extractJson(content) {
   throw new Error('Impossibile estrarre JSON dalla risposta');
 }
 
-console.log(`[script] genero voice-over per "${topic}" con ${MODEL}...`);
+// Warning: topic con segnali post-cutoff ma senza --facts → output probabilmente sbagliato
+// (l'LLM inventerà o sostituirà nomi/date con dati pre-cutoff che conosce).
+const POST_CUTOFF_SIGNALS = /\b(202[5-9]|203[0-9])\b/;
+if (POST_CUTOFF_SIGNALS.test(topic) && !FACTS) {
+  console.warn(
+    `\n⚠ [script] il topic contiene un anno ≥2025 ma non è stato fornito --facts="...".\n` +
+      `  Il modello ${MODEL} potrebbe non conoscere gli eventi recenti e inventare (o sostituire con dati pre-cutoff).\n` +
+      `  Se il video risulta sbagliato, rilancialo con --force --facts="<fatti autoritativi>".\n`,
+  );
+}
+
+console.log(`[script] genero voice-over per "${topic}" con ${MODEL}${FACTS ? ' (+ facts injected)' : ''}...`);
 const raw = await callOpenRouter();
 const parsed = extractJson(raw);
 
@@ -199,11 +227,23 @@ const bannerText = parsed.banner
   .trim()
   .toUpperCase();
 
+const slug = topic
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .replace(/[^a-z0-9]+/gi, '-')
+  .toLowerCase()
+  .replace(/^-|-$/g, '')
+  .slice(0, 80);
+
 writeFileSync(SCRIPT_TXT, scriptText + '\n');
 writeFileSync(BANNER_JSON, JSON.stringify({text: bannerText}, null, 2));
 writeFileSync(
   SCRIPT_META,
-  JSON.stringify({topic, model: MODEL, words: scriptText.split(/\s+/).length}, null, 2),
+  JSON.stringify(
+    {topic, slug, factsHash: FACTS_HASH, model: MODEL, words: scriptText.split(/\s+/).length},
+    null,
+    2,
+  ),
 );
 
 const wc = scriptText.split(/\s+/).length;

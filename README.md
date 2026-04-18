@@ -1,6 +1,6 @@
 # tiktok-city
 
-Pipeline end-to-end per generare reel TikTok (1080×1920, ~3 min) a partire da un nome di città o da un argomento. Due stili disponibili:
+Pipeline end-to-end per generare reel TikTok (1080×1920, ~3 min) a partire da un nome di città o da un argomento. Tre stili disponibili:
 
 **1. Drone footage style** — sottofondo con riprese drone da YouTube
 ```bash
@@ -12,6 +12,14 @@ npm run make -- "la caduta dell'impero romano"
 ```bash
 # crea prima src/facts.json con il dossier geografico del topic (vedi esempio)
 npm run make-map -- "Come la guerra con l'Iran ha rivelato una verità sul gas"
+```
+
+**3. Montage multi-clip style** — sottofondo con 4–8 spezzoni YouTube diversi concatenati (persona che parla, compilation tematica, eventi). Ogni clip è un segmento casuale di un video diverso, normalizzato a 1080×1920.
+```bash
+# tono positivo + 6 clip di Sgarbi che parla
+npm run make -- "Vittorio Sgarbi" --positive --montage="Vittorio Sgarbi intervista" --montage-clips=6
+# numero clip auto in base alla durata voice-over
+npm run make -- "Maradona" --positive --montage="Maradona Napoli gol intervista"
 ```
 
 Output in `out/<topic>.mp4`.
@@ -64,14 +72,44 @@ La traccia viene loopata se più corta del video e normalizzata a `−14 LUFS`. 
 
 ```bash
 # Pipeline drone (default)
-npm run make -- "<topic>"                # drone footage + voice-over + sub + musica + SFX
-npm run make -- "<topic>" --force        # rigenera cache
-npm run studio                           # anteprima interattiva Remotion
-npm run render                           # solo remotion render (asset già pronti)
+npm run make -- "<topic>"                          # drone footage + voice-over + sub + musica + SFX
+npm run make -- "<topic>" --force                  # rigenera cache
+npm run make -- "<topic>" --positive               # tono Alberto Angela invece che "amico al bar"
+npm run make -- "<topic>" --url=https://...        # forza un video YouTube specifico come sfondo
+npm run make -- "<topic>" --montage="<query>"      # sfondo = N spezzoni diversi dalla ricerca
+npm run make -- "<topic>" --montage="<q>" --montage-clips=6
+npm run studio                                     # anteprima interattiva Remotion
+npm run render                                     # solo remotion render (asset già pronti)
 
 # Pipeline mappa animata
-npm run make-map -- "<topic>"            # richiede src/facts.json e MAPTILER_API_KEY
+npm run make-map -- "<topic>"                      # richiede src/facts.json e MAPTILER_API_KEY
 ```
+
+### Modalità montage
+
+`--montage="<query YouTube>"` sostituisce il download drone con una **compilation multi-clip**:
+
+- `scripts/download.mjs` cerca su YouTube la query, prende i migliori N candidati (>=720p, dedupe canale max 2/canale, penalità su #shorts/reaction/live lunghi)
+- da ogni candidato estrae un segmento casuale di ~`target/N` secondi (evitando primi 20s e ultimi 15s per saltare intro/outro)
+- normalizza ogni clip a 1080×1920@30fps h264 yuv420p, muto
+- shuffle + concat con ffmpeg in `public/bg.mp4` esattamente alla durata del voice-over
+- cache per `topic + montageQuery` in `out/bg.url`; riusa clip già normalizzati in `cache/video/montage/` su successivi run
+
+`--montage-clips=N` forza il numero di clip (default: auto 4–8 in base alla durata).
+
+### Topic post-cutoff LLM (`--facts`)
+
+Il modello OpenRouter default (`deepseek-v3.2`) ha un knowledge cutoff: per topic su persone/eventi del 2025+ (es. Mamdani sindaco NYC, elezioni recenti) tende a **sostituirli silenziosamente** con il predecessore che conosce. Contromisura: inietta i fatti autoritativi nel prompt.
+
+```bash
+npm run make -- "Zohran Mamdani tassa i ricchi di NYC" --force \
+  --facts="Zohran Mamdani, primo sindaco socialista democratico di New York, eletto nov 2025, in carica da gen 2026. Propone tassa aggiuntiva 2% sui redditi oltre 1M/anno per finanziare asili gratis e freeze degli affitti." \
+  --montage="New York City Manhattan drone aerial 4k"
+```
+
+Il blocco `--facts` diventa autoritativo: l'LLM è istruito a non sostituirlo con conoscenze pregresse. La cache dello script considera un hash dei fatti, quindi cambiare `--facts` invalida la cache automaticamente (non serve `--force` se cambia solo il fatto).
+
+Pipeline emette un warning automatico se il topic contiene un anno ≥2025 ma manca `--facts`.
 
 Step singoli (utili per debug):
 

@@ -58,11 +58,16 @@ if (!API_KEY) {
 
 const SYSTEM = `Analizzi uno script voice-over TikTok in italiano con struttura "open loop": nei primi ~15 secondi viene posta una domanda a cui si risponde solo negli ultimi ~15% del video.
 
-Estrai:
-1. "question": la domanda posta all'inizio. Rendila compatta e leggibile per un overlay su schermo (max 12 parole, una sola frase interrogativa, finisce con "?"). Puoi ricondensare il fraseggio mantenendo il senso, ma DEVE restare fedele alla domanda dello script.
-2. "answerAnchor": le prime 4-6 parole ESATTE, LETTERALI, del punto dello script dove inizia la risposta (il payoff finale). Lowercase, senza punteggiatura. Deve essere una sequenza contigua presente nello script.
+Estrai TRE campi:
+1. "question": testo polished da mostrare in overlay a schermo. Max 12 parole, compatto, leggibile, finisce con "?". Puoi parafrasare per chiarezza (es: trasformare uno statement-loop in vera domanda interrogativa).
+2. "questionAnchor": 4-6 parole ESATTE, CONTIGUE, LETTERALI del punto nello script dove la domanda/open-loop viene posta (serve per trovare l'istante temporale, non per la visualizzazione). Lowercase, senza punteggiatura. DEVE essere una substring letterale dello script fornito.
+3. "answerAnchor": 4-6 parole ESATTE, CONTIGUE, LETTERALI del punto dello script dove inizia la risposta (il payoff finale). Lowercase, senza punteggiatura. Substring letterale.
 
-Se lo script NON ha una struttura chiara domanda/risposta, restituisci entrambi i campi vuoti: {"question": "", "answerAnchor": ""}.
+Se lo script NON ha una struttura domanda/risposta chiara, restituisci tutti e tre i campi vuoti.
+
+Esempio:
+Script: "...Ma c'è un numero che fa crollare l'unico argomento che i ricchi hanno contro questa manovra. E te lo sputo alla fine. [...] E quel numero è centoventisette. Centoventisette è la percentuale..."
+Output: {"question": "Qual è il numero che smonta le balle sulla tassa?", "questionAnchor": "c'è un numero che fa crollare", "answerAnchor": "e quel numero è centoventisette"}
 
 Rispondi SOLO con JSON valido.`;
 
@@ -143,29 +148,31 @@ async function main() {
   }
 
   const question = (parsed.question || '').trim();
+  const questionAnchor = (parsed.questionAnchor || '').trim();
   const answerAnchor = (parsed.answerAnchor || '').trim();
 
-  if (!question || !answerAnchor) {
-    writeEmpty('LLM non ha trovato struttura domanda/risposta');
+  if (!question || !questionAnchor || !answerAnchor) {
+    writeEmpty('LLM non ha restituito tutti e 3 i campi');
     return;
   }
 
-  console.log(`[open-loop] question: "${question}"`);
-  console.log(`[open-loop] answerAnchor: "${answerAnchor}"`);
+  console.log(`[open-loop] question (display): "${question}"`);
+  console.log(`[open-loop] questionAnchor (match): "${questionAnchor}"`);
+  console.log(`[open-loop] answerAnchor (match):   "${answerAnchor}"`);
 
-  const qIdx = findPhraseStart(question, words, 0, Math.floor(words.length * 0.4));
+  const qIdx = findPhraseStart(questionAnchor, words, 0, Math.floor(words.length * 0.5));
   const aIdx = findPhraseStart(
     answerAnchor,
     words,
-    qIdx != null ? qIdx + 3 : Math.floor(words.length * 0.5),
+    qIdx != null ? qIdx + 3 : Math.floor(words.length * 0.55),
   );
 
   if (qIdx == null) {
-    writeEmpty(`question non trovata in words.json`);
+    writeEmpty(`questionAnchor "${questionAnchor}" non trovato in words.json`);
     return;
   }
   if (aIdx == null) {
-    writeEmpty(`answerAnchor non trovato in words.json`);
+    writeEmpty(`answerAnchor "${answerAnchor}" non trovato in words.json`);
     return;
   }
 
@@ -178,7 +185,7 @@ async function main() {
 
   writeFileSync(
     OPEN_LOOP_JSON,
-    JSON.stringify({question, answerAnchor, start, end}, null, 2),
+    JSON.stringify({question, questionAnchor, answerAnchor, start, end}, null, 2),
   );
   console.log(
     `[open-loop] → src/open-loop.json (${start.toFixed(2)}s → ${end.toFixed(2)}s · ${(end - start).toFixed(1)}s in overlay)`,

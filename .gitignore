@@ -61,6 +61,15 @@ src/cta.json
 *.png
 !**/docs/*.png
 
+# Logs e state runtime delle pipeline (temporanei)
+videos/*/run.log
+videos/*/run.stdout.log
+videos/*/render.log
+videos/*/state.json
+
+# Settings locali Claude Code (per-utente)
+.claude/
+
 # macOS metadata
 ._*
 .DS_Store

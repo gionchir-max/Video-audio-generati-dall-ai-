@@ -155,7 +155,7 @@ async function step2_concat() {
     if (existsSync(dst)) continue;
     await run(FFMPEG, [
       '-y', '-i', src,
-      '-vf', 'scale=1080:1920:force_original_aspect_ratio=cover,crop=1080:1920,fps=30',
+      '-vf', 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30',
       '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
       '-an',
       dst,

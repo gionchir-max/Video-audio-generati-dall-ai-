@@ -178,6 +178,26 @@ async function step2_concat() {
   return bgDur;
 }
 
+async function step2b_extendBgIfShort(bgDur, voDur) {
+  // Se bg < VO, estendi con freeze frame dell'ultimo frame per coprire VO + 0.5s margine
+  const target = voDur + 0.5;
+  if (bgDur >= target) return bgDur;
+  const padSec = (target - bgDur).toFixed(2);
+  console.log(`\n[2b] bg (${bgDur.toFixed(2)}s) < VO (${voDur.toFixed(2)}s) → estendo con freeze finale di ${padSec}s`);
+  const padded = path.join(VIDEO_DIR, 'bg.padded.mp4');
+  await run(FFMPEG, [
+    '-y', '-i', BG_PATH,
+    '-vf', `tpad=stop_mode=clone:stop_duration=${padSec}`,
+    '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
+    '-an',
+    padded,
+  ]);
+  cpSync(padded, BG_PATH);
+  const newDur = ffprobeDuration(BG_PATH);
+  console.log(`    bg.mp4 nuova durata: ${newDur.toFixed(2)}s`);
+  return newDur;
+}
+
 function step3_publish() {
   console.log(`\n[3/4] copy assets → public/videos/${slug}/`);
   cpSync(BG_PATH, path.join(PUBLIC_DIR, 'bg.mp4'));
@@ -206,19 +226,12 @@ async function step4_render(durationSeconds) {
 async function main() {
   console.log(`▶ make-video ${slug}`);
   const voDur = await step1_VO();
-  const bgDur = await step2_concat();
+  let bgDur = await step2_concat();
+  bgDur = await step2b_extendBgIfShort(bgDur, voDur);
   step3_publish();
-  // VO dura ${voDur}s; il bg può essere più corto: in tal caso la composition
-  // renderizza fino a min(VO, bg). Diamo durata = min(VO, bg) + 0.5s margine.
   const duration = Math.min(voDur, bgDur) + 0.5;
   await step4_render(duration);
   console.log(`\n✓ DONE → ${FINAL_PATH}`);
-  if (bgDur < voDur) {
-    console.warn(
-      `\n⚠  bg.mp4 (${bgDur.toFixed(1)}s) è più corto del VO (${voDur.toFixed(1)}s).\n` +
-      `   Aggiungi più clip in clips/ per coprire tutto il VO.`,
-    );
-  }
 }
 
 main().catch((e) => {

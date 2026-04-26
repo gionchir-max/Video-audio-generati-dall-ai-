@@ -71,28 +71,51 @@ Output: {"question": "Qual è il numero che smonta le balle sulla tassa?", "ques
 
 Rispondi SOLO con JSON valido.`;
 
+function extractJson(content) {
+  try {
+    return JSON.parse(content);
+  } catch {}
+  const match = content.match(/\{[\s\S]*\}/);
+  if (match) return JSON.parse(match[0]);
+  throw new Error('impossibile estrarre JSON dalla risposta');
+}
+
 async function callLLM() {
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://tiktok-city.local',
-      'X-Title': 'tiktok-city',
-    },
-    body: JSON.stringify({
+  // Fallback se il provider non supporta response_format json_object (es. Io Net per v4-pro):
+  // OpenRouter risponde 404 "No endpoints available" → ripeti senza json mode, estrai JSON a mano.
+  let useJsonMode = true;
+  for (let attempt = 0; attempt < 2; attempt++) {
+    const body = {
       model: MODEL,
       temperature: 0.1,
-      response_format: {type: 'json_object'},
       messages: [
         {role: 'system', content: SYSTEM},
         {role: 'user', content: scriptText},
       ],
-    }),
-  });
-  if (!res.ok) throw new Error(`OpenRouter ${res.status}: ${await res.text()}`);
-  const data = await res.json();
-  return JSON.parse(data.choices[0].message.content);
+    };
+    if (useJsonMode) body.response_format = {type: 'json_object'};
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://tiktok-city.local',
+        'X-Title': 'tiktok-city',
+      },
+      body: JSON.stringify(body),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      return extractJson(data.choices[0].message.content);
+    }
+    const errBody = await res.text();
+    if (res.status === 404 && useJsonMode && /No endpoints available/i.test(errBody)) {
+      useJsonMode = false;
+      continue;
+    }
+    throw new Error(`OpenRouter ${res.status}: ${errBody}`);
+  }
+  throw new Error('OpenRouter fallito');
 }
 
 function normalize(s) {

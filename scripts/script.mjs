@@ -158,32 +158,52 @@ const FACTS_BLOCK = FACTS
 const USER = (POSITIVE ? USER_POSITIVE : USER_AGGRESSIVE) + FACTS_BLOCK;
 
 async function callOpenRouter() {
-  const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${API_KEY}`,
-      'Content-Type': 'application/json',
-      'HTTP-Referer': 'https://tiktok-city.local',
-      'X-Title': 'tiktok-city',
-    },
-    body: JSON.stringify({
+  // Retry con backoff esponenziale per gestire 429 upstream (tipico su modelli in free-tier);
+  // fallback senza response_format su 404 (alcuni provider come Io Net non supportano json mode
+  // per modelli come deepseek-v4-pro: in quel caso OpenRouter risponde "No endpoints available").
+  const MAX_ATTEMPTS = 5;
+  let lastErr = null;
+  let useJsonMode = true;
+  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+    const body = {
       model: MODEL,
       temperature: 0.9,
-      response_format: {type: 'json_object'},
       messages: [
         {role: 'system', content: SYSTEM},
         {role: 'user', content: USER},
       ],
-    }),
-  });
-  if (!res.ok) {
-    const body = await res.text();
-    throw new Error(`OpenRouter ${res.status}: ${body}`);
+    };
+    if (useJsonMode) body.response_format = {type: 'json_object'};
+
+    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+        'HTTP-Referer': 'https://tiktok-city.local',
+        'X-Title': 'tiktok-city',
+      },
+      body: JSON.stringify(body),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      const content = data.choices?.[0]?.message?.content;
+      if (!content) throw new Error('Nessun contenuto restituito da OpenRouter');
+      return content;
+    }
+    const errBody = await res.text();
+    lastErr = new Error(`OpenRouter ${res.status}: ${errBody}`);
+    if (res.status === 404 && useJsonMode && /No endpoints available/i.test(errBody)) {
+      console.warn('[script] 404 con json_object → riprovo senza response_format (extractJson gestira il parsing)');
+      useJsonMode = false;
+      continue;
+    }
+    if (res.status !== 429 && res.status !== 502 && res.status !== 503) throw lastErr;
+    const backoff = Math.min(80, 20 * attempt) * 1000;
+    console.warn(`[script] ${res.status} (tentativo ${attempt}/${MAX_ATTEMPTS}), attendo ${backoff / 1000}s...`);
+    await new Promise((r) => setTimeout(r, backoff));
   }
-  const data = await res.json();
-  const content = data.choices?.[0]?.message?.content;
-  if (!content) throw new Error('Nessun contenuto restituito da OpenRouter');
-  return content;
+  throw lastErr ?? new Error('OpenRouter fallito dopo retry');
 }
 
 function extractJson(content) {

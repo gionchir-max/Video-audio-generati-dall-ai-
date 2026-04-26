@@ -7,6 +7,7 @@
     "studio": "remotion studio",
     "render": "remotion render MainVideo out/video.mp4 --codec=h264",
     "make": "node scripts/make.mjs",
+    "adv": "node scripts/adv.mjs",
     "make-map": "node scripts/make-map.mjs",
     "map-plan": "node scripts/map-plan.mjs",
     "script": "node scripts/script.mjs",
@@ -16,7 +17,10 @@
     "transcribe": "node scripts/transcribe.mjs",
     "align": "node scripts/align.mjs",
     "music": "node scripts/music.mjs",
-    "sfx": "node scripts/sfx.mjs"
+    "sfx": "node scripts/sfx.mjs",
+    "produce": "node nooland-campaign/scripts/produce.mjs",
+    "video": "node scripts/make-video.mjs",
+    "video:init": "node scripts/init-video.mjs"
   },
   "dependencies": {
     "@remotion/cli": "4.0.448",

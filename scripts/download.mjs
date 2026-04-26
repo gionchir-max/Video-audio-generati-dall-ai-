@@ -71,33 +71,53 @@ async function resolveDroneLocation(topic) {
   if (!OPENROUTER_API_KEY) {
     return {location: topic, query: `${topic} drone aerial 4k cinematic footage`};
   }
+  // Fallback se il provider non supporta response_format json_object (es. Io Net per v4-pro):
+  // OpenRouter risponde 404 "No endpoints available" → ripeti senza json mode, estrai JSON a mano.
+  const systemContent =
+    'Data una frase (può essere il nome di una città, un evento storico, un fenomeno culturale, un aneddoto), restituisci il luogo fisico più riprendibile con un drone che meglio lo rappresenta. Deve essere una località reale ripresa dall\'alto (città, monumento, skyline, paesaggio). Rispondi SOLO con JSON {"location": "nome luogo in inglese ottimizzato per ricerca YouTube", "query": "<location> drone aerial 4k cinematic skyline no watermark"}. Se l\'input è già una città usa quella. Esempi: "Parigi e la Sindrome di Parigi" → {"location": "Paris France", "query": "Paris France drone aerial 4k cinematic skyline no watermark"}. "la caduta dell\'impero romano" → {"location": "Rome Italy Colosseum", "query": "Rome Italy drone aerial 4k Colosseum skyline"}. "Roma" → {"location": "Rome Italy", "query": "Rome Italy drone aerial 4k cinematic skyline"}.';
   try {
-    const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${OPENROUTER_API_KEY}`,
-        'Content-Type': 'application/json',
-        'HTTP-Referer': 'https://tiktok-city.local',
-        'X-Title': 'tiktok-city',
-      },
-      body: JSON.stringify({
+    let useJsonMode = true;
+    for (let attempt = 0; attempt < 2; attempt++) {
+      const reqBody = {
         model: OPENROUTER_MODEL,
         temperature: 0.2,
-        response_format: {type: 'json_object'},
         messages: [
-          {
-            role: 'system',
-            content:
-              'Data una frase (può essere il nome di una città, un evento storico, un fenomeno culturale, un aneddoto), restituisci il luogo fisico più riprendibile con un drone che meglio lo rappresenta. Deve essere una località reale ripresa dall\'alto (città, monumento, skyline, paesaggio). Rispondi SOLO con JSON {"location": "nome luogo in inglese ottimizzato per ricerca YouTube", "query": "<location> drone aerial 4k cinematic skyline no watermark"}. Se l\'input è già una città usa quella. Esempi: "Parigi e la Sindrome di Parigi" → {"location": "Paris France", "query": "Paris France drone aerial 4k cinematic skyline no watermark"}. "la caduta dell\'impero romano" → {"location": "Rome Italy Colosseum", "query": "Rome Italy drone aerial 4k Colosseum skyline"}. "Roma" → {"location": "Rome Italy", "query": "Rome Italy drone aerial 4k cinematic skyline"}.',
-          },
+          {role: 'system', content: systemContent},
           {role: 'user', content: topic},
         ],
-      }),
-    });
-    if (!res.ok) throw new Error(`${res.status}`);
-    const data = await res.json();
-    const parsed = JSON.parse(data.choices[0].message.content);
-    if (parsed.location && parsed.query) return parsed;
+      };
+      if (useJsonMode) reqBody.response_format = {type: 'json_object'};
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://tiktok-city.local',
+          'X-Title': 'tiktok-city',
+        },
+        body: JSON.stringify(reqBody),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        const content = data.choices[0].message.content;
+        let parsed;
+        try {
+          parsed = JSON.parse(content);
+        } catch {
+          const m = content.match(/\{[\s\S]*\}/);
+          if (m) parsed = JSON.parse(m[0]);
+          else throw new Error('impossibile estrarre JSON');
+        }
+        if (parsed.location && parsed.query) return parsed;
+        throw new Error('risposta senza location/query');
+      }
+      const errBody = await res.text();
+      if (res.status === 404 && useJsonMode && /No endpoints available/i.test(errBody)) {
+        useJsonMode = false;
+        continue;
+      }
+      throw new Error(`${res.status}: ${errBody.slice(0, 120)}`);
+    }
   } catch (e) {
     console.warn(`[download] resolve location fallito: ${e.message}, uso topic raw`);
   }
@@ -299,13 +319,15 @@ async function downloadAndNormalizeSegment(videoId, startSec, clipLen, idx, tota
     ]);
     if (!existsSync(rawFile)) throw new Error(`yt-dlp non ha prodotto ${rawFile}`);
   }
-  console.log(`[montage] (${idx + 1}/${total}) normalizing → 1080x1920@30fps`);
+  console.log(`[montage] (${idx + 1}/${total}) normalizing → 1080x1920@30fps (cinematic grade)`);
   await run(ffmpegPath, [
     '-y',
     '-ss', '0.5', // piccolo skip per saltare frame di apertura instabili del section cut
     '-i', rawFile,
     '-t', String(clipLen),
-    '-vf', 'crop=ih*9/16:ih,scale=1080:1920:flags=lanczos,fps=30,setsar=1',
+    // Grading cinematografico: crop 9:16 + scale 1080x1920 + contrast/saturation lift leggero
+    // + subtle vignette (scurisce gli angoli per focalizzare il centro dove stanno banner/sottotitoli)
+    '-vf', 'crop=ih*9/16:ih,scale=1080:1920:flags=lanczos,eq=contrast=1.08:saturation=1.15:gamma=0.97,vignette=angle=PI/5.5,fps=30,setsar=1',
     '-an',
     '-c:v', 'libx264',
     '-preset', 'fast',
@@ -567,7 +589,9 @@ async function main() {
     '-ss', '10',
     '-i', srcFile,
     '-t', String(targetDuration),
-    '-vf', 'crop=ih*9/16:ih,scale=1080:1920:flags=lanczos',
+    // Grading cinematografico: crop 9:16 + scale 1080x1920 + contrast/saturation lift leggero
+    // + subtle vignette (scurisce gli angoli per focalizzare il centro dove stanno banner/sottotitoli)
+    '-vf', 'crop=ih*9/16:ih,scale=1080:1920:flags=lanczos,eq=contrast=1.08:saturation=1.15:gamma=0.97,vignette=angle=PI/5.5',
     '-an',
     '-c:v', 'libx264',
     '-preset', 'fast',

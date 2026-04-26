@@ -1,59 +1,98 @@
 {
-  "topic": "Come la guerra con l'Iran ha rivelato una verità sul gas",
+  "topic": "Il processo dell'Unità d'Italia",
   "timeline": [
-    {"date": "2026-01-26", "event": "Consiglio UE approva risoluzione: ban totale import LNG russo dal 1 gennaio 2027"},
-    {"date": "2026-02-28", "event": "USA e Israele lanciano guerra aerea contro l'Iran"},
-    {"date": "2026-03", "event": "Iran chiude lo Stretto di Hormuz bloccando il traffico di metaniere"},
-    {"date": "2026-03", "event": "Attacchi danneggiano il complesso LNG di Ras Laffan in Qatar: perdita stimata 12,8 milioni di tonnellate/anno (-17% capacità)"},
-    {"date": "2026-03", "event": "Dutch TTF gas raddoppia fino a oltre 60 EUR/MWh"},
-    {"date": "2026-03", "event": "Prezzi gas Europa +63% in una settimana, Asia +54%"},
-    {"date": "2026-03", "event": "UE importa 2,46 miliardi di metri cubi di LNG russo, +38% rispetto marzo 2025 — record assoluto"},
-    {"date": "2026-Q1", "event": "Import LNG russo in UE sale a 6,8 miliardi di metri cubi (+19% vs Q1 2025), 5 milioni di tonnellate da Yamal LNG (+17%)"},
-    {"date": "2026-04", "event": "Ultime metaniere del Golfo raggiungono l'Europa, analisti prevedono ulteriore impennata dei prezzi"}
+    {"date": "1815", "event": "Congresso di Vienna: l'Italia è frammentata in 8 stati, dominata da Austria. Regno Lombardo-Veneto austriaco, Regno di Sardegna ai Savoia, Stato Pontificio, Regno delle Due Sicilie ai Borbone"},
+    {"date": "1820-1821", "event": "Moti carbonari a Napoli e in Piemonte, repressi dall'Austria"},
+    {"date": "1831", "event": "Giuseppe Mazzini fonda la Giovine Italia a Marsiglia: repubblica, unità, indipendenza"},
+    {"date": "1848-03-18", "event": "Cinque Giornate di Milano: il popolo caccia gli austriaci del generale Radetzky dalla città"},
+    {"date": "1848-03-23", "event": "Carlo Alberto di Savoia dichiara guerra all'Austria: inizia la Prima Guerra d'Indipendenza"},
+    {"date": "1849-03-23", "event": "Sconfitta di Novara: Carlo Alberto abdica in favore del figlio Vittorio Emanuele II"},
+    {"date": "1849", "event": "Repubblica Romana di Mazzini e Garibaldi, schiacciata dai francesi di Napoleone III"},
+    {"date": "1852", "event": "Camillo Benso conte di Cavour diventa Primo Ministro del Regno di Sardegna"},
+    {"date": "1858-07", "event": "Accordi segreti di Plombières: Cavour e Napoleone III pianificano la guerra all'Austria"},
+    {"date": "1859-04-29", "event": "Seconda Guerra d'Indipendenza: Austria invade il Piemonte, Francia interviene al fianco di Cavour"},
+    {"date": "1859-06-04", "event": "Battaglia di Magenta: vittoria franco-piemontese"},
+    {"date": "1859-06-24", "event": "Battaglia di Solferino e San Martino: 40.000 morti in un giorno, vittoria decisiva"},
+    {"date": "1859-11-11", "event": "Armistizio di Villafranca: Lombardia al Piemonte, ma Veneto resta austriaco"},
+    {"date": "1860-03", "event": "Plebisciti: Toscana, Emilia, Romagna votano l'annessione al Piemonte"},
+    {"date": "1860-03-24", "event": "Trattato di Torino: Nizza e Savoia cedute alla Francia come pagamento a Napoleone III"},
+    {"date": "1860-05-05", "event": "Spedizione dei Mille: Garibaldi salpa da Quarto (Genova) con 1.089 volontari in camicia rossa"},
+    {"date": "1860-05-11", "event": "Sbarco a Marsala in Sicilia: inizia la conquista del Regno delle Due Sicilie"},
+    {"date": "1860-05-15", "event": "Battaglia di Calatafimi: Garibaldi sconfigge i Borbonici. 'Qui si fa l'Italia o si muore'"},
+    {"date": "1860-05-27", "event": "Garibaldi entra a Palermo dopo tre giorni di battaglia urbana"},
+    {"date": "1860-09-07", "event": "Garibaldi entra a Napoli senza combattere: il re Francesco II fugge a Gaeta"},
+    {"date": "1860-10-01", "event": "Battaglia del Volturno: Garibaldi ferma il contrattacco borbonico"},
+    {"date": "1860-10-26", "event": "Incontro di Teano: Garibaldi consegna il Sud a Vittorio Emanuele II. 'Saluto il primo Re d'Italia'"},
+    {"date": "1861-03-17", "event": "Proclamazione del Regno d'Italia a Torino: Vittorio Emanuele II Re d'Italia per grazia di Dio e volontà della Nazione"},
+    {"date": "1861-06-06", "event": "Morte di Cavour a Torino. Ultime parole: 'L'Italia è fatta, tutto è a posto'"},
+    {"date": "1866-06-20", "event": "Terza Guerra d'Indipendenza: Italia alleata con la Prussia contro l'Austria"},
+    {"date": "1866-07-03", "event": "Sconfitta italiana a Custoza, ma la Prussia vince a Sadowa"},
+    {"date": "1866-10-19", "event": "Il Veneto passa all'Italia via plebiscito dopo la mediazione francese"},
+    {"date": "1870-09-20", "event": "Breccia di Porta Pia: i bersaglieri entrano a Roma. Fine dello Stato Pontificio"},
+    {"date": "1871-07-01", "event": "Roma diventa capitale del Regno d'Italia"}
   ],
   "geography": {
-    "choke_points": [
-      {"name": "Stretto di Hormuz", "lng": 56.25, "lat": 26.6, "note": "Passano 20 milioni di barili/giorno di petrolio (~20% consumo globale) e il 20% del commercio globale di LNG"},
-      {"name": "Mar Rosso / Bab el-Mandeb", "lng": 43.3, "lat": 12.6, "note": "Rotta alternativa per oil via pipeline Yanbu"}
+    "capitali_successive": [
+      {"name": "Torino", "lng": 7.686, "lat": 45.07, "role": "prima capitale 1861-1865"},
+      {"name": "Firenze", "lng": 11.255, "lat": 43.77, "role": "capitale 1865-1871"},
+      {"name": "Roma", "lng": 12.4964, "lat": 41.9028, "role": "capitale dal 1871"}
     ],
-    "lng_terminals": [
-      {"name": "Ras Laffan (Qatar)", "lng": 51.6, "lat": 25.9, "role": "secondo esportatore LNG mondiale, 112 bcm nel 2025, danneggiato 2026"},
-      {"name": "Sabetta / Yamal LNG (Russia)", "lng": 72.05, "lat": 71.27, "role": "hub LNG russo artico — record export verso UE nel 2026"},
-      {"name": "Arzew (Algeria)", "lng": -0.32, "lat": 35.83, "role": "LNG verso Italia e Spagna"},
-      {"name": "Rotterdam GATE terminal", "lng": 4.0, "lat": 51.95, "role": "principale hub di rigassificazione UE"},
-      {"name": "Piombino FSRU (Italia)", "lng": 10.52, "lat": 42.92, "role": "rigassificatore galleggiante Italia"},
-      {"name": "Zeebrugge (Belgio)", "lng": 3.2, "lat": 51.33, "role": "terminale di rigassificazione che riceve LNG russo da Yamal"},
-      {"name": "Montoir-de-Bretagne (Francia)", "lng": -2.15, "lat": 47.32, "role": "terminale francese che ha ricevuto cargo russi"}
+    "battaglie_chiave": [
+      {"name": "Milano - Cinque Giornate", "lng": 9.19, "lat": 45.4642, "data": "18-22 marzo 1848", "note": "insurrezione popolare caccia 14.000 austriaci"},
+      {"name": "Novara", "lng": 8.6218, "lat": 45.4469, "data": "23 marzo 1849", "note": "sconfitta decisiva Prima Guerra Indipendenza"},
+      {"name": "Magenta", "lng": 8.8833, "lat": 45.4667, "data": "4 giugno 1859", "note": "vittoria franco-piemontese, 7.000 caduti"},
+      {"name": "Solferino", "lng": 10.57, "lat": 45.374, "data": "24 giugno 1859", "note": "40.000 morti, ispira la Croce Rossa di Dunant"},
+      {"name": "Calatafimi", "lng": 12.8635, "lat": 37.9142, "data": "15 maggio 1860", "note": "Garibaldi: Qui si fa l'Italia o si muore"},
+      {"name": "Volturno", "lng": 14.2681, "lat": 41.1308, "data": "1-2 ottobre 1860", "note": "24.000 garibaldini vs 28.000 borbonici"},
+      {"name": "Custoza", "lng": 10.7422, "lat": 45.3869, "data": "24 giugno 1866", "note": "sconfitta italiana nella Terza Guerra"},
+      {"name": "Porta Pia", "lng": 12.5059, "lat": 41.9089, "data": "20 settembre 1870", "note": "breccia dei bersaglieri, fine potere temporale papa"}
     ],
-    "oil_bypass_pipelines": [
-      {"name": "East-West Pipeline (Arabia Saudita, Abqaiq → Yanbu)", "from": [49.67, 25.94], "to": [38.06, 24.08], "capacity": "5 milioni barili/giorno"},
-      {"name": "ADCOP (UAE, Habshan → Fujairah)", "from": [53.7, 23.77], "to": [56.33, 25.1], "capacity": "1,8 milioni barili/giorno"}
+    "spedizione_mille": [
+      {"name": "Quarto (Genova)", "lng": 8.9811, "lat": 44.3889, "role": "partenza 5 maggio 1860, due piroscafi Piemonte e Lombardo"},
+      {"name": "Talamone", "lng": 11.1358, "lat": 42.553, "role": "scalo per rifornimento armi"},
+      {"name": "Marsala", "lng": 12.4378, "lat": 37.7984, "role": "sbarco 11 maggio 1860"},
+      {"name": "Calatafimi", "lng": 12.8635, "lat": 37.9142, "role": "prima vittoria"},
+      {"name": "Palermo", "lng": 13.3614, "lat": 38.1157, "role": "conquista 27 maggio 1860"},
+      {"name": "Milazzo", "lng": 15.2403, "lat": 38.2203, "role": "battaglia 20 luglio 1860"},
+      {"name": "Stretto di Messina", "lng": 15.6333, "lat": 38.2167, "role": "attraversamento 18 agosto 1860"},
+      {"name": "Napoli", "lng": 14.2681, "lat": 40.8518, "role": "ingresso trionfale 7 settembre 1860"},
+      {"name": "Teano", "lng": 14.0719, "lat": 41.2489, "role": "incontro con Vittorio Emanuele II 26 ottobre 1860"}
     ],
-    "gas_routes": [
-      {"from": "Ras Laffan", "to": "Rotterdam GATE", "product": "LNG via mare attraverso Hormuz e Canale di Suez"},
-      {"from": "Sabetta (Yamal)", "to": "Zeebrugge", "product": "LNG russo via rotta artica e Mare del Nord"},
-      {"from": "Sabetta (Yamal)", "to": "Montoir-de-Bretagne", "product": "LNG russo che l'UE ufficialmente bannerà"},
-      {"from": "Abqaiq", "to": "Yanbu", "product": "petrolio via pipeline per bypassare Hormuz"}
+    "stati_preunitari": [
+      {"name": "Regno di Sardegna", "capitale": "Torino", "lng": 7.686, "lat": 45.07, "dinastia": "Savoia", "ruolo": "motore dell'unificazione"},
+      {"name": "Regno Lombardo-Veneto", "capitale": "Milano", "lng": 9.19, "lat": 45.4642, "dinastia": "Asburgo", "ruolo": "dominio austriaco"},
+      {"name": "Ducato di Parma", "capitale": "Parma", "lng": 10.3279, "lat": 44.8015},
+      {"name": "Ducato di Modena", "capitale": "Modena", "lng": 10.9252, "lat": 44.6471},
+      {"name": "Granducato di Toscana", "capitale": "Firenze", "lng": 11.255, "lat": 43.77, "dinastia": "Lorena"},
+      {"name": "Stato Pontificio", "capitale": "Roma", "lng": 12.4964, "lat": 41.9028, "dinastia": "Papato"},
+      {"name": "Regno delle Due Sicilie", "capitale": "Napoli", "lng": 14.2681, "lat": 40.8518, "dinastia": "Borbone"}
     ],
-    "consumer_hubs": [
-      {"name": "Milano", "lng": 9.19, "lat": 45.46},
-      {"name": "Berlino", "lng": 13.4, "lat": 52.52},
-      {"name": "Madrid", "lng": -3.7, "lat": 40.41},
-      {"name": "Parigi", "lng": 2.35, "lat": 48.85}
+    "terre_cedute": [
+      {"name": "Nizza", "lng": 7.2619, "lat": 43.7102, "note": "ceduta alla Francia nel 1860, città natale di Garibaldi"},
+      {"name": "Savoia / Chambéry", "lng": 5.9203, "lat": 45.5646, "note": "culla dei Savoia ceduta alla Francia"}
+    ],
+    "capitali_straniere": [
+      {"name": "Vienna", "lng": 16.3738, "lat": 48.2082, "role": "impero asburgico, nemico principale"},
+      {"name": "Parigi", "lng": 2.3522, "lat": 48.8566, "role": "Napoleone III, alleato ambiguo"},
+      {"name": "Plombières-les-Bains", "lng": 6.4614, "lat": 47.9664, "role": "accordo segreto Cavour-Napoleone III luglio 1858"}
     ]
   },
   "numeri_chiave": {
-    "LNG_russo_UE_marzo_2026_bcm": 2.46,
-    "LNG_russo_UE_Q1_2026_bcm": 6.8,
-    "variazione_vs_2025_percent": 38,
-    "ban_ue_russo_data": "1 gennaio 2027",
-    "TTF_prezzo_eur_mwh": 60,
-    "quota_LNG_mondiale_Hormuz_percent": 20,
-    "quota_LNG_europeo_da_Qatar_percent": 13,
-    "capacità_persa_Ras_Laffan_mln_ton": 12.8,
-    "stoccaggio_UE_marzo_2026_percent": 30,
-    "Yamal_export_UE_mln_ton_Q1_2026": 5,
-    "aumento_prezzo_settimanale_EU_percent": 63
+    "anno_proclamazione_regno": 1861,
+    "data_proclamazione": "17 marzo 1861",
+    "anno_roma_capitale": 1871,
+    "mille_volontari_numero": 1089,
+    "giorni_conquista_sicilia_sud": 171,
+    "morti_solferino_un_giorno": 40000,
+    "stati_preunitari_1815": 8,
+    "guerre_indipendenza_combattute": 3,
+    "anni_risorgimento": "1815-1871",
+    "re_primo_italia": "Vittorio Emanuele II",
+    "primo_ministro_unificazione": "Camillo Benso di Cavour",
+    "duce_mille": "Giuseppe Garibaldi",
+    "profeta_unita": "Giuseppe Mazzini",
+    "percentuale_italiani_parlavano_italiano_1861": 2.5,
+    "popolazione_regno_italia_1861": 22000000
   },
-  "verita_nascosta": "Per anni ci hanno raccontato che l'Europa sarebbe diventata indipendente dal gas russo. La UE ha firmato a gennaio 2026 il ban totale di LNG russo dal 1 gennaio 2027. Pochi mesi dopo, al primo scossone di mercato reale - la chiusura di Hormuz e il danneggiamento di Ras Laffan - l'Europa non ha diversificato: ha comprato il 38% di LNG russo in più dallo stesso terminale (Yamal LNG a Sabetta) che dovrebbe bandire. La guerra con l'Iran non ha causato la dipendenza energetica europea, l'ha solo smascherata. L'indipendenza era teatro politico."
+  "verita_nascosta": "Ci hanno raccontato l'Unità d'Italia come un'epica popolare: patrioti, camicie rosse, il popolo che insorge. La realtà è più scomoda. Nel 1861 solo il 2,5% degli abitanti della penisola parlava italiano. L'unificazione fu opera di quattro uomini con strategie opposte: Mazzini sognava una repubblica e morì deluso, Garibaldi conquistò metà del Paese e fu pensionato a Caprera, Cavour barattò Nizza e Savoia con la Francia e morì tre mesi dopo la proclamazione del Regno, Vittorio Emanuele II si prese tutto. Il Sud fu conquistato militarmente, non liberato: seguirono dieci anni di guerra civile con oltre 20.000 briganti fucilati. L'Italia non è nata dal popolo italiano - il popolo italiano è stato inventato dopo, per giustificare lo Stato che era già stato costruito."
 }

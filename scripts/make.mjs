@@ -5,13 +5,14 @@ import path from 'node:path';
 
 const args = process.argv.slice(2);
 if (args.length === 0) {
-  console.error('Usage: npm run make -- "<topic>" [--force] [--skip-render] [--positive] [--url=<yt>] [--montage="<query>"] [--montage-clips=N] [--facts="<fatti freschi post-cutoff LLM>"]');
+  console.error('Usage: npm run make -- "<topic>" [--force] [--skip-render] [--positive] [--no-music] [--url=<yt>] [--montage="<query>"] [--montage-clips=N] [--facts="<fatti freschi post-cutoff LLM>"]');
   process.exit(1);
 }
 
 const force = args.includes('--force');
 const skipRender = args.includes('--skip-render');
 const positive = args.includes('--positive');
+const noMusic = args.includes('--no-music');
 const urlArg = args.find((a) => a.startsWith('--url='));
 const montageArg = args.find((a) => a.startsWith('--montage='));
 const montageClipsArg = args.find((a) => a.startsWith('--montage-clips='));
@@ -62,8 +63,28 @@ async function main() {
   // 7.5. Extract open-loop question + answer anchor timings (overlay a schermo)
   await step('open-loop', 'node', ['scripts/open-loop.mjs', ...passForce]);
 
-  // 8. Music
-  await step('music', 'node', ['scripts/music.mjs', topic, ...passForce]);
+  // 8. Music (o silenzio se --no-music)
+  if (noMusic) {
+    console.log('\n━━━ [music] ━━━');
+    console.log('[music] saltato (--no-music): meta.noMusic=true, Audio musica disattivato in MainVideo');
+    try {
+      const m = JSON.parse(readFileSync('src/meta.json', 'utf8'));
+      m.noMusic = true;
+      writeFileSync('src/meta.json', JSON.stringify(m, null, 2));
+    } catch (e) {
+      throw new Error(`impossibile patchare src/meta.json: ${e.message}`);
+    }
+  } else {
+    // assicura noMusic=false se presente da run precedenti
+    try {
+      const m = JSON.parse(readFileSync('src/meta.json', 'utf8'));
+      if (m.noMusic) {
+        delete m.noMusic;
+        writeFileSync('src/meta.json', JSON.stringify(m, null, 2));
+      }
+    } catch {}
+    await step('music', 'node', ['scripts/music.mjs', topic, ...passForce]);
+  }
 
   // 9. SFX
   await step('sfx', 'node', ['scripts/sfx.mjs']);

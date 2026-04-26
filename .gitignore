@@ -1,14 +1,51 @@
+# --- node / build ---
 node_modules/
+cache/
+whisper.cpp/
+
+# --- secrets ---
 .env
+.env.local
+
+# --- output / asset pesanti (generati, NON in git) ---
 out/
+
+# Pipeline make-video: per ogni `videos/<slug>/` ignora gli artefatti generati
+videos/*/audio/
+videos/*/clips/
+videos/*/bg.mp4
+videos/*/clean.mp4
+videos/*/out/
+videos/*/.chat-uuid
+
+# Asset Remotion staticFile (copiati da make-video)
+public/videos/
+
+# Asset legacy (progetto MainVideo originale)
 public/bg.mp4
 public/voiceover.mp3
+public/voiceover.mp3.slug
 public/voiceover.wav
 public/music.mp3
 public/sfx/*.mp3
 public/words.json
-cache/
-whisper.cpp/
+public/countries.geojson
+public/italia-preunitaria.geojson
+public/seduzione-bg.mp4
+public/seduzione-vo.mp3
+
+# Progetti video specifici (asset/output non vanno in repo)
+public/nooland/
+public/nooland-campaign/
+nooland-campaign/videos/*/audio/
+nooland-campaign/videos/*/clips/
+nooland-campaign/videos/*/bg.mp4
+nooland-campaign/videos/*/clean.mp4
+nooland-campaign/videos/*/out/
+nooland-campaign/videos/*/.chat-uuid
+wildfire-cats/
+
+# State JSON dei composition originali (legacy)
 src/words.json
 src/banner.json
 src/meta.json
@@ -16,4 +53,14 @@ src/sfx.json
 src/script.txt
 src/captions.whisper.bak.json
 src/open-loop.json
-public/countries.geojson
+src/seduzione-words.json
+src/cta.json
+
+# Browser automation / debug
+.playwright-mcp/
+*.png
+!**/docs/*.png
+
+# macOS metadata
+._*
+.DS_Store

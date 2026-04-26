@@ -1,0 +1,20 @@
+{
+  "slug": "v13-fuori-sede-A",
+  "topic": "fuori-sede",
+  "vo": "M",
+  "geoTag": "Enna",
+  "musicTrack": "modern-pop-uplift.mp3",
+  "hookText": "Vivo a Milano.",
+  "hookSubtitle": "Il terreno è a Enna.",
+  "captions": [
+    {"text": "Vivo a Milano.",        "fromSec": 0,  "toSec": 4.5,  "color": "white",   "size": 110},
+    {"text": "Il terreno è a Enna.",  "fromSec": 5,  "toSec": 9.5,  "color": "white",   "size": 100},
+    {"text": "Hai chiamato 5 persone.","fromSec": 10,"toSec": 14,   "color": "#ffe066", "size": 92},
+    {"text": "Poi hai trovato Nooland.","fromSec": 15,"toSec": 19,  "color": "white",   "size": 96},
+    {"text": "Foto · GPS · Fattura.", "fromSec": 20, "toSec": 24,   "color": "#7be07b", "size": 90}
+  ],
+  "phone": "375 870 7282",
+  "site": "nooland.it",
+  "ctaDurationSeconds": 5.5,
+  "voCopy": "Marco vive a Milano. Il suo terreno è a Enna. Cinquecento chilometri tra lui e l'erba alta che cresce ogni estate. Ha chiamato amici, parenti, il vicino. Tutti hanno detto sì. Nessuno è andato. Poi ha trovato Nooland. Operatore verificato, foto col GPS, fattura sul telefono. Il terreno pulito. Da Milano. In quarantotto ore."
+}

@@ -1,68 +1,76 @@
 {
-  "duration": 171.22,
+  "duration": 184.46,
   "fps": 30,
   "style": "satellite-hybrid",
   "scenes": [
     {
       "startTime": 0,
-      "endTime": 6.4,
-      "description": "Apertura mondiale sul Qatar, zoom su Ras Laffan.",
+      "endTime": 7.1,
+      "description": "Apertura epica su Teano. Data enorme.",
+      "style": "satellite-hybrid",
       "camera": {
         "start": {
           "center": [
-            51.6,
-            25.9
-          ],
-          "zoom": 2.5,
-          "bearing": 0,
-          "pitch": 0
-        },
-        "end": {
-          "center": [
-            51.6,
-            25.9
+            14.0719,
+            41.2489
           ],
           "zoom": 8,
           "bearing": 0,
+          "pitch": 23
+        },
+        "end": {
+          "center": [
+            14.3219,
+            41.1489
+          ],
+          "zoom": 9.5,
+          "bearing": 15,
           "pitch": 45
         }
       },
       "overlays": [
         {
-          "type": "pin",
-          "lng": 51.6,
-          "lat": 25.9,
-          "label": "RAS LAFFAN",
-          "appearAt": 0
+          "type": "era",
+          "text": "26 OTTOBRE 1860",
+          "appearAt": 0.5,
+          "durationSec": 2.5,
+          "position": "top"
         },
         {
-          "type": "highlight",
-          "country": "QA",
-          "label": "QATAR",
-          "appearAt": 1.8
+          "type": "pin",
+          "lng": 14.0719,
+          "lat": 41.2489,
+          "label": "TEANO",
+          "appearAt": 0.8
+        },
+        {
+          "type": "timeline",
+          "year": "1860",
+          "appearAt": 0.3,
+          "durationSec": 6.5
         }
       ]
     },
     {
-      "startTime": 6.4,
-      "endTime": 16.4,
-      "description": "Transizione a Bruxelles per il ban UE.",
+      "startTime": 7.1,
+      "endTime": 15.3,
+      "description": "Domanda sul tradimento. Transizione all'indietro nel tempo e spazio.",
       "camera": {
         "start": {
           "center": [
-            51.6,
-            25.9
+            14.0719,
+            41.2489
           ],
-          "zoom": 8,
-          "bearing": 0,
+          "zoom": 9.5,
+          "bearing": 15,
           "pitch": 45
         },
         "end": {
           "center": [
-            4.35,
-            50.85
+            16.3738,
+            48.2082
           ],
-          "zoom": 7,
+          "zoom": 6,
           "bearing": 0,
           "pitch": 30
         }
@@ -70,860 +78,1417 @@
       "overlays": [
         {
           "type": "era",
-          "text": "26 GEN 2026",
-          "appearAt": 6.4,
-          "durationSec": 2.5,
+          "text": "1815",
+          "appearAt": 15.3,
+          "durationSec": 2,
           "position": "top"
-        },
-        {
-          "type": "pin",
-          "lng": 4.35,
-          "lat": 50.85,
-          "label": "BRUXELLES",
-          "appearAt": 8
-        },
-        {
-          "type": "highlight",
-          "country": "BE",
-          "label": "BELGIO",
-          "appearAt": 10
         }
-      ]
+      ],
+      "style": "basic-v2"
     },
     {
-      "startTime": 16.4,
-      "endTime": 23,
-      "description": "Transizione all'Iran per la guerra.",
+      "startTime": 15.3,
+      "endTime": 21.6,
+      "description": "Zoom su Vienna, Congresso. Highlight degli 8 stati italiani.",
       "camera": {
         "start": {
           "center": [
-            4.35,
-            50.85
-          ],
-          "zoom": 7,
-          "bearing": 0,
-          "pitch": 30
-        },
-        "end": {
-          "center": [
-            53,
-            32
-          ],
-          "zoom": 5,
-          "bearing": 0,
-          "pitch": 40
-        }
-      },
-      "overlays": [
-        {
-          "type": "era",
-          "text": "28 FEB 2026",
-          "appearAt": 16.4,
-          "durationSec": 2.5,
-          "position": "top"
-        },
-        {
-          "type": "highlight",
-          "country": "IR",
-          "label": "IRAN",
-          "appearAt": 18
-        },
-        {
-          "type": "pulse",
-          "lng": 53,
-          "lat": 32,
-          "appearAt": 20,
-          "color": "#ff3b3b"
-        }
-      ]
-    },
-    {
-      "startTime": 23,
-      "endTime": 31.5,
-      "description": "Panoramica Europa-Russia, domanda retorica.",
-      "camera": {
-        "start": {
-          "center": [
-            40,
-            50
-          ],
-          "zoom": 3.5,
-          "bearing": 0,
-          "pitch": 0
-        },
-        "end": {
-          "center": [
-            40,
-            55
-          ],
-          "zoom": 3.5,
-          "bearing": 0,
-          "pitch": 0
-        }
-      },
-      "overlays": [
-        {
-          "type": "highlight",
-          "country": "RU",
-          "label": "RUSSIA",
-          "appearAt": 24
-        },
-        {
-          "type": "highlight",
-          "country": "DE",
-          "label": "GERMANIA",
-          "appearAt": 26
-        },
-        {
-          "type": "highlight",
-          "country": "FR",
-          "label": "FRANCIA",
-          "appearAt": 28
-        }
-      ]
-    },
-    {
-      "startTime": 31.5,
-      "endTime": 38.7,
-      "description": "Zoom drammatico sullo Stretto di Hormuz.",
-      "style": "dark",
-      "camera": {
-        "start": {
-          "center": [
-            56.25,
-            26.6
-          ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 0
-        },
-        "end": {
-          "center": [
-            56.25,
-            26.6
-          ],
-          "zoom": 9,
-          "bearing": 0,
-          "pitch": 50
-        }
-      },
-      "overlays": [
-        {
-          "type": "pin",
-          "lng": 56.25,
-          "lat": 26.6,
-          "label": "STRETTO DI HORMUZ",
-          "appearAt": 31.5
-        },
-        {
-          "type": "label",
-          "lng": 56.25,
-          "lat": 26.6,
-          "text": "BLOCCATO",
-          "appearAt": 38,
-          "size": "lg"
-        }
-      ]
-    },
-    {
-      "startTime": 38.7,
-      "endTime": 44.5,
-      "description": "Panoramica del Golfo Persico, quota 20%.",
-      "style": "satellite-hybrid",
-      "camera": {
-        "start": {
-          "center": [
-            56.25,
-            26.6
-          ],
-          "zoom": 9,
-          "bearing": 0,
-          "pitch": 50
-        },
-        "end": {
-          "center": [
-            52,
-            26
+            16.3738,
+            48.2082
           ],
           "zoom": 6,
           "bearing": 0,
           "pitch": 30
+        },
+        "end": {
+          "center": [
+            12.5,
+            43
+          ],
+          "zoom": 5.5,
+          "bearing": 5,
+          "pitch": 20
         }
       },
       "overlays": [
         {
-          "type": "label",
-          "lng": 56.25,
-          "lat": 27,
-          "text": "20% LNG GLOBALE",
-          "appearAt": 39,
-          "size": "md"
+          "type": "pin",
+          "lng": 16.3738,
+          "lat": 48.2082,
+          "label": "VIENNA",
+          "appearAt": 17.7
         },
         {
           "type": "highlight",
-          "country": "SA",
-          "label": "ARABIA SAUDITA",
-          "appearAt": 42
-        }
-      ]
-    },
-    {
-      "startTime": 44.5,
-      "endTime": 54.2,
-      "description": "Mostra la pipeline Abqaiq-Yanbu.",
-      "camera": {
-        "start": {
-          "center": [
-            49.67,
-            25.94
-          ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 35
-        },
-        "end": {
-          "center": [
-            43.5,
-            25
-          ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 35
-        }
-      },
-      "overlays": [
-        {
-          "type": "pin",
-          "lng": 49.67,
-          "lat": 25.94,
-          "label": "ABQAIQ",
-          "appearAt": 48.1
+          "label": "ITALIA",
+          "appearAt": 18.6,
+          "color": "#046A38",
+          "pattern": "solid"
         },
         {
-          "type": "pin",
-          "lng": 38.06,
-          "lat": 24.08,
-          "label": "YANBU",
-          "appearAt": 50
-        },
-        {
-          "type": "route",
-          "coords": [
-            [
-              49.67,
-              25.94
-            ],
-            [
-              38.06,
-              24.08
-            ]
-          ],
-          "label": "EAST-WEST PIPELINE",
-          "startLabel": "ABQAIQ",
-          "endLabel": "YANBU",
-          "drawFrom": 49,
-          "drawTo": 53.5,
-          "color": "#00e5ff"
-        }
-      ]
-    },
-    {
-      "startTime": 54.2,
-      "endTime": 63.1,
-      "description": "Ritorno a Hormuz, contrasto gas vs petrolio.",
-      "camera": {
-        "start": {
-          "center": [
-            43.5,
-            25
-          ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 35
-        },
-        "end": {
-          "center": [
-            56.25,
-            26.6
-          ],
-          "zoom": 8,
-          "bearing": 0,
-          "pitch": 45
-        }
-      },
-      "overlays": [
-        {
-          "type": "label",
-          "lng": 56.25,
-          "lat": 26.3,
-          "text": "5 Mln barili/g",
-          "appearAt": 54.2,
-          "size": "sm"
-        },
-        {
-          "type": "label",
-          "lng": 56.25,
-          "lat": 26,
-          "text": "LNG: NO",
-          "appearAt": 58.2,
-          "size": "lg"
-        }
-      ]
-    },
-    {
-      "startTime": 63.1,
-      "endTime": 71.3,
-      "description": "Attacco a Ras Laffan e perdita di capacità.",
-      "style": "dark",
-      "camera": {
-        "start": {
-          "center": [
-            56.25,
-            26.6
-          ],
-          "zoom": 8,
-          "bearing": 0,
-          "pitch": 45
-        },
-        "end": {
-          "center": [
-            51.6,
-            25.9
-          ],
-          "zoom": 9,
-          "bearing": 0,
-          "pitch": 50
-        }
-      },
-      "overlays": [
-        {
-          "type": "pulse",
-          "lng": 51.6,
-          "lat": 25.9,
-          "appearAt": 63.1,
-          "color": "#ff3b3b"
-        },
-        {
-          "type": "label",
-          "lng": 51.6,
-          "lat": 25.7,
-          "text": "-17%",
-          "appearAt": 65.3,
-          "size": "lg"
-        },
-        {
-          "type": "label",
-          "lng": 51.6,
-          "lat": 25.5,
-          "text": "12.8 MLN T",
-          "appearAt": 67,
-          "size": "md"
-        }
-      ]
-    },
-    {
-      "startTime": 71.3,
-      "endTime": 82.4,
-      "description": "Transizione all'Europa, esplosione prezzi.",
-      "style": "satellite-hybrid",
-      "camera": {
-        "start": {
-          "center": [
-            51.6,
-            25.9
-          ],
-          "zoom": 9,
-          "bearing": 0,
-          "pitch": 50
-        },
-        "end": {
-          "center": [
-            4,
-            51.95
-          ],
-          "zoom": 7,
-          "bearing": 0,
-          "pitch": 30
-        }
-      },
-      "overlays": [
-        {
-          "type": "pin",
-          "lng": 4,
-          "lat": 51.95,
-          "label": "ROTTERDAM TTF",
-          "appearAt": 71.3
-        },
-        {
-          "type": "label",
-          "lng": 4,
-          "lat": 52.1,
-          "text": "60€/MWh",
-          "appearAt": 75,
-          "size": "lg"
+          "type": "timeline",
+          "year": "1815",
+          "appearAt": 15.600000000000001,
+          "durationSec": 5.700000000000001
         },
         {
           "type": "highlight",
-          "country": "NL",
-          "label": "OLANDA",
-          "appearAt": 77
+          "preset": "lombardo-veneto",
+          "appearAt": 15.8,
+          "durationSec": 6.300000000000001,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "parma",
+          "appearAt": 16.400000000000002,
+          "durationSec": 5.9,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "modena",
+          "appearAt": 17,
+          "durationSec": 5.500000000000001,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "toscana",
+          "appearAt": 17.6,
+          "durationSec": 5.1000000000000005,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "pontificio",
+          "appearAt": 18.2,
+          "durationSec": 4.700000000000001,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "due-sicilie",
+          "appearAt": 18.8,
+          "durationSec": 4.300000000000001,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "sardegna",
+          "appearAt": 19.4,
+          "durationSec": 3.9000000000000004,
+          "pattern": "hatch",
+          "label": null
         }
-      ]
+      ],
+      "style": "streets-v2-dark"
     },
     {
-      "startTime": 82.4,
-      "endTime": 89.6,
-      "description": "Zoom sulle città europee, bollette esplose.",
+      "startTime": 21.6,
+      "endTime": 28.2,
+      "description": "Mostra i principali stati preunitari con pin.",
       "camera": {
         "start": {
           "center": [
-            4,
-            51.95
+            12.5,
+            43
           ],
-          "zoom": 7,
+          "zoom": 5.5,
           "bearing": 0,
-          "pitch": 30
+          "pitch": 20
         },
         "end": {
           "center": [
             9.19,
-            45.46
+            45.4642
           ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 40
+          "zoom": 6.5,
+          "bearing": -5,
+          "pitch": 25
         }
       },
       "overlays": [
         {
-          "type": "label",
-          "lng": 10,
-          "lat": 50,
-          "text": "+63%",
-          "appearAt": 78.6,
-          "size": "lg"
+          "type": "pin",
+          "lng": 7.686,
+          "lat": 45.07,
+          "label": "TORINO",
+          "appearAt": 21.6
         },
         {
           "type": "pin",
           "lng": 9.19,
-          "lat": 45.46,
+          "lat": 45.4642,
           "label": "MILANO",
-          "appearAt": 82.4
+          "appearAt": 23.5
         },
         {
           "type": "pin",
-          "lng": 13.4,
-          "lat": 52.52,
-          "label": "BERLINO",
-          "appearAt": 83.5
+          "lng": 12.4964,
+          "lat": 41.9028,
+          "label": "ROMA",
+          "appearAt": 24.5
         },
         {
           "type": "pin",
-          "lng": 2.35,
-          "lat": 48.85,
-          "label": "PARIGI",
-          "appearAt": 84.5
+          "lng": 14.2681,
+          "lat": 40.8518,
+          "label": "NAPOLI",
+          "appearAt": 25.5
+        },
+        {
+          "type": "highlight",
+          "preset": "lombardo-veneto",
+          "appearAt": 22.1,
+          "durationSec": 6.599999999999998,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "parma",
+          "appearAt": 22.700000000000003,
+          "durationSec": 6.1999999999999975,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "modena",
+          "appearAt": 23.3,
+          "durationSec": 5.799999999999998,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "toscana",
+          "appearAt": 23.900000000000002,
+          "durationSec": 5.399999999999998,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "pontificio",
+          "appearAt": 24.5,
+          "durationSec": 4.999999999999998,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "due-sicilie",
+          "appearAt": 25.1,
+          "durationSec": 4.599999999999998,
+          "pattern": "hatch",
+          "label": null
+        },
+        {
+          "type": "highlight",
+          "preset": "sardegna",
+          "appearAt": 25.700000000000003,
+          "durationSec": 4.1999999999999975,
+          "pattern": "hatch",
+          "label": null
         }
-      ]
+      ],
+      "style": "basic-v2"
     },
     {
-      "startTime": 89.6,
-      "endTime": 97.3,
-      "description": "Transizione epica all'Artico russo, Sabetta.",
-      "style": "dark",
+      "startTime": 28.2,
+      "endTime": 34.3,
+      "description": "Transizione a Marsiglia, fondazione Giovine Italia.",
       "camera": {
         "start": {
           "center": [
             9.19,
-            45.46
+            45.4642
           ],
-          "zoom": 6,
+          "zoom": 6.5,
           "bearing": 0,
-          "pitch": 40
+          "pitch": 25
         },
         "end": {
           "center": [
-            72.05,
-            71.27
+            5.3698,
+            43.2965
           ],
-          "zoom": 5,
-          "bearing": 0,
-          "pitch": 40
-        }
-      },
-      "overlays": [
-        {
-          "type": "pin",
-          "lng": 72.05,
-          "lat": 71.27,
-          "label": "SABETTA",
-          "appearAt": 91.9
-        },
-        {
-          "type": "highlight",
-          "country": "RU",
-          "label": "RUSSIA",
-          "appearAt": 93
-        }
-      ]
-    },
-    {
-      "startTime": 97.3,
-      "endTime": 107.1,
-      "description": "Disegna la rotta artica da Sabetta all'Europa.",
-      "camera": {
-        "start": {
-          "center": [
-            72.05,
-            71.27
-          ],
-          "zoom": 5,
-          "bearing": 0,
-          "pitch": 40
-        },
-        "end": {
-          "center": [
-            3.2,
-            51.33
-          ],
-          "zoom": 4,
-          "bearing": 0,
-          "pitch": 20
-        }
-      },
-      "overlays": [
-        {
-          "type": "route",
-          "coords": [
-            [
-              72.05,
-              71.27
-            ],
-            [
-              65,
-              70
-            ],
-            [
-              40,
-              70
-            ],
-            [
-              10,
-              55
-            ],
-            [
-              3.2,
-              51.33
-            ]
-          ],
-          "label": "ROTTA ARTICA",
-          "startLabel": "YAMAL",
-          "endLabel": "ZEEBRUGGE",
-          "drawFrom": 97.3,
-          "drawTo": 103.2,
-          "color": "#00e5ff"
-        },
-        {
-          "type": "pin",
-          "lng": 3.2,
-          "lat": 51.33,
-          "label": "ZEEBRUGGE",
-          "appearAt": 103.2
-        },
-        {
-          "type": "pin",
-          "lng": -2.15,
-          "lat": 47.32,
-          "label": "MONTOIR",
-          "appearAt": 104.7
-        }
-      ]
-    },
-    {
-      "startTime": 107.1,
-      "endTime": 122.5,
-      "description": "Focus su Europa, dati record marzo 2026.",
-      "style": "satellite-hybrid",
-      "camera": {
-        "start": {
-          "center": [
-            10,
-            50
-          ],
-          "zoom": 4,
-          "bearing": 0,
-          "pitch": 20
-        },
-        "end": {
-          "center": [
-            10,
-            50
-          ],
-          "zoom": 4,
-          "bearing": 0,
-          "pitch": 20
+          "zoom": 8,
+          "bearing": 5,
+          "pitch": 30
         }
       },
       "overlays": [
         {
           "type": "era",
-          "text": "MARZO 2026",
-          "appearAt": 107.1,
-          "durationSec": 2.5,
+          "text": "1831",
+          "appearAt": 28.2,
+          "durationSec": 2,
           "position": "top"
         },
         {
-          "type": "label",
-          "lng": 10,
-          "lat": 52,
-          "text": "2.46 BCM",
-          "appearAt": 112,
-          "size": "lg"
+          "type": "pin",
+          "lng": 5.3698,
+          "lat": 43.2965,
+          "label": "MARSEILLE",
+          "appearAt": 28.2
         },
         {
-          "type": "label",
-          "lng": 10,
-          "lat": 50,
-          "text": "+38%",
-          "appearAt": 118.4,
-          "size": "lg"
-        },
-        {
-          "type": "highlight",
-          "country": "EU",
-          "label": "UNIONE EUROPEA",
-          "appearAt": 115
+          "type": "pulse",
+          "lng": 5.3698,
+          "lat": 43.2965,
+          "appearAt": 31.4,
+          "color": "#ff3b3b"
         }
-      ]
+      ],
+      "style": "streets-v2"
     },
     {
-      "startTime": 122.5,
-      "endTime": 134.9,
-      "description": "Dati primo trimestre e rotte verso Italia/Olanda.",
+      "startTime": 34.3,
+      "endTime": 39,
+      "description": "Primi moti a Napoli, repressi.",
       "camera": {
         "start": {
           "center": [
-            10,
-            50
+            5.3698,
+            43.2965
           ],
-          "zoom": 4,
+          "zoom": 7.8999999999999995,
           "bearing": 0,
-          "pitch": 20
+          "pitch": 23
         },
         "end": {
           "center": [
-            10.52,
-            42.92
+            14.2681,
+            40.8518
           ],
-          "zoom": 6,
-          "bearing": 0,
-          "pitch": 35
+          "zoom": 9.899999999999999,
+          "bearing": -5,
+          "pitch": 45
         }
       },
       "overlays": [
         {
-          "type": "label",
-          "lng": 12,
-          "lat": 52,
-          "text": "6.8 BCM",
-          "appearAt": 122.5,
-          "size": "md"
+          "type": "era",
+          "text": "1820",
+          "appearAt": 34.3,
+          "durationSec": 2,
+          "position": "top"
         },
         {
-          "type": "label",
-          "lng": 12,
-          "lat": 51,
-          "text": "+19%",
-          "appearAt": 128.1,
-          "size": "md"
-        },
-        {
-          "type": "route",
-          "coords": [
-            [
-              72.05,
-              71.27
-            ],
-            [
-              10.52,
-              42.92
-            ]
+          "type": "pulse",
+          "lng": 14.2681,
+          "lat": 40.8518,
+          "appearAt": 34.3,
+          "color": "#ff3b3b"
+        }
+      ],
+      "style": "streets-v2"
+    },
+    {
+      "startTime": 39,
+      "endTime": 46.3,
+      "description": "Milano 1848, Carlo Alberto parte da Torino.",
+      "camera": {
+        "start": {
+          "center": [
+            14.2681,
+            40.8518
           ],
-          "label": "YAMAL → PIOMBINO",
-          "startLabel": "SABETTA",
-          "endLabel": "PIOMBINO",
-          "drawFrom": 129.3,
-          "drawTo": 132,
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            8.6218,
+            45.4469
+          ],
+          "zoom": 7,
+          "bearing": 5,
+          "pitch": 25
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "1848",
+          "appearAt": 39,
+          "durationSec": 2,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 9.19,
+          "lat": 45.4642,
+          "label": "MILANO",
+          "appearAt": 39
+        },
+        {
+          "type": "pulse",
+          "lng": 9.19,
+          "lat": 45.4642,
+          "appearAt": 39,
           "color": "#00e5ff"
         },
         {
-          "type": "pin",
-          "lng": 10.52,
-          "lat": 42.92,
-          "label": "PIOMBINO",
-          "appearAt": 132
+          "type": "route",
+          "coords": [
+            [
+              7.686,
+              45.07
+            ],
+            [
+              8.6218,
+              45.4469
+            ]
+          ],
+          "label": "PRIMA GUERRA",
+          "startLabel": "TORINO",
+          "endLabel": "NOVARA",
+          "drawFrom": 43.5,
+          "drawTo": 46.3,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "►"
         },
         {
-          "type": "pin",
-          "lng": 4,
-          "lat": 51.95,
-          "label": "ROTTERDAM",
-          "appearAt": 133
-        },
-        {
-          "type": "label",
-          "lng": 10.52,
-          "lat": 42.7,
-          "text": "+17%",
-          "appearAt": 134.9,
-          "size": "lg"
+          "type": "timeline",
+          "year": "1848",
+          "appearAt": 39.3,
+          "durationSec": 6.6999999999999975
         }
-      ]
+      ],
+      "style": "streets-v2"
     },
     {
-      "startTime": 134.9,
-      "endTime": 144.5,
-      "description": "Rivelazione: contrapposizione Bruxelles vs Sabetta.",
-      "style": "dark",
+      "startTime": 46.3,
+      "endTime": 50.2,
+      "description": "Sconfitta di Novara. Transizione a Roma 1849.",
       "camera": {
         "start": {
           "center": [
-            10.52,
-            42.92
+            8.6218,
+            45.4469
           ],
-          "zoom": 6,
+          "zoom": 7,
           "bearing": 0,
-          "pitch": 35
+          "pitch": 25
         },
         "end": {
           "center": [
-            40,
-            60
+            12.4964,
+            41.9028
           ],
-          "zoom": 3,
-          "bearing": 0,
-          "pitch": 0
+          "zoom": 8,
+          "bearing": -5,
+          "pitch": 30
         }
       },
       "overlays": [
         {
-          "type": "pin",
-          "lng": 4.35,
-          "lat": 50.85,
-          "label": "BRUXELLES",
-          "appearAt": 138
+          "type": "era",
+          "text": "1849",
+          "appearAt": 46.3,
+          "durationSec": 2,
+          "position": "top"
         },
         {
           "type": "pin",
-          "lng": 72.05,
-          "lat": 71.27,
-          "label": "SABETTA",
-          "appearAt": 140
+          "lng": 8.6218,
+          "lat": 45.4469,
+          "label": "NOVARA",
+          "appearAt": 46.3
+        },
+        {
+          "type": "pulse",
+          "lng": 8.6218,
+          "lat": 45.4469,
+          "appearAt": 46.3,
+          "color": "#ff3b3b"
+        },
+        {
+          "type": "timeline",
+          "year": "1849",
+          "appearAt": 46.599999999999994,
+          "durationSec": 3.3000000000000056
+        }
+      ],
+      "style": "basic-v2"
+    },
+    {
+      "startTime": 50.2,
+      "endTime": 58.8,
+      "description": "Repubblica Romana, arrivo dei francesi.",
+      "camera": {
+        "start": {
+          "center": [
+            12.4964,
+            41.9028
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            12.7464,
+            41.8028
+          ],
+          "zoom": 9,
+          "bearing": 10,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "highlight",
+          "country": "FR",
+          "label": "FRANCIA",
+          "appearAt": 56.3
         },
         {
           "type": "route",
           "coords": [
             [
-              72.05,
-              71.27
+              2.3522,
+              48.8566
             ],
             [
-              4.35,
-              50.85
+              12.4964,
+              41.9028
             ]
           ],
-          "label": "LA VERITÀ",
-          "startLabel": "YAMAL",
-          "endLabel": "UE",
-          "drawFrom": 141,
-          "drawTo": 143.5,
+          "label": "INTERVENTO",
+          "startLabel": "PARIGI",
+          "endLabel": "ROMA",
+          "drawFrom": 56.3,
+          "drawTo": 58.8,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "►"
+        },
+        {
+          "type": "pulse",
+          "lng": 12.4964,
+          "lat": 41.9028,
+          "appearAt": 58,
           "color": "#ff3b3b"
         }
-      ]
+      ],
+      "style": "satellite-hybrid"
     },
     {
-      "startTime": 144.5,
-      "endTime": 155,
-      "description": "Conclusione: mappa completa dipendenza.",
-      "style": "satellite-hybrid",
+      "startTime": 58.8,
+      "endTime": 65.2,
+      "description": "Arrivo di Cavour, volo a Plombières.",
       "camera": {
         "start": {
           "center": [
-            40,
-            60
+            12.4964,
+            41.9028
           ],
-          "zoom": 3,
-          "bearing": 0,
-          "pitch": 0
+          "zoom": 9,
+          "bearing": 10,
+          "pitch": 35
         },
         "end": {
           "center": [
-            20,
-            50
+            6.4614,
+            47.9664
           ],
-          "zoom": 3,
+          "zoom": 8,
           "bearing": 0,
-          "pitch": 0
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 7.686,
+          "lat": 45.07,
+          "label": "CAVOUR",
+          "appearAt": 60.8
+        },
+        {
+          "type": "pin",
+          "lng": 6.4614,
+          "lat": 47.9664,
+          "label": "PLOMBIÈRES",
+          "appearAt": 61.7
+        },
+        {
+          "type": "route",
+          "coords": [
+            [
+              7.686,
+              45.07
+            ],
+            [
+              6.4614,
+              47.9664
+            ]
+          ],
+          "label": "ACCORDO SEGRETO",
+          "startLabel": "TORINO",
+          "endLabel": "PLOMBIÈRES",
+          "drawFrom": 61.7,
+          "drawTo": 65.2,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "►"
+        },
+        {
+          "type": "timeline",
+          "year": "1858",
+          "appearAt": 59.099999999999994,
+          "durationSec": 5.800000000000006
+        }
+      ],
+      "style": "toner-v2"
+    },
+    {
+      "startTime": 65.2,
+      "endTime": 74.4,
+      "description": "Seconda Guerra d'Indipendenza, battaglie di Magenta e Solferino.",
+      "camera": {
+        "start": {
+          "center": [
+            6.4614,
+            47.9664
+          ],
+          "zoom": 8,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            10.57,
+            45.374
+          ],
+          "zoom": 7.5,
+          "bearing": 5,
+          "pitch": 35
         }
       },
       "overlays": [
         {
           "type": "highlight",
-          "country": "RU",
-          "label": "RUSSIA",
-          "appearAt": 145
+          "country": "AT",
+          "label": "AUSTRIA",
+          "appearAt": 67.4
         },
         {
-          "type": "highlight",
-          "country": "DE",
-          "label": "GERMANIA",
-          "appearAt": 147
+          "type": "route",
+          "coords": [
+            [
+              7.686,
+              45.07
+            ],
+            [
+              8.8833,
+              45.4667
+            ]
+          ],
+          "label": "SECONDA GUERRA",
+          "startLabel": "PIEMONTE",
+          "endLabel": "MAGENTA",
+          "drawFrom": 68.3,
+          "drawTo": 70.3,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "►"
+        },
+        {
+          "type": "pin",
+          "lng": 8.8833,
+          "lat": 45.4667,
+          "label": "MAGENTA",
+          "appearAt": 70.3
+        },
+        {
+          "type": "label",
+          "lng": 8.8833,
+          "lat": 45.4667,
+          "text": "7.000 MORTI",
+          "appearAt": 72,
+          "size": "md"
+        },
+        {
+          "type": "timeline",
+          "year": "1859",
+          "appearAt": 65.5,
+          "durationSec": 8.600000000000003
+        }
+      ],
+      "style": "satellite"
+    },
+    {
+      "startTime": 74.4,
+      "endTime": 81.6,
+      "description": "Battaglia di Solferino, vittoria francese, armistizio a Villafranca.",
+      "camera": {
+        "start": {
+          "center": [
+            10.57,
+            45.374
+          ],
+          "zoom": 7.5,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            10.842,
+            45.355
+          ],
+          "zoom": 8,
+          "bearing": -5,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 10.57,
+          "lat": 45.374,
+          "label": "SOLFERINO",
+          "appearAt": 74.4
+        },
+        {
+          "type": "label",
+          "lng": 10.57,
+          "lat": 45.374,
+          "text": "40.000 MORTI",
+          "appearAt": 76,
+          "size": "lg"
+        },
+        {
+          "type": "pin",
+          "lng": 10.842,
+          "lat": 45.355,
+          "label": "VILLAFRANCA",
+          "appearAt": 79.4
         },
         {
           "type": "highlight",
           "country": "FR",
           "label": "FRANCIA",
-          "appearAt": 149
+          "appearAt": 78.6
         },
         {
-          "type": "highlight",
-          "country": "IT",
-          "label": "ITALIA",
-          "appearAt": 151
+          "type": "timeline",
+          "year": "1859",
+          "appearAt": 74.7,
+          "durationSec": 6.599999999999989
         }
-      ]
+      ],
+      "style": "satellite"
     },
     {
-      "startTime": 155,
-      "endTime": 171.22,
-      "description": "Chiusura, call to action.",
+      "startTime": 81.6,
+      "endTime": 88.3,
+      "description": "Lombardia al Piemonte, Veneto resta austriaco. Domanda sul pagamento.",
       "camera": {
         "start": {
           "center": [
-            20,
-            50
+            10.842,
+            45.355
           ],
-          "zoom": 3,
+          "zoom": 8,
           "bearing": 0,
           "pitch": 0
         },
         "end": {
           "center": [
-            20,
-            50
+            7.2619,
+            43.7102
           ],
-          "zoom": 3,
+          "zoom": 7,
+          "bearing": 5,
+          "pitch": 22
+        }
+      },
+      "overlays": [
+        {
+          "type": "highlight",
+          "label": "LOMBARDIA",
+          "appearAt": 82,
+          "preset": "lombardo-veneto",
+          "pattern": "hatch"
+        },
+        {
+          "type": "highlight",
+          "country": "AT",
+          "label": "VENETO",
+          "appearAt": 84.8
+        }
+      ],
+      "style": "streets-v2-dark"
+    },
+    {
+      "startTime": 88.3,
+      "endTime": 94.5,
+      "description": "Zoom su Nizza e Savoia, cedute alla Francia.",
+      "camera": {
+        "start": {
+          "center": [
+            7.2619,
+            43.7102
+          ],
+          "zoom": 7,
           "bearing": 0,
-          "pitch": 0
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            7.5119,
+            43.6102
+          ],
+          "zoom": 8.5,
+          "bearing": 15,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "1860",
+          "appearAt": 88.3,
+          "durationSec": 2,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 7.2619,
+          "lat": 43.7102,
+          "label": "NIZZA",
+          "appearAt": 88.3
+        },
+        {
+          "type": "highlight",
+          "country": "FR",
+          "label": "FRANCIA",
+          "appearAt": 90
+        },
+        {
+          "type": "pulse",
+          "lng": 7.2619,
+          "lat": 43.7102,
+          "appearAt": 92.4,
+          "color": "#ff3b3b"
+        }
+      ],
+      "style": "satellite-hybrid"
+    },
+    {
+      "startTime": 94.5,
+      "endTime": 102.7,
+      "description": "Colpo di teatro: partenza dei Mille da Quarto, Genova.",
+      "camera": {
+        "start": {
+          "center": [
+            7.2619,
+            43.7102
+          ],
+          "zoom": 8.5,
+          "bearing": 15,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            8.9811,
+            44.3889
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 40
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "5 MAGGIO 1860",
+          "appearAt": 96.3,
+          "durationSec": 2.5,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 8.9811,
+          "lat": 44.3889,
+          "label": "QUARTO",
+          "appearAt": 96.3
+        },
+        {
+          "type": "label",
+          "lng": 8.9811,
+          "lat": 44.3889,
+          "text": "1.089 UOMINI",
+          "appearAt": 99.3,
+          "size": "md"
+        },
+        {
+          "type": "timeline",
+          "year": "1860",
+          "appearAt": 94.8,
+          "durationSec": 7.600000000000003
+        }
+      ],
+      "style": "satellite-hybrid"
+    },
+    {
+      "startTime": 102.7,
+      "endTime": 108.8,
+      "description": "Rotta dei Mille: Talamone, Marsala, Calatafimi, Palermo.",
+      "camera": {
+        "start": {
+          "center": [
+            8.9811,
+            44.3889
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 40
+        },
+        "end": {
+          "center": [
+            13.3614,
+            38.1157
+          ],
+          "zoom": 7.5,
+          "bearing": -5,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "route",
+          "coords": [
+            [
+              8.9811,
+              44.3889
+            ],
+            [
+              11.1358,
+              42.553
+            ],
+            [
+              12.4378,
+              37.7984
+            ],
+            [
+              12.8635,
+              37.9142
+            ],
+            [
+              13.3614,
+              38.1157
+            ]
+          ],
+          "label": "SPEDIZIONE DEI MILLE",
+          "startLabel": "QUARTO",
+          "endLabel": "PALERMO",
+          "drawFrom": 102.7,
+          "drawTo": 108.8,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "⛵"
+        },
+        {
+          "type": "pin",
+          "lng": 11.1358,
+          "lat": 42.553,
+          "label": "TALAMONE",
+          "appearAt": 102.7
+        },
+        {
+          "type": "pin",
+          "lng": 12.4378,
+          "lat": 37.7984,
+          "label": "MARSALA",
+          "appearAt": 104.3
+        },
+        {
+          "type": "pin",
+          "lng": 12.8635,
+          "lat": 37.9142,
+          "label": "CALATAFIMI",
+          "appearAt": 106
+        },
+        {
+          "type": "pin",
+          "lng": 13.3614,
+          "lat": 38.1157,
+          "label": "PALERMO",
+          "appearAt": 107.5
+        },
+        {
+          "type": "timeline",
+          "year": "1860",
+          "appearAt": 103,
+          "durationSec": 5.499999999999995
+        }
+      ],
+      "style": "satellite"
+    },
+    {
+      "startTime": 108.8,
+      "endTime": 115.2,
+      "description": "Risalita, attraversamento Stretto di Messina, ingresso a Napoli.",
+      "camera": {
+        "start": {
+          "center": [
+            13.3614,
+            38.1157
+          ],
+          "zoom": 7.5,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            14.2681,
+            40.8518
+          ],
+          "zoom": 8.5,
+          "bearing": 5,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "route",
+          "coords": [
+            [
+              13.3614,
+              38.1157
+            ],
+            [
+              15.6333,
+              38.2167
+            ],
+            [
+              14.2681,
+              40.8518
+            ]
+          ],
+          "label": "CONQUISTA DEL SUD",
+          "startLabel": "PALERMO",
+          "endLabel": "NAPOLI",
+          "drawFrom": 108.8,
+          "drawTo": 113.3,
+          "color": "#00e5ff",
+          "moving": true,
+          "icon": "►"
+        },
+        {
+          "type": "pin",
+          "lng": 15.6333,
+          "lat": 38.2167,
+          "label": "STRETTO DI MESSINA",
+          "appearAt": 110
+        },
+        {
+          "type": "pin",
+          "lng": 14.2681,
+          "lat": 40.8518,
+          "label": "NAPOLI",
+          "appearAt": 113.3
+        },
+        {
+          "type": "era",
+          "text": "7 SETTEMBRE 1860",
+          "appearAt": 113.3,
+          "durationSec": 2,
+          "position": "bottom"
+        }
+      ],
+      "style": "satellite-hybrid"
+    },
+    {
+      "startTime": 115.2,
+      "endTime": 121.1,
+      "description": "Finale a Teano, consegna al Re.",
+      "camera": {
+        "start": {
+          "center": [
+            14.2681,
+            40.8518
+          ],
+          "zoom": 8.5,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            14.0719,
+            41.2489
+          ],
+          "zoom": 9,
+          "bearing": 10,
+          "pitch": 40
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 14.0719,
+          "lat": 41.2489,
+          "label": "TEANO",
+          "appearAt": 116.9
+        },
+        {
+          "type": "pulse",
+          "lng": 14.0719,
+          "lat": 41.2489,
+          "appearAt": 117.7,
+          "color": "#ff3b3b"
+        },
+        {
+          "type": "timeline",
+          "year": "1860",
+          "appearAt": 115.5,
+          "durationSec": 5.299999999999992
+        }
+      ],
+      "style": "streets-v2"
+    },
+    {
+      "startTime": 121.1,
+      "endTime": 133.4,
+      "description": "Domande: proclamazione a Torino, morte di Cavour.",
+      "camera": {
+        "start": {
+          "center": [
+            14.0719,
+            41.2489
+          ],
+          "zoom": 9,
+          "bearing": 10,
+          "pitch": 40
+        },
+        "end": {
+          "center": [
+            7.686,
+            45.07
+          ],
+          "zoom": 8.5,
+          "bearing": 0,
+          "pitch": 30
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "17 MARZO 1861",
+          "appearAt": 123.8,
+          "durationSec": 3,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 7.686,
+          "lat": 45.07,
+          "label": "TORINO",
+          "appearAt": 125
+        },
+        {
+          "type": "highlight",
+          "label": "REGNO D'ITALIA",
+          "appearAt": 127,
+          "preset": "sardegna",
+          "pattern": "hatch"
+        },
+        {
+          "type": "pulse",
+          "lng": 7.686,
+          "lat": 45.07,
+          "appearAt": 130.4,
+          "color": "#ff3b3b"
+        }
+      ],
+      "style": "toner-v2"
+    },
+    {
+      "startTime": 133.4,
+      "endTime": 143.1,
+      "description": "Altre battaglie: Custoza 1866, Porta Pia 1870.",
+      "camera": {
+        "start": {
+          "center": [
+            7.686,
+            45.07
+          ],
+          "zoom": 8.5,
+          "bearing": 0,
+          "pitch": 30
+        },
+        "end": {
+          "center": [
+            12.5059,
+            41.9089
+          ],
+          "zoom": 9,
+          "bearing": -5,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "era",
+          "text": "1866",
+          "appearAt": 133.4,
+          "durationSec": 2,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 10.7422,
+          "lat": 45.3869,
+          "label": "CUSTOZA",
+          "appearAt": 135
+        },
+        {
+          "type": "era",
+          "text": "1870",
+          "appearAt": 137,
+          "durationSec": 2,
+          "position": "top"
+        },
+        {
+          "type": "pin",
+          "lng": 12.5059,
+          "lat": 41.9089,
+          "label": "PORTA PIA",
+          "appearAt": 138
+        },
+        {
+          "type": "highlight",
+          "label": "ROMA CAPITALE",
+          "appearAt": 140,
+          "color": "#046A38",
+          "pattern": "solid"
+        },
+        {
+          "type": "timeline",
+          "year": "1866",
+          "appearAt": 133.70000000000002,
+          "durationSec": 9.099999999999989
+        }
+      ],
+      "style": "satellite"
+    },
+    {
+      "startTime": 143.1,
+      "endTime": 152.6,
+      "description": "Rivelazione: solo il 2,5% parla italiano nel 1861.",
+      "style": "toner-v2",
+      "camera": {
+        "start": {
+          "center": [
+            12.5059,
+            41.9089
+          ],
+          "zoom": 9,
+          "bearing": 0,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            12.5,
+            43
+          ],
+          "zoom": 5.5,
+          "bearing": 5,
+          "pitch": 20
         }
       },
       "overlays": [
         {
           "type": "label",
-          "lng": 10,
-          "lat": 55,
-          "text": "CHI È IL PADRONE?",
-          "appearAt": 161.5,
+          "lng": 12.5,
+          "lat": 43,
+          "text": "2,5%",
+          "appearAt": 143.1,
+          "size": "lg"
+        },
+        {
+          "type": "label",
+          "lng": 12.5,
+          "lat": 42.5,
+          "text": "PARLAVA ITALIANO",
+          "appearAt": 145,
+          "size": "md"
+        },
+        {
+          "type": "timeline",
+          "year": "1861",
+          "appearAt": 143.4,
+          "durationSec": 8.9
+        }
+      ]
+    },
+    {
+      "startTime": 152.6,
+      "endTime": 170.2,
+      "description": "I quattro uomini: Mazzini, Garibaldi, Cavour, Vittorio Emanuele II.",
+      "camera": {
+        "start": {
+          "center": [
+            12.5,
+            43
+          ],
+          "zoom": 5.5,
+          "bearing": 0,
+          "pitch": 20
+        },
+        "end": {
+          "center": [
+            14.0719,
+            41.2489
+          ],
+          "zoom": 6,
+          "bearing": -5,
+          "pitch": 25
+        }
+      },
+      "overlays": [
+        {
+          "type": "pin",
+          "lng": 5.3698,
+          "lat": 43.2965,
+          "label": "MAZZINI",
+          "appearAt": 154
+        },
+        {
+          "type": "pin",
+          "lng": 9.8,
+          "lat": 41,
+          "label": "GARIBALDI",
+          "appearAt": 156
+        },
+        {
+          "type": "pin",
+          "lng": 7.686,
+          "lat": 45.07,
+          "label": "CAVOUR",
+          "appearAt": 158
+        },
+        {
+          "type": "pin",
+          "lng": 7.686,
+          "lat": 45.07,
+          "label": "VITTORIO EMANUELE II",
+          "appearAt": 160
+        },
+        {
+          "type": "highlight",
+          "label": "SUD",
+          "appearAt": 169.7,
+          "color": "#046A38",
+          "pattern": "solid"
+        }
+      ],
+      "style": "satellite-hybrid"
+    },
+    {
+      "startTime": 170.2,
+      "endTime": 179.4,
+      "description": "Conquista militare del Sud, guerra civile, 20.000 briganti fucilati.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            14.0719,
+            41.2489
+          ],
+          "zoom": 6,
+          "bearing": 0,
+          "pitch": 25
+        },
+        "end": {
+          "center": [
+            14.3219,
+            41.1489
+          ],
+          "zoom": 7,
+          "bearing": 10,
+          "pitch": 35
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 14.0719,
+          "lat": 41,
+          "text": "20.000 BRIGANTI",
+          "appearAt": 172.8,
+          "size": "md"
+        },
+        {
+          "type": "label",
+          "lng": 14.0719,
+          "lat": 40.8,
+          "text": "FUCI LATI",
+          "appearAt": 174,
+          "size": "sm"
+        },
+        {
+          "type": "pulse",
+          "lng": 14.0719,
+          "lat": 41.2489,
+          "appearAt": 175.9,
+          "color": "#ff3b3b"
+        },
+        {
+          "type": "timeline",
+          "year": "1861-1870",
+          "appearAt": 170.5,
+          "durationSec": 8.600000000000017
+        }
+      ]
+    },
+    {
+      "startTime": 179.4,
+      "endTime": 184.46,
+      "description": "Chiusura: operazione di potere, call to action.",
+      "style": "satellite-hybrid",
+      "camera": {
+        "start": {
+          "center": [
+            14.0719,
+            41.2489
+          ],
+          "zoom": 7,
+          "bearing": 10,
+          "pitch": 35
+        },
+        "end": {
+          "center": [
+            12.5,
+            43
+          ],
+          "zoom": 5,
+          "bearing": 0,
+          "pitch": 20
+        }
+      },
+      "overlays": [
+        {
+          "type": "label",
+          "lng": 12.5,
+          "lat": 43,
+          "text": "OPERAZIONE DI POTERE",
+          "appearAt": 179.4,
           "size": "lg"
         }
       ]

@@ -27,8 +27,9 @@ type Overlay =
   | {type: 'pulse'; lng: number; lat: number; appearAt: number; color?: string}
   | {type: 'label'; lng: number; lat: number; text: string; appearAt: number; size?: 'sm' | 'md' | 'lg' | 'xl'}
   | {type: 'era'; text: string; appearAt: number; durationSec?: number; position?: 'top' | 'bottom'}
-  | {type: 'route'; coords: [number, number][]; label?: string; drawFrom: number; drawTo: number; color?: string; startLabel?: string; endLabel?: string}
-  | {type: 'highlight'; coords: [number, number][] | [number, number][][]; label?: string; appearAt: number; color?: string; country?: string};
+  | {type: 'route'; coords: [number, number][]; label?: string; drawFrom: number; drawTo: number; color?: string; startLabel?: string; endLabel?: string; moving?: boolean; icon?: string}
+  | {type: 'highlight'; coords?: [number, number][] | [number, number][][]; label?: string; appearAt: number; durationSec?: number; color?: string; country?: string; preset?: string; pattern?: 'solid' | 'hatch' | 'dots'}
+  | {type: 'timeline'; year: number | string; appearAt: number; durationSec?: number};
 
 const PLAN = plan as {duration: number; fps: number; style?: string; scenes: Scene[]};
 
@@ -44,7 +45,7 @@ function styleUrl(style: string | undefined) {
   const s = style || PLAN.style || 'hybrid';
   // MapTiler style slugs
   const slug =
-    s === 'dark' ? 'streets-dark-v2'
+    s === 'dark' ? 'streets-v2-dark'
     : s === 'satellite' ? 'satellite'
     : s === 'streets' ? 'streets-v2'
     : s === 'satellite-hybrid' ? 'hybrid'
@@ -131,6 +132,9 @@ export const MapVideo: React.FC = () => {
   const [mapReady, setMapReady] = useState(false);
   const [projections, setProjections] = useState<ProjectedOverlay[]>([]);
   const countriesRef = useRef<Map<string, [number, number][][]>>(new Map());
+  const preunitariaRef = useRef<Map<string, {rings: [number, number][][]; color: string; name: string}>>(new Map());
+  const [preunHandle] = useState(() => delayRender('preun-load'));
+  const currentStyleRef = useRef<string>('');
 
   // Load countries geojson once
   useEffect(() => {
@@ -163,6 +167,32 @@ export const MapVideo: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Load stati preunitari
+  useEffect(() => {
+    fetch(staticFile('italia-preunitaria.geojson'))
+      .then((r) => r.json())
+      .then((gj: {features: {properties: {id: string; name: string; color: string}; geometry: {type: string; coordinates: any}}[]}) => {
+        const m = new Map<string, {rings: [number, number][][]; color: string; name: string}>();
+        for (const f of gj.features) {
+          const id = f.properties.id;
+          const rings: [number, number][][] = [];
+          if (f.geometry.type === 'Polygon') {
+            for (const ring of f.geometry.coordinates as [number, number][][]) rings.push(ring);
+          } else if (f.geometry.type === 'MultiPolygon') {
+            for (const poly of f.geometry.coordinates as [number, number][][][]) for (const ring of poly) rings.push(ring);
+          }
+          m.set(id, {rings, color: f.properties.color, name: f.properties.name});
+        }
+        preunitariaRef.current = m;
+        continueRender(preunHandle);
+      })
+      .catch((e) => {
+        console.warn('preunitaria load failed', e);
+        continueRender(preunHandle);
+      });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const bannerDurationFrames = 10 * fps;
 
   // All overlays flattened with scene binding
@@ -179,9 +209,10 @@ export const MapVideo: React.FC = () => {
     mapContainerRef.current.style.width = `${width}px`;
     mapContainerRef.current.style.height = `${height}px`;
     const first = PLAN.scenes[0];
+    currentStyleRef.current = styleUrl(first.style);
     const map = new maplibregl.Map({
       container: mapContainerRef.current,
-      style: styleUrl(first.style),
+      style: currentStyleRef.current,
       center: first.camera.start.center,
       zoom: first.camera.start.zoom,
       bearing: first.camera.start.bearing,
@@ -209,6 +240,24 @@ export const MapVideo: React.FC = () => {
     if (!map || !mapReady) return;
     const {scene, progress} = activeScene(time);
     const cam = interpCamera(scene, progress);
+
+    // Style switching per scena
+    const wantStyle = styleUrl(scene.style);
+    if (currentStyleRef.current !== wantStyle) {
+      currentStyleRef.current = wantStyle;
+      const sh = delayRender(`style-${wantStyle}`);
+      let done = false;
+      const finish = () => {
+        if (done) return;
+        done = true;
+        continueRender(sh);
+      };
+      map.once('styledata', finish);
+      map.once('idle', finish);
+      setTimeout(finish, 10000);
+      map.setStyle(wantStyle, {diff: false});
+    }
+
     map.jumpTo({
       center: cam.center,
       zoom: cam.zoom,
@@ -228,10 +277,13 @@ export const MapVideo: React.FC = () => {
         return {...o, screen: pts[0] ?? null, screenPath: pts};
       }
       if (o.type === 'highlight') {
-        // Se ha country ISO code, usa il poligono reale dal geojson
+        // Se ha preset storico, usa il poligono stato preunitario
+        const preset = o.preset?.toLowerCase();
         const isoCode = o.country?.toLowerCase();
         let rings: [number, number][][] = [];
-        if (isoCode && countriesRef.current.has(isoCode)) {
+        if (preset && preunitariaRef.current.has(preset)) {
+          rings = preunitariaRef.current.get(preset)!.rings;
+        } else if (isoCode && countriesRef.current.has(isoCode)) {
           rings = countriesRef.current.get(isoCode)!;
         } else if (o.coords && Array.isArray(o.coords) && o.coords.length > 0) {
           // Fallback: coords fornite dal plan (possono essere singola ring o multi)
@@ -264,6 +316,9 @@ export const MapVideo: React.FC = () => {
       const onscreen = p.x >= -margin && p.x <= width + margin && p.y >= -margin && p.y <= height + margin;
       return {...o, screen: onscreen ? {x: p.x, y: p.y} : null};
     });
+    // timeline overlays non hanno coordinate — aggiungili direttamente (il tipo aggiuntivo non rompe il render)
+    const timelines = overlays.filter((o) => o.type === 'timeline');
+    for (const t of timelines) projected.push({...t, screen: null} as any);
     setProjections(projected);
 
     // Wait for tiles before the frame is captured
@@ -361,8 +416,8 @@ export const MapVideo: React.FC = () => {
           if (o.type === 'highlight') {
             if (!o.screenPolygons || o.screenPolygons.length === 0) return null;
             if (time < o.appearAt) return null;
-            // Highlight rimane visibile 6s dopo l'appearAt, poi scompare
-            if (time > o.appearAt + 6) return null;
+            const dur = o.durationSec ?? 6;
+            if (time > o.appearAt + dur) return null;
             // Se il poligono è interamente fuori schermo, skip
             {
               let anyOn = false;
@@ -378,7 +433,9 @@ export const MapVideo: React.FC = () => {
               if (!anyOn) return null;
             }
             const t = Math.max(0, Math.min(1, (time - o.appearAt) / 0.6));
-            const color = o.color || '#ff3b3b';
+            // Se preset storico, usa colore del preset come default
+            const presetColor = o.preset ? preunitariaRef.current.get(o.preset.toLowerCase())?.color : undefined;
+            const color = o.color || presetColor || '#ff3b3b';
             const d = o.screenPolygons
               .map((ring) => ring.map((p, idx) => `${idx === 0 ? 'M' : 'L'}${p.x},${p.y}`).join(' ') + ' Z')
               .join(' ');
@@ -392,21 +449,34 @@ export const MapVideo: React.FC = () => {
             }
             const cx = (bx + bx2) / 2;
             const cy = (by + by2) / 2;
-            const fadeOut = Math.max(0, Math.min(1, (o.appearAt + 6 - time) / 1));
-            const strokeOp = interpolate(t, [0, 1], [0, 0.98]) * fadeOut;
-            const flagCode = o.country?.toLowerCase();
+            const fadeOut = Math.max(0, Math.min(1, (o.appearAt + dur - time) / 1));
+            const strokeOp = interpolate(t, [0, 1], [0, 1]) * fadeOut;
+            // Flag solo se country ISO esplicito (NO per preset storici: l'Italia ancora non c'era)
+            const flagCode = (!o.preset && o.country) ? o.country.toLowerCase() : '';
             const clipId = `hl-clip-${i}`;
+            const hatchId = `hl-hatch-${i}`;
             const hasFlag = Boolean(flagCode);
-            const fillOp = interpolate(t, [0, 1], [0, hasFlag ? 0.92 : 0.4]) * fadeOut;
+            const pattern = o.pattern || (o.preset ? 'hatch' : 'solid');
+            const fillOp = interpolate(t, [0, 1], [0, hasFlag ? 0.92 : 0.55]) * fadeOut;
             return (
               <g key={i}>
-                {hasFlag && (
-                  <defs>
-                    <clipPath id={clipId}>
-                      <path d={d} fillRule="evenodd" />
-                    </clipPath>
-                  </defs>
-                )}
+                <defs>
+                  <clipPath id={clipId}>
+                    <path d={d} fillRule="evenodd" />
+                  </clipPath>
+                  {pattern === 'hatch' && (
+                    <pattern id={hatchId} patternUnits="userSpaceOnUse" width={14} height={14} patternTransform="rotate(45)">
+                      <rect width={14} height={14} fill={color} opacity={0.28} />
+                      <line x1={0} y1={0} x2={0} y2={14} stroke={color} strokeWidth={4} opacity={0.9} />
+                    </pattern>
+                  )}
+                  {pattern === 'dots' && (
+                    <pattern id={hatchId} patternUnits="userSpaceOnUse" width={12} height={12}>
+                      <rect width={12} height={12} fill={color} opacity={0.22} />
+                      <circle cx={6} cy={6} r={2.2} fill={color} opacity={0.95} />
+                    </pattern>
+                  )}
+                </defs>
                 {hasFlag ? (
                   <image
                     href={`https://flagcdn.com/w1280/${flagCode}.png`}
@@ -418,10 +488,12 @@ export const MapVideo: React.FC = () => {
                     clipPath={`url(#${clipId})`}
                     opacity={fillOp}
                   />
+                ) : pattern !== 'solid' ? (
+                  <path d={d} fill={`url(#${hatchId})`} fillRule="evenodd" opacity={fadeOut} />
                 ) : (
                   <path d={d} fill={color} fillRule="evenodd" opacity={fillOp} />
                 )}
-                <path d={d} fill="none" stroke={color} strokeWidth={4} opacity={strokeOp} strokeLinejoin="round" />
+                <path d={d} fill="none" stroke={color} strokeWidth={5} opacity={strokeOp} strokeLinejoin="round" strokeLinecap="round" />
                 {o.label && t > 0.5 && isOnScreen({x: cx, y: cy}, width, height, 20) && (
                   <text
                     x={cx}
@@ -477,6 +549,44 @@ export const MapVideo: React.FC = () => {
                 {prog >= 0.98 && (
                   <circle cx={end.x} cy={end.y} r={7} fill="#fff" stroke={color} strokeWidth={3} />
                 )}
+                {/* Moving marker lungo il percorso (nave/truppa) */}
+                {o.moving && prog > 0 && prog < 1 && (() => {
+                  const target = len * prog;
+                  let acc = 0, cur = o.screenPath[0];
+                  let ang = 0;
+                  for (let k = 1; k < o.screenPath.length; k++) {
+                    const a = o.screenPath[k - 1], b = o.screenPath[k];
+                    const seg = Math.hypot(b.x - a.x, b.y - a.y);
+                    if (acc + seg >= target) {
+                      const tt = (target - acc) / Math.max(0.001, seg);
+                      cur = {x: a.x + (b.x - a.x) * tt, y: a.y + (b.y - a.y) * tt};
+                      ang = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI;
+                      break;
+                    }
+                    acc += seg;
+                  }
+                  const icon = o.icon || '▲';
+                  return (
+                    <g transform={`translate(${cur.x}, ${cur.y})`}>
+                      {/* pulse */}
+                      <circle r={interpolate((time * 2) % 1, [0, 1], [8, 28])} fill="none" stroke={color} strokeWidth={2} opacity={interpolate((time * 2) % 1, [0, 1], [0.9, 0])} />
+                      <circle r={12} fill={color} stroke="#fff" strokeWidth={3} />
+                      <g transform={`rotate(${ang})`}>
+                        <text
+                          x={0}
+                          y={0}
+                          textAnchor="middle"
+                          dominantBaseline="central"
+                          fontSize={16}
+                          fontWeight={900}
+                          fill="#fff"
+                        >
+                          {icon}
+                        </text>
+                      </g>
+                    </g>
+                  );
+                })()}
                 {/* endpoint labels (solo se on-screen) */}
                 {o.startLabel && isOnScreen(start, width, height) && (
                   <EndpointLabel x={start.x} y={start.y} text={o.startLabel} color={color} placement="below" safeY={avoidBands(start.y + 22, height, time)} />
@@ -537,6 +647,33 @@ export const MapVideo: React.FC = () => {
               <g key={i}>
                 <circle cx={o.screen!.x} cy={o.screen!.y} r={r} fill="none" stroke={color} strokeWidth={4} opacity={op} />
                 <circle cx={o.screen!.x} cy={o.screen!.y} r={10} fill={color} opacity={0.95} />
+              </g>
+            );
+          }
+          if (o.type === 'timeline') {
+            if (time < o.appearAt) return null;
+            const tdur = o.durationSec ?? 8;
+            if (time > o.appearAt + tdur + 0.5) return null;
+            const fin = Math.max(0, Math.min(1, (time - o.appearAt) / 0.4));
+            const fout = Math.max(0, Math.min(1, (o.appearAt + tdur - time) / 0.4));
+            const op = Math.min(fin, fout);
+            const txt = String(o.year);
+            const boxY = height * 0.92;
+            const boxH = 90;
+            const boxW = Math.max(260, measureText(txt, 64) + 80);
+            const scale = interpolate(fin, [0, 1], [0.85, 1], {easing: (x) => 1 - Math.pow(1 - x, 3)});
+            return (
+              <g key={i} transform={`translate(${width / 2}, ${boxY}) scale(${scale})`} opacity={op}>
+                <rect x={-boxW / 2} y={-boxH / 2} width={boxW} height={boxH} rx={14}
+                  fill="rgba(0,0,0,0.88)" stroke="#ffcc00" strokeWidth={3.5} />
+                {/* Barra anno decorativa */}
+                <line x1={-boxW / 2 + 18} y1={boxH / 2 - 14} x2={boxW / 2 - 18} y2={boxH / 2 - 14}
+                  stroke="#ffcc00" strokeWidth={2.5} opacity={0.7} />
+                <text textAnchor="middle" dominantBaseline="middle" y={-4}
+                  fontFamily={fontFamily} fontWeight={900} fontSize={62} fill="#ffcc00"
+                  letterSpacing={4} style={{textTransform: 'uppercase'}}>
+                  {txt}
+                </text>
               </g>
             );
           }

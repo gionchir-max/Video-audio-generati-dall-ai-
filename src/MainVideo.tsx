@@ -3,11 +3,16 @@ import {Subtitles} from './Subtitles';
 import {TopBanner} from './TopBanner';
 import {SoundEffects} from './SoundEffects';
 import {QuestionOverlay} from './QuestionOverlay';
+import {CTAOverlay} from './CTAOverlay';
 import banner from './banner.json';
+import meta from './meta.json';
+import cta from './cta.json';
 
 export const MainVideo: React.FC = () => {
   const {fps} = useVideoConfig();
   const bannerDurationFrames = 10 * fps;
+  const isAdv = Boolean((meta as {adv?: boolean}).adv);
+  const ctaEnabled = Boolean((cta as {enabled?: boolean}).enabled);
 
   return (
     <AbsoluteFill style={{backgroundColor: 'black'}}>
@@ -31,15 +36,25 @@ export const MainVideo: React.FC = () => {
       />
 
       <Audio src={staticFile('voiceover.mp3')} />
-      <Audio src={staticFile('music.mp3')} volume={0.15} loop />
+      {!(meta as {noMusic?: boolean}).noMusic && (
+        <Audio src={staticFile('music.mp3')} volume={0.15} loop />
+      )}
 
       <SoundEffects />
 
       <TopBanner text={banner.text} durationInFrames={bannerDurationFrames} />
 
-      <QuestionOverlay />
+      {!isAdv && <QuestionOverlay />}
 
       <Subtitles />
+
+      {ctaEnabled && (
+        <CTAOverlay
+          phone={cta.phone}
+          site={cta.site}
+          durationSeconds={cta.durationSeconds}
+        />
+      )}
     </AbsoluteFill>
   );
 };

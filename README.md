@@ -68,16 +68,139 @@ Output: `videos/<slug>/out/final.mp4` (1080×1920, h264+aac).
 
 ---
 
+## Pipeline V2 — allineamento clip-VO automatico (raccomandata)
+
+La V1 sopra concatena le clip in ordine fisso (5.21s ciascuna). Se il VO ha frasi di durata variabile, le clip vanno in **anticipo** o **ritardo** sul testo (drift accumulato fino a -36s su video lunghi).
+
+La **V2** allinea ogni clip alla durata reale della sua frase nel VO. **No time-stretch, no freeze frame**. Per le frasi più lunghe di 5.6s, genera automaticamente prompt B-roll (visual diversi della stessa scena → cut filmico).
+
+### Workflow V2
+
+**Prerequisiti**: una sessione Chrome con CDP esposto su `localhost:50041` loggata su meta.ai.
+Avvio Chrome dedicato (profilo separato per non toccare il main):
+```bash
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+  --remote-debugging-port=50041 \
+  --user-data-dir="/Volumes/Extreme SSD/Video Claude/tiktok-city/.chrome-meta-profile" \
+  --no-first-run --no-default-browser-check \
+  "https://www.meta.ai/" &
+```
+Fai login a meta.ai una volta sola, il profilo persiste.
+
+**Whisper.cpp medium model** (1.5GB, una sola volta):
+```bash
+cd whisper.cpp && bash models/download-ggml-model.sh medium
+```
+
+### Step 1 — Crea i 3 file sorgente in `videos/<slug>/`
+
+**`story.txt`** — il VO. Una frase per paragrafo (separati da riga vuota). Ogni paragrafo diventa un **prompt visuale** distinto. Target ~2.5 parole/sec a +25% rate Diego, quindi:
+- 180s (3min) ≈ 450 parole ≈ 32-38 frasi
+- 280s ≈ 700 parole ≈ 55-65 frasi
+- 350s ≈ 850 parole ≈ 70 frasi
+
+Apri con un **hook di 2 secondi** che catturi l'attenzione (curiosity gap, citazione choc, statistica), NON con "Nel 1921 nasce…".
+
+**`meta.json`**:
+```json
+{
+  "banner": "TITOLO IN MAIUSCOLO",
+  "bannerSeconds": 10,
+  "voice": "it-IT-DiegoNeural",
+  "rate": "+25%",
+  "music": "music.mp3",
+  "musicVolume": 0.15
+}
+```
+
+**`prompts.md`** — bibbia personaggio + 1 prompt visuale per ogni frase di story.txt. Pattern:
+
+```markdown
+**Stile globale**: HYPER-SATURATED colors, vivid <palette>, photorealistic cinematic, Canon EOS R5, 9:16 vertical, no text, no captions
+
+**Bibbia personaggio <X>**: "<descrizione completa con tratti distintivi>"
+
+**01** — _"<frase 1 letterale dal story.txt>"_
+> 5-second cinematic video clip: hyper-saturated colors, <wide/medium/close-up>, <verbo movimento camera>, <descrizione scena>, vivid <colori>, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
+**02** — _"<frase 2>"_
+> 5-second cinematic video clip: ...
+```
+
+**Regole tassative prompts** (vedi `docs/meta-video-pipeline.md`):
+- Ogni prompt INIZIA con `5-second cinematic video clip: hyper-saturated colors,`
+- Almeno **1 verbo di movimento** (push-in, tracking, tilt-down, drone)
+- **Linguaggio neutro** — mai nominare persone reali (al posto di "Berlusconi", scrivi "the silver-haired Italian tycoon")
+- Per personaggi riconoscibili, dare descrizione **fisica dettagliata** (capelli, viso, occhi, naso, espressione, abbigliamento)
+
+**Crea il runner** `scripts/_run-<slug>.mjs` (clona da `_run-wojtyla.mjs`, aggiorna `SLUG`).
+
+### Step 2 — Genera VO
+
+```bash
+node scripts/make-video.mjs <slug>
+```
+Genera `videos/<slug>/audio/voiceover.mp3`. Lo step 2 fallirà perché mancano le clip — è OK.
+
+### Step 3 — Allineamento
+
+```bash
+node scripts/_align-plan.mjs <slug>
+```
+- Trascrive il VO con whisper.cpp (italiano, modello medium)
+- Mappa ogni frase di prompts.md → timestamps reali
+- Calcola n_clips per frase (1 se ≤5.6s, 2 se >5.6s, 3 se >10.4s)
+- Scrive `sentence-timings.json` + `clip-plan.json`
+- **Auto-appende** prompt B-roll a `prompts.md` per le frasi che richiedono 2+ clip
+- Stampa: `Aggiorna runner: TOTAL_CLIPS = N`
+
+### Step 4 — Aggiorna runner e genera clip
+
+Aggiorna `scripts/_run-<slug>.mjs` con `const TOTAL_CLIPS = N` (numero stampato sopra).
+
+```bash
+node scripts/_run-<slug>.mjs
+```
+Apre meta.ai via CDP, una chat ogni 3 clip (workaround freeze bottone "Invia"), scarica le 4 varianti generate per ogni prompt e tiene la prima. Riprende da dove si era fermato (state.json).
+
+### Step 5 — Render finale
+
+```bash
+npm run video <slug>
+```
+`make-video.mjs` rileva `clip-plan.json` e attiva il **concat aligned**: per ogni frase trim le sue clip a `dur/n_clips` esatti, concatena in ordine, quindi render Remotion.
+
+Output: `videos/<slug>/out/final.mp4`, perfettamente sincrono al VO frame per frame, senza time-stretch né freeze.
+
+### Sintesi una sola riga
+
+```bash
+node scripts/make-video.mjs <slug> && node scripts/_align-plan.mjs <slug>
+# poi: aggiorna TOTAL_CLIPS in _run-<slug>.mjs
+node scripts/_run-<slug>.mjs && npm run video <slug>
+```
+
+### Esempi V2
+
+- `videos/agnelli/` — 70 frasi, 70+34=104 clip, 5:50min
+- `videos/wojtyla/` — 32 frasi, 33+19=52 clip, 3:00min
+
+---
+
 ## Configurazione `videos/<slug>/meta.json`
 
 ```json
 {
   "banner": "TITOLO BANNER",
   "bannerSeconds": 10,
-  "voice": "it-IT-GiuseppeMultilingualNeural",
-  "rate": "+7%",
+  "voice": "it-IT-DiegoNeural",
+  "rate": "+15%",
   "music": "music.mp3",
-  "musicVolume": 0.15
+  "musicVolume": 0.15,
+  "foreignTerms": {
+    "en-US": ["Italian Sea Group", "Maltese Falcon", "Boeing"],
+    "de-DE": ["Körber"]
+  }
 }
 ```
 
@@ -85,10 +208,27 @@ Output: `videos/<slug>/out/final.mp4` (1080×1920, h264+aac).
 |---|---|---|
 | `banner` | `"TITOLO"` | Testo del box bianco mostrato in alto nei primi `bannerSeconds`. Uppercase consigliato. |
 | `bannerSeconds` | `10` | Durata banner in secondi. Fade-out negli ultimi 0.4s. |
-| `voice` | `it-IT-GiuseppeMultilingualNeural` | Voce edge-tts. Altre IT: `it-IT-DiegoNeural`, `it-IT-IsabellaNeural`, `it-IT-ElsaNeural`. |
-| `rate` | `+7%` | Velocità edge-tts. Negativo per più lento (es. `-10%`). |
+| `voice` | `it-IT-DiegoNeural` | Voce edge-tts. **Pure italiana raccomandata** (vedi sotto). Altre IT: `it-IT-GiuseppeMultilingualNeural` (multilingua, sconsigliata), `it-IT-IsabellaNeural`, `it-IT-ElsaNeural`. |
+| `rate` | `+15%` | Velocità edge-tts. Diego è ~10% più lento di Giuseppe; `+15%` Diego ≈ `+7%` Giuseppe. |
 | `music` | `music.mp3` | Musica in `public/`. Metti `null` per nessuna musica. |
 | `musicVolume` | `0.15` | 0.0 – 1.0. |
+| `foreignTerms` | `null` | Mappa `{lang: [terms]}` per pronuncia nativa di brand/nomi propri stranieri (vedi sotto). |
+| `voiceEn` | `en-US-AndrewNeural` | Voce per i termini `en-US` in `foreignTerms`. |
+| `voiceDe` | `de-DE-ConradNeural` | Voce per `de-DE`. |
+| `voiceFr` | `fr-FR-HenriNeural` | Voce per `fr-FR`. |
+
+### Voce italiana: perché Diego e non Giuseppe
+
+`it-IT-GiuseppeMultilingualNeural` è una voce **multilingua** che auto-detecta la lingua parola per parola. Su parole italiane meno frequenti (`Manovrare`, `Issare`, ecc.) sbaglia il detect e le pronuncia con fonetica inglese — risultato biascicato.
+
+`it-IT-DiegoNeural` è pura italiana, sempre coerente. Però pronuncia i brand stranieri (es. *Maltese Falcon*) con accento italiano. Per avere il meglio dei due mondi, il pipeline supporta `foreignTerms`: Diego pronuncia tutto l'italiano, e per ogni brand straniero il VO viene **spliciato** con audio generato da una voce nativa di quella lingua, allineato per timestamp tramite WordBoundary di edge-tts.
+
+Esempio: la frase *"Italian Sea Group acquista Perini Navi"* viene generata come:
+1. Diego pronuncia tutta la frase in italiano (con "Italian Sea Group" italianizzato)
+2. Andrew (en-US) pronuncia separatamente "Italian Sea Group"
+3. Il segmento di Andrew sostituisce il segmento di Diego nel timestamp esatto
+
+Il pipeline (`scripts/_tts-multilingual.py`) si attiva automaticamente quando `meta.json` contiene `foreignTerms`. Senza quella chiave usa edge-tts CLI standard.
 
 Per ascoltare campioni di tutte le voci IT:
 ```bash

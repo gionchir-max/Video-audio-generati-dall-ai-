@@ -1,0 +1,45 @@
+{
+  "_doc": "Sostituzioni applicate alla story.txt prima di edge-tts. Aggira mispronunciation note delle voci multilingua. La chiave è la voce; pattern è regex con flag 'gi' (multiline insensitive). Word boundaries (\\b) consigliate. Aggiungere un fix qui = mai più quel bug.",
+  "it-IT-GiuseppeMultilingualNeural": [
+    {
+      "pattern": "\\bManovrare\\b",
+      "replacement": "Azionare",
+      "reason": "Giuseppe pronuncia 'Manovrare' come 'Man of Rare' (bias inglese su radice ambigua). Visto su Perini Navi 2026-04-28."
+    },
+    {
+      "pattern": "\\bmanovrare\\b",
+      "replacement": "azionare",
+      "reason": "Variante minuscola di sopra."
+    },
+    {
+      "pattern": "\\bImporta\\b",
+      "replacement": "Acquista",
+      "reason": "Giuseppe pronuncia 'Importa' come l'inglese 'Important' (bias inglese). Visto su Devasini 2026-04-28."
+    },
+    {
+      "pattern": "\\bimporta\\b",
+      "replacement": "acquista",
+      "reason": "Variante minuscola."
+    },
+    {
+      "pattern": "\\bStabile\\b",
+      "replacement": "Solido",
+      "reason": "Giuseppe pronuncia 'Stabile' come 'stabeo' (distorto). Visto su Devasini 2026-04-28."
+    },
+    {
+      "pattern": "\\bstabile\\b",
+      "replacement": "solido",
+      "reason": "Variante minuscola."
+    },
+    {
+      "pattern": "\\bdi Singapore\\b",
+      "replacement": "della Svizzera",
+      "reason": "Giuseppe pronuncia 'Singapore' come 'singapostia'. Sostituzione con articolo per grammatica IT (Svizzera è femminile). Visto su Devasini 2026-04-28."
+    },
+    {
+      "pattern": "\\bSingapore\\b",
+      "replacement": "Norvegia",
+      "reason": "Fallback per 'Singapore' non preceduto da 'di'."
+    }
+  ]
+}

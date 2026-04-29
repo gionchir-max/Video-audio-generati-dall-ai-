@@ -78,6 +78,10 @@ const BANNER_TEXT = meta.banner ?? 'TITOLO';
 const BANNER_SECONDS = meta.bannerSeconds ?? 10;
 const MUSIC_VOLUME = meta.musicVolume ?? 0.15;
 const MUSIC = meta.music === null ? null : meta.music ?? 'music.mp3';
+const FOREIGN_TERMS = meta.foreignTerms ?? null;
+const VOICE_EN = meta.voiceEn ?? 'en-US-AndrewNeural';
+const VOICE_DE = meta.voiceDe ?? 'de-DE-ConradNeural';
+const VOICE_FR = meta.voiceFr ?? 'fr-FR-HenriNeural';
 
 mkdirSync(AUDIO_DIR, {recursive: true});
 mkdirSync(OUT_DIR, {recursive: true});
@@ -125,27 +129,90 @@ function ffprobeDuration(filePath) {
   return parseFloat(r.stdout.toString().trim());
 }
 
+function applyVoiceFixes(text, voice) {
+  const fixesPath = path.join(ROOT, 'scripts', 'voice-fixes.json');
+  if (!existsSync(fixesPath)) return text;
+  let fixesAll;
+  try {
+    fixesAll = JSON.parse(readFileSync(fixesPath, 'utf8'));
+  } catch (e) {
+    console.warn(`    [voice-fixes] parse error: ${e.message}`);
+    return text;
+  }
+  const fixes = fixesAll[voice];
+  if (!Array.isArray(fixes) || fixes.length === 0) return text;
+  let out = text;
+  const applied = [];
+  for (const fix of fixes) {
+    if (!fix.pattern) continue;
+    const re = new RegExp(fix.pattern, 'g');
+    const matches = out.match(re);
+    if (matches && matches.length > 0) {
+      applied.push(`${fix.pattern} → ${fix.replacement} (${matches.length}x)`);
+      out = out.replace(re, fix.replacement);
+    }
+  }
+  if (applied.length > 0) {
+    console.log(`    [voice-fixes] applied ${applied.length} pattern(s):`);
+    for (const a of applied) console.log(`      • ${a}`);
+  }
+  return out;
+}
+
 async function step1_VO() {
-  console.log(`\n[1/4] edge-tts ${VOICE} (rate ${RATE}) → ${path.relative(ROOT, VO_PATH)}`);
-  await run(EDGE_TTS, [
-    '--voice', VOICE,
-    '--rate', RATE,
-    '--file', STORY_PATH,
-    '--write-media', VO_PATH,
-  ]);
+  // Pre-process story.txt with voice-specific pronunciation fixes
+  const rawStory = readFileSync(STORY_PATH, 'utf8');
+  const fixedStory = applyVoiceFixes(rawStory, VOICE);
+  let storyForTts = STORY_PATH;
+  if (fixedStory !== rawStory) {
+    storyForTts = path.join(AUDIO_DIR, '.story-fixed.txt');
+    writeFileSync(storyForTts, fixedStory);
+  }
+
+  if (FOREIGN_TERMS && Object.keys(FOREIGN_TERMS).length > 0) {
+    const script = path.join(ROOT, 'scripts', '_tts-multilingual.py');
+    console.log(`\n[1/4] tts-multilingual ${VOICE} + foreign terms → ${path.relative(ROOT, VO_PATH)}`);
+    await run('python3', [
+      script,
+      '--story', storyForTts,
+      '--voice', VOICE,
+      '--rate', RATE,
+      '--out', VO_PATH,
+      '--foreign-terms', JSON.stringify(FOREIGN_TERMS),
+      '--voice-en', VOICE_EN,
+      '--voice-de', VOICE_DE,
+      '--voice-fr', VOICE_FR,
+    ]);
+  } else {
+    console.log(`\n[1/4] edge-tts ${VOICE} (rate ${RATE}) → ${path.relative(ROOT, VO_PATH)}`);
+    await run(EDGE_TTS, [
+      '--voice', VOICE,
+      '--rate', RATE,
+      '--file', storyForTts,
+      '--write-media', VO_PATH,
+    ]);
+  }
   const dur = ffprobeDuration(VO_PATH);
   console.log(`    VO durata: ${dur.toFixed(2)}s`);
   return dur;
 }
 
 async function step2_concat() {
+  const planPath = path.join(VIDEO_DIR, 'clip-plan.json');
+  if (existsSync(planPath)) {
+    return step2_concat_aligned(planPath);
+  }
+  return step2_concat_legacy();
+}
+
+async function step2_concat_legacy() {
   const clips = readdirSync(CLIPS_DIR)
     .filter((f) => /^\d+\.mp4$/.test(f))
     .sort();
   if (clips.length === 0) {
     throw new Error(`Nessun clip in ${CLIPS_DIR} (servono 01.mp4, 02.mp4, ...)`);
   }
-  console.log(`\n[2/4] normalize ${clips.length} clip → bg.mp4 (1080x1920, 30fps, h264)`);
+  console.log(`\n[2/4] normalize ${clips.length} clip → bg.mp4 (1080x1920, 30fps, h264) [legacy]`);
 
   const NORM_DIR = path.join(CLIPS_DIR, 'normalized');
   mkdirSync(NORM_DIR, {recursive: true});
@@ -175,6 +242,65 @@ async function step2_concat() {
   ]);
   const bgDur = ffprobeDuration(BG_PATH);
   console.log(`    bg.mp4 durata: ${bgDur.toFixed(2)}s`);
+  return bgDur;
+}
+
+async function step2_concat_aligned(planPath) {
+  const plan = JSON.parse(readFileSync(planPath, 'utf8'));
+  const sentences = Object.keys(plan).map(Number).sort((a, b) => a - b);
+  const totalClips = sentences.reduce((s, n) => s + plan[n].clip_files.length, 0);
+  console.log(`\n[2/4] aligned concat: ${sentences.length} frasi, ${totalClips} clip totali → bg.mp4 (no time-stretch, trim preciso)`);
+
+  const ALIGN_DIR = path.join(CLIPS_DIR, 'aligned');
+  mkdirSync(ALIGN_DIR, {recursive: true});
+
+  const trimmedFiles = [];
+  for (const n of sentences) {
+    const p = plan[n];
+    for (const clipNum of p.clip_files) {
+      const src = path.join(CLIPS_DIR, String(clipNum).padStart(3, '0') + '.mp4');
+      if (!existsSync(src)) {
+        const src2 = path.join(CLIPS_DIR, String(clipNum).padStart(2, '0') + '.mp4');
+        if (existsSync(src2)) {
+          // tollero numerazione 2-digit per retrocompat
+        } else {
+          console.warn(`  ⚠ clip mancante: ${src}`);
+          continue;
+        }
+      }
+      const realSrc = existsSync(src) ? src : path.join(CLIPS_DIR, String(clipNum).padStart(2, '0') + '.mp4');
+      const target = p.target_per_clip;
+      const dst = path.join(ALIGN_DIR, `f${String(n).padStart(3, '0')}_c${String(clipNum).padStart(3, '0')}.mp4`);
+      if (existsSync(dst)) {
+        trimmedFiles.push(dst);
+        continue;
+      }
+      // Trim a target_per_clip + normalize 1080x1920 30fps. NO audio. NO stretch.
+      await run(FFMPEG, [
+        '-y', '-i', realSrc,
+        '-t', String(target),
+        '-vf', 'scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,fps=30',
+        '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
+        '-an',
+        dst,
+      ]);
+      trimmedFiles.push(dst);
+    }
+  }
+
+  const concatTxt = path.join(ALIGN_DIR, 'concat.txt');
+  writeFileSync(
+    concatTxt,
+    trimmedFiles.map((f) => `file '${f.replace(/'/g, "'\\''")}'`).join('\n'),
+  );
+  await run(FFMPEG, [
+    '-y', '-f', 'concat', '-safe', '0',
+    '-i', concatTxt,
+    '-c', 'copy',
+    BG_PATH,
+  ]);
+  const bgDur = ffprobeDuration(BG_PATH);
+  console.log(`    bg.mp4 durata: ${bgDur.toFixed(2)}s (target plan: ${sentences.reduce((s,n) => s + plan[n].dur, 0).toFixed(2)}s)`);
   return bgDur;
 }
 

@@ -14,9 +14,14 @@ out/
 videos/*/audio/
 videos/*/clips/
 videos/*/bg.mp4
+videos/*/bg.padded.mp4
 videos/*/clean.mp4
 videos/*/out/
 videos/*/.chat-uuid
+
+# Pipeline allineamento V2: artefatti rigenerabili da _align-plan.mjs
+videos/*/sentence-timings.json
+videos/*/clip-plan.json
 
 # Asset Remotion staticFile (copiati da make-video)
 public/videos/
@@ -26,7 +31,7 @@ public/bg.mp4
 public/voiceover.mp3
 public/voiceover.mp3.slug
 public/voiceover.wav
-public/music.mp3
+public/*.mp3
 public/sfx/*.mp3
 public/words.json
 public/countries.geojson
@@ -58,6 +63,7 @@ src/cta.json
 
 # Browser automation / debug
 .playwright-mcp/
+.chrome-meta-profile/
 *.png
 !**/docs/*.png
 

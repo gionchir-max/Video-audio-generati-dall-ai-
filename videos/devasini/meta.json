@@ -1,0 +1,8 @@
+{
+  "banner": "DEVASINI: L'ITALIANO PIÙ POTENTE",
+  "bannerSeconds": 10,
+  "voice": "it-IT-GiuseppeMultilingualNeural",
+  "rate": "+7%",
+  "music": "devasini.mp3",
+  "musicVolume": 0.15
+}

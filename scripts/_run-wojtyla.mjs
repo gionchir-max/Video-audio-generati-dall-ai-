@@ -7,7 +7,7 @@ import {spawnSync} from 'node:child_process';
 import path from 'node:path';
 
 const SLUG = "wojtyla";
-const TOTAL_CLIPS = 52;
+const TOTAL_CLIPS = 37;
 const CDP_URL = 'http://localhost:50041';
 const ROOT = '/Volumes/Extreme SSD/Video Claude/tiktok-city';
 const PROMPTS_FILE = `${ROOT}/videos/${SLUG}/prompts.md`;

@@ -8,7 +8,7 @@ import {spawnSync} from 'node:child_process';
 import path from 'node:path';
 
 const SLUG = "colapesce";
-const TOTAL_CLIPS = 47;
+const TOTAL_CLIPS = 52;
 const CDP_URL = 'http://localhost:50041';
 const ROOT = '/Volumes/Extreme SSD/Video Claude/tiktok-city';
 const PROMPTS_FILE = `${ROOT}/videos/${SLUG}/prompts.md`;
@@ -36,7 +36,7 @@ function saveState(s) { writeFileSync(STATE_FILE, JSON.stringify(s, null, 2)); }
 
 function parsePrompts() {
   const text = readFileSync(PROMPTS_FILE, 'utf8');
-  const re = /\*\*(\d{2})\*\*[^\n]*\n>\s*([^\n]+)/g;
+  const re = /\*\*(\d{2,3})\*\*[^\n]*\n>\s*([^\n]+)/g;
   const prompts = {};
   let m;
   while ((m = re.exec(text)) !== null) prompts[parseInt(m[1], 10)] = m[2].trim();

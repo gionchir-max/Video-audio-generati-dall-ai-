@@ -289,115 +289,53 @@
 ---
 
 
+
+
 ---
 
-## Clip B-roll allineamento (clip 71-104)
+## Clip B-roll allineamento (auto-generato)
 
-Queste clip extra sono B-roll/cutaway delle stesse scene delle frasi più lunghe (>5.6s),
-usate per coprire la durata reale della frase nel VO senza time-stretch.
-Mappatura `frase_N → [clip_N, clip_M]` in `clip-plan.json`.
+B-roll/cutaway delle frasi più lunghe (>5.6s).
+Mappatura frase→clip in `clip-plan.json`.
 
-**71** — _"Diceva, esistono due tipi di uomini. Quelli che parlano delle donne. E quelli che parlano con le donne."_  (B-roll per frase 1)
-> 5-second cinematic video clip: hyper-saturated colors, wide establishing shot on the face of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic half-expression, deep-set hazel eyes lock directly into the camera, marked horizontal forehead lines, navy pinstripe suit collar with grey diagonally-striped silk tie slightly askew, blazing crimson velvet backdrop, vivid gold rim light catches his profile, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**72** — _"Nasce a Torino nel 1921. Nipote del Senatore, fondatore della FIAT."_  (B-roll per frase 4)
-> 5-second cinematic video clip: hyper-saturated colors, pull-back medium shot on a vintage 1921 framed black-and-white baby portrait on a marble Torino mantel, ornate gold filigree frame, blazing crimson velvet curtains behind it, vivid emerald green plants, golden afternoon light through tall windows, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**73** — _"Cresce in una villa di settanta stanze sulla collina torinese. Cameriere in livrea, precettori privati, cavalli inglesi nelle scuderie."_  (B-roll per frase 6)
+**071** — _"Cresce in una villa di settanta stanze sulla collina torinese. Cameriere in livrea, precettori privati, cavalli inglesi nelle scuderie."_  (B-roll #1 per frase 6)
 > 5-second cinematic video clip: hyper-saturated colors, ground-level tracking shot rising over a vast 1930s Italian aristocratic villa estate on the Torino hills at golden hour, vivid emerald green manicured gardens, blazing crimson roof tiles, ornate cream stone facades, two chestnut horses graze in front of marble stables, vivid cobalt sky, golden hour light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**74** — _"Suo padre Edoardo muore in un incidente aereo quando Gianni ha 14 anni. Da quel giorno è lui l'erede designato."_  (B-roll per frase 7)
+**072** — _"Suo padre Edoardo muore in un incidente aereo quando Gianni ha 14 anni. Da quel giorno è lui l'erede designato."_  (B-roll #1 per frase 7)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot of a 1935 Italian aristocratic teenage boy around 14 in a black mourning suit standing alone in a vast marble villa hall, sharp angular face, dark slicked hair, blazing crimson velvet drapes behind him, a giant vintage gold-framed oil portrait of his late father visible above, golden afternoon shafts of light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**75** — _"Studia a Roma, poi giurisprudenza a Torino. Tesi sul socialismo corporativo. 110 e lode."_  (B-roll per frase 8)
-> 5-second cinematic video clip: hyper-saturated colors, low-angle tilt-down detail shot of an elegant young Italian aristocrat in his 20s in a sharp 1940s double-breasted suit holding a thick bound thesis on the marble steps of the historic University of Torino, professors in academic robes nod behind him, vivid cobalt sky, blazing gold facade columns, golden hour light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**76** — _"Nel 1940 parte per la guerra. Fa il volontario, pretende il fronte russo. Torna ferito due volte."_  (B-roll per frase 9)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot of the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression in a 1940s Italian Royal Army officer's uniform with leather boots and breeches, standing on a snow-covered Russian steppe, distant smoke from artillery, blazing crimson sunset behind, vivid cobalt twilight, golden rim light catches his angular face, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**77** — _"Nel '43, in Africa settentrionale, una pallottola francese gli sfiora il fianco. Si dice che ride mentre lo curano."_  (B-roll per frase 10)
+**073** — _"Nel '43, in Africa settentrionale, una pallottola francese gli sfiora il fianco. Si dice che ride mentre lo curano."_  (B-roll #1 per frase 10)
 > 5-second cinematic video clip: hyper-saturated colors, warm tilt-down detail shot inside an officers' rest tent in a 1940s desert military camp, the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression reclines on a wooden cot in an open-collared cream shirt with sleeves rolled up, a clean white linen bandage wrapped around his side, ironic half-smile, a fellow officer in cream uniform offers him a glass of water, blazing gold lantern light, ochre canvas tent walls, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**78** — _"Tornato in Italia, il Senatore gli fa giurare. Niente politica per dieci anni. Solo divertimento, donne, viaggi."_  (B-roll per frase 11)
+**074** — _"Tornato in Italia, il Senatore gli fa giurare. Niente politica per dieci anni. Solo divertimento, donne, viaggi."_  (B-roll #1 per frase 11)
 > 5-second cinematic video clip: hyper-saturated colors, over-the-shoulder shot in a 1945 grand Torino library, an elderly white-haired Italian patriarch in a dark suit shakes hands solemnly with the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression in a sharp double-breasted suit, towering walls of leather-bound books, blazing gold desk lamp, vivid emerald green leather chairs, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**79** — _"Diventa la leggenda della Costa Azzurra. Cap d'Antibes, Saint-Tropez, Monte Carlo."_  (B-roll per frase 13)
-> 5-second cinematic video clip: hyper-saturated colors, ground-level tracking shot over a 1950s French Riviera coast at golden hour, blazing turquoise Mediterranean Sea, vivid emerald cliffs, gleaming white yachts anchored, vibrant crimson sun loungers on a sandy beach, vivid cobalt sky, golden hour light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**80** — _"Frequenta Pamela Churchill, ex nuora di Winston. Anita Ekberg. Linda Christian. Si dice anche Jackie Kennedy."_  (B-roll per frase 14)
-> 5-second cinematic video clip: hyper-saturated colors, glamorous tilt-down detail shot inside a 1950s Monte Carlo casino at night, the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression in a black tuxedo with bow tie slightly askew leans on a roulette table next to an elegant blonde British socialite in an emerald silk evening gown, blazing gold chandeliers, vivid crimson velvet seats, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**81** — _"Le sue notti finiscono all'alba. Le sue auto corrono a 200 all'ora. Le sue camicie sono sempre stirate male, di proposito."_  (B-roll per frase 15)
+**075** — _"Le sue notti finiscono all'alba. Le sue auto corrono a 200 all'ora. Le sue camicie sono sempre stirate male, di proposito."_  (B-roll #1 per frase 15)
 > 5-second cinematic video clip: hyper-saturated colors, overhead aerial tracking shot of a vivid crimson 1950s Ferrari sports car speeding along a French Riviera coastal road at sunrise, motion blur, blazing gold sunrise sky, vivid turquoise sea on the right, vivid emerald cliffs on the left, the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression at the wheel with windswept dark hair, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**82** — _"Il 4 agosto 1952, sulla strada da Montecarlo a Cannes, schianta la sua Ferrari contro un camion."_  (B-roll per frase 16)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic medium close-up of a crashed crimson 1952 Ferrari coupe wedged sideways against the rear of a green farm truck on a coastal Riviera road at dawn, shattered glass scattered, blazing gold sunrise on the horizon, vivid turquoise sea below the cliff, vivid crimson smoke rising, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**83** — _"Pamela Churchill è con lui. Si salva. Lui no. Gamba destra fracassata in nove punti. I medici vogliono amputare. Lui rifiuta."_  (B-roll per frase 17)
+**076** — _"Pamela Churchill è con lui. Si salva. Lui no. Gamba destra fracassata in nove punti. I medici vogliono amputare. Lui rifiuta."_  (B-roll #1 per frase 17)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot inside a 1952 French hospital room, the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression lies in a white iron bed with his right leg in a metal traction frame, an ironic half-smile despite the pain, blazing gold lamp light, vivid crimson blanket, two doctors in white coats argue beside him, vivid cobalt walls, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**84** — _"Resterà zoppo per il resto della vita. Camminerà sempre con un leggero scarto. Scarpe diverse dal sarto inglese di Londra."_  (B-roll per frase 18)
+**077** — _"Resterà zoppo per il resto della vita. Camminerà sempre con un leggero scarto. Scarpe diverse dal sarto inglese di Londra."_  (B-roll #1 per frase 18)
 > 5-second cinematic video clip: hyper-saturated colors, slow tilt-down shot starting on two glossy hand-stitched bespoke leather brogues of slightly different heights on a marble floor, rising up dark trouser legs to reveal the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression standing in a Savile Row tailor shop, blazing gold mirror reflections, vivid emerald velvet drapes, vivid crimson Persian carpet, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**85** — _"Quando guarisce dice una frase. Mi sono divertito molto. Ma fa male solo se ti diverti molto."_  (B-roll per frase 19)
-> 5-second cinematic video clip: hyper-saturated colors, intimate medium wide shot of the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression seated on a vivid emerald 1953 chaise-longue in a sunlit Cap d'Antibes terrace, his right leg propped up, a glass of champagne in hand, ironic half-smile aimed at camera, blazing crimson bougainvillea behind, vivid turquoise sea visible through arches, golden hour light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**86** — _"Nel '53 sposa Marella Caracciolo, principessa napoletana. Alta, magra, elegantissima."_  (B-roll per frase 20)
-> 5-second cinematic video clip: hyper-saturated colors, glamorous over-the-shoulder shot of the dark-haired tanned Italian aristocrat in his thirties with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows, dark chestnut hair combed back from a high already-receding hairline, thin lips in a composed ironic expression in a black tuxedo standing beside a tall slender Italian aristocratic bride with chestnut hair in a low chignon and a slim ivory silk wedding gown, on the marble steps of a 1953 Italian Riviera church, blazing gold chandelier inside, vivid emerald cypresses behind, vivid crimson rose petals on the steps, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**87** — _"Avranno due figli, Edoardo e Margherita. Ma il matrimonio diventerà presto una facciata. Lui non smetterà mai di vivere."_  (B-roll per frase 22)
+**078** — _"Avranno due figli, Edoardo e Margherita. Ma il matrimonio diventerà presto una facciata. Lui non smetterà mai di vivere."_  (B-roll #1 per frase 22)
 > 5-second cinematic video clip: hyper-saturated colors, orbit formal family portrait inside an opulent 1980s Torino villa salon — the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a sharp grey suit and the slender Italian aristocratic woman in a pastel haute-couture dress sit on a vivid emerald velvet sofa, two stylish young adult Italians in their late twenties in elegant pastel attire stand behind them, blazing crimson curtains behind, vivid gold ornate chandelier, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**88** — _"Nel 1966 muore lo zio Vittorio. Gianni prende il timone della FIAT."_  (B-roll per frase 23)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic low-angle tilt-down detail shot of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in his mid-forties in a sharp navy pinstripe suit standing in front of the giant gleaming chrome FIAT badge on the historic 1966 Lingotto building facade in Torino, vivid cobalt sky, blazing gold afternoon sun behind him, vivid emerald factory plants in foreground, golden hour light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**89** — _"45 anni. Eredita la più grande azienda privata d'Italia. 200.000 operai. Mezzo paese che dipende da lui."_  (B-roll per frase 24)
+**079** — _"45 anni. Eredita la più grande azienda privata d'Italia. 200.000 operai. Mezzo paese che dipende da lui."_  (B-roll #1 per frase 24)
 > 5-second cinematic video clip: hyper-saturated colors, ground-level tracking shot rising over the vast 1966 FIAT Mirafiori factory complex in Torino at golden hour, endless rows of vivid crimson red FIAT cars on assembly lines, vivid cobalt parking lots, blazing gold smokestacks, vivid emerald industrial gardens, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**90** — _"Cominciano gli anni di piombo. Le Brigate Rosse uccidono i suoi dirigenti. Lui non si fa scortare. Cammina per Torino senza guardia."_  (B-roll per frase 25)
+**080** — _"Cominciano gli anni di piombo. Le Brigate Rosse uccidono i suoi dirigenti. Lui non si fa scortare. Cammina per Torino senza guardia."_  (B-roll #1 per frase 25)
 > 5-second cinematic video clip: hyper-saturated colors, static low-angle shot at street level of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a charcoal pinstripe suit walking calmly alone with a slight limp through a 1970s Torino arcaded street at dusk, blazing gold streetlamps, vivid cobalt twilight sky, vivid crimson neon signs in the distance, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**91** — _"Nel '79, davanti a Mirafiori, 40 giorni di sciopero. La FIAT rischia di morire."_  (B-roll per frase 26)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic medium close-up of an angry 1979 picket line at dawn in front of the vast Mirafiori factory gates, dozens of Italian factory workers in blue overalls waving vivid crimson union flags and protest signs, blazing gold rising sun behind smokestacks, vivid cobalt sky, vivid emerald grass, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**92** — _"Lui chiama 30.000 operai a sfilare in difesa della fabbrica. È la marcia dei quarantamila. Vince lui."_  (B-roll per frase 27)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle medium close-up of a massive 1980 march of thousands of Italian managers and clerks in suits and ties parading down a wide Torino boulevard, vivid Italian tricolor flags above, blazing gold afternoon sun, vivid cobalt sky, ornate cream Torino facades line the street, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**93** — _"Negli stessi anni inventa il suo stile. Cravatta sempre leggermente storta. Orologio sopra il polsino della camicia."_  (B-roll per frase 29)
-> 5-second cinematic video clip: hyper-saturated colors, medium tracking shot on a man's wrist resting on a marble desk — vintage gold wristwatch worn OVER a crisp white starched shirt cuff, dark navy pinstripe suit jacket sleeve, a vivid crimson silk tie slightly askew visible above, vivid emerald malachite desk surface, blazing gold lamp light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**94** — _"Le riviste americane lo eleggono uomo più elegante d'Europa. Lui sorride e dice. Non mi vesto bene. Mi vesto male meglio degli altri."_  (B-roll per frase 31)
+**081** — _"Le riviste americane lo eleggono uomo più elegante d'Europa. Lui sorride e dice. Non mi vesto bene. Mi vesto male meglio degli altri."_  (B-roll #1 per frase 31)
 > 5-second cinematic video clip: hyper-saturated colors, dynamic tilt-down detail shot of a glossy 1980s American magazine cover featuring the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a navy pinstripe suit with crooked tie, the headline area glowing in vivid gold lettering on blazing crimson background, vivid cobalt borders, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**95** — _"A Torino è solo l'Avvocato. Non serve il cognome. Quando entra al ristorante tutti si alzano."_  (B-roll per frase 32)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic medium close-up inside an opulent 1980s Torino Belle Epoque restaurant at evening, the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a charcoal suit walks in alone with a slight limp, every diner at every vivid crimson velvet table stands up to greet him in unison, blazing gold chandeliers, vivid emerald drapes, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**96** — _"Boniperti, Trapattoni, Platini, Baggio. La squadra è il giocattolo della famiglia. È anche il cuore di metà degli italiani."_  (B-roll per frase 36)
+**082** — _"Boniperti, Trapattoni, Platini, Baggio. La squadra è il giocattolo della famiglia. È anche il cuore di metà degli italiani."_  (B-roll #1 per frase 36)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic medium close-up of a packed 1980s Italian football stadium curva at night, thousands of fans waving black-and-white Juventus scarves and vivid Italian tricolor flags, blazing gold floodlights, vivid emerald pitch in the foreground, vivid crimson smoke flares, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**97** — _"Sulla politica dice. Io faccio l'imprenditore. Quando devo decidere il governo, telefono a Roma e mi mandano una nota."_  (B-roll per frase 39)
-> 5-second cinematic video clip: hyper-saturated colors, dynamic tilt-down detail shot of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a charcoal pinstripe suit at a marble desk holding a vintage cream rotary telephone receiver to his ear, ironic half-smile, blazing gold desk lamp, vivid emerald leather blotter, vivid crimson velvet curtains behind, vivid cobalt wall, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**98** — _"Sui rivali. Berlusconi non è un imprenditore. È un menestrello che ha avuto fortuna."_  (B-roll per frase 41)
-> 5-second cinematic video clip: hyper-saturated colors, dynamic tilt-down detail shot of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression seated in a vivid emerald velvet armchair in a 1990s Torino salon, holding a glossy newspaper open with a half-amused smirk, blazing gold floor lamp, vivid crimson velvet drapes, vivid cobalt wall, vintage gold-framed paintings behind, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**99** — _"Sulle donne, la frase più famosa. Esistono due tipi di uomini. Quelli che parlano con le donne."_  (B-roll per frase 42)
-> 5-second cinematic video clip: hyper-saturated colors, intimate over-the-shoulder shot of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a charcoal suit leaning close in conversation with an elegant Italian woman in a vivid crimson silk evening gown, ironic half-smile, blazing gold candlelight on a restaurant table, vivid emerald velvet booths, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**100** — _"Pochi mesi dopo, suo figlio Edoardo viene trovato morto sotto un cavalcavia di Torino. Suicidio, dicono i giudici."_  (B-roll per frase 46)
-> 5-second cinematic video clip: hyper-saturated colors, somber medium close-up of a deserted 2000 Torino concrete highway overpass at dawn, vivid crimson police lights flash in the distance, blazing gold sunrise on the horizon, vivid cobalt mist, vivid emerald wild grass beside the road, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**101** — _"Lui non parla mai in pubblico di queste cose. Ma chi lo conosce dice che dopo non sorride più come prima."_  (B-roll per frase 47)
-> 5-second cinematic video clip: hyper-saturated colors, intimate medium wide shot profile of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression seated alone by a vivid cobalt windowpane in a 2000 Torino salon at twilight, no smile, deep-set eyes lost in thought, vintage gold watch over shirt cuff visible, blazing gold table lamp behind, vivid crimson velvet curtain, vivid emerald wallpaper, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**102** — _"Sceglie come erede il giovane John Elkann. Figlio di Margherita. Nipote per parte di figlia."_  (B-roll per frase 48)
-> 5-second cinematic video clip: hyper-saturated colors, formal over-the-shoulder shot of the silver-haired tanned Italian aristocrat with lean hollow-cheeked face, long straight aquiline nose, thick dark eyebrows contrasting his sleek silver hair combed back from a high temple-receding forehead, thin lips in a composed ironic expression in a navy pinstripe suit standing beside a slim young Italian-American man in his mid-twenties with short dark hair, round glasses, navy casual blazer over an open-collared shirt, in a Torino salon, blazing gold lamp behind, vivid crimson curtains, vivid emerald velvet armchair, vivid cobalt wall with vintage gold-framed family portraits, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**103** — _"Il 24 gennaio 2003 muore nella sua villa di Villar Perosa. Cancro alla prostata. 81 anni."_  (B-roll per frase 49)
+**083** — _"Il 24 gennaio 2003 muore nella sua villa di Villar Perosa. Cancro alla prostata. 81 anni."_  (B-roll #1 per frase 49)
 > 5-second cinematic video clip: hyper-saturated colors, orbit establishing shot of a vast snow-covered 2003 Italian aristocratic country villa on a Piemontese hillside at twilight, blazing gold lights glowing from tall arched windows, vivid cobalt evening sky, vivid emerald snow-dusted cypresses, vivid crimson roof tiles, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**104** — _"Ma soprattutto lascia un'idea. Quella che esiste un modo italiano di essere ricchi."_  (B-roll per frase 53)
-> 5-second cinematic video clip: hyper-saturated colors, pull-back medium shot of a giant vintage gold-framed Italian flag silk banner draped on a vivid emerald wall in a Torino salon, blazing gold rim light, vivid crimson and white stripes glowing, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
 ## Note operative meta.ai
 

@@ -135,49 +135,68 @@ Apri con un **hook di 2 secondi** che catturi l'attenzione (curiosity gap, citaz
 
 **Crea il runner** `scripts/_run-<slug>.mjs` (clona da `_run-wojtyla.mjs`, aggiorna `SLUG`).
 
-### Step 2 — Genera VO
+### Step 2 — Genera VO + plan automatico
 
 ```bash
 node scripts/make-video.mjs <slug>
 ```
-Genera `videos/<slug>/audio/voiceover.mp3`. Lo step 2 fallirà perché mancano le clip — è OK.
+Lo step 1 ora fa **3 cose in automatico**:
+1. **edge-tts** genera `voiceover-raw.mp3` (originale con pause naturali)
+2. **silence-trim**: rimuove tutti i silenzi >0.2s da `voiceover-raw.mp3` e salva `voiceover.mp3` (tipico risparmio -20-25%)
+3. **whisper + clip-plan**: trascrive il VO compresso, mappa frasi→timestamps, calcola n_clips per frase, **auto-appende** B-roll prompts a `prompts.md`
 
-### Step 3 — Allineamento
-
-```bash
-node scripts/_align-plan.mjs <slug>
+Se mancano clip rispetto al plan, lo step si ferma con messaggio:
 ```
-- Trascrive il VO con whisper.cpp (italiano, modello medium)
-- Mappa ogni frase di prompts.md → timestamps reali
-- Calcola n_clips per frase (1 se ≤5.6s, 2 se >5.6s, 3 se >10.4s)
-- Scrive `sentence-timings.json` + `clip-plan.json`
-- **Auto-appende** prompt B-roll a `prompts.md` per le frasi che richiedono 2+ clip
-- Stampa: `Aggiorna runner: TOTAL_CLIPS = N`
+⚠ Mancano N clip su M. Aggiorna TOTAL_CLIPS=M in scripts/_run-<slug>.mjs e lancia:
+  node scripts/_run-<slug>.mjs
+Poi rilancia: npm run video <slug>
+```
 
-### Step 4 — Aggiorna runner e genera clip
+### Configurazione silence-trim (opzionale)
 
-Aggiorna `scripts/_run-<slug>.mjs` con `const TOTAL_CLIPS = N` (numero stampato sopra).
+Default: rimuovi tutti i silenzi >0.2s (massimo punch TikTok). Per disabilitare o personalizzare nel `meta.json`:
+```json
+{
+  "silenceTrim": true,           // false = niente trim, mantieni pause naturali
+  "silenceMinDur": 0.2,          // soglia silenzio in secondi
+  "silenceThresholdDb": -40      // soglia dB
+}
+```
+
+Per opzione "cappa silenzi >0.4s a 0.2s" (mantieni respiri brevi) usa lo script `_silence-cap.py`:
+```bash
+python3 scripts/_silence-cap.py voiceover-raw.mp3 voiceover.mp3 --detect-dur 0.4 --cap-dur 0.2
+```
+
+### Step 3 — Aggiorna runner e genera clip mancanti
+
+Aggiorna `scripts/_run-<slug>.mjs` con `const TOTAL_CLIPS = N` (numero stampato dallo step 1).
 
 ```bash
 node scripts/_run-<slug>.mjs
 ```
 Apre meta.ai via CDP, una chat ogni 3 clip (workaround freeze bottone "Invia"), scarica le 4 varianti generate per ogni prompt e tiene la prima. Riprende da dove si era fermato (state.json).
 
-### Step 5 — Render finale
+### Step 4 — Render finale
 
 ```bash
 npm run video <slug>
 ```
-`make-video.mjs` rileva `clip-plan.json` e attiva il **concat aligned**: per ogni frase trim le sue clip a `dur/n_clips` esatti, concatena in ordine, quindi render Remotion.
+Ora che le clip ci sono tutte, `make-video.mjs` continua: **concat aligned** (per ogni frase trim le sue clip a `dur/n_clips` esatti), poi render Remotion.
 
 Output: `videos/<slug>/out/final.mp4`, perfettamente sincrono al VO frame per frame, senza time-stretch né freeze.
 
-### Sintesi una sola riga
+### Sintesi: 3 comandi
 
 ```bash
-node scripts/make-video.mjs <slug> && node scripts/_align-plan.mjs <slug>
-# poi: aggiorna TOTAL_CLIPS in _run-<slug>.mjs
-node scripts/_run-<slug>.mjs && npm run video <slug>
+# 1. VO + silence-trim + whisper + plan + B-roll auto-append (si ferma se mancano clip)
+node scripts/make-video.mjs <slug>
+
+# 2. Aggiorna TOTAL_CLIPS in _run-<slug>.mjs col numero stampato sopra, poi:
+node scripts/_run-<slug>.mjs
+
+# 3. Concat aligned + render
+npm run video <slug>
 ```
 
 ### Esempi V2

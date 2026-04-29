@@ -82,6 +82,9 @@ const FOREIGN_TERMS = meta.foreignTerms ?? null;
 const VOICE_EN = meta.voiceEn ?? 'en-US-AndrewNeural';
 const VOICE_DE = meta.voiceDe ?? 'de-DE-ConradNeural';
 const VOICE_FR = meta.voiceFr ?? 'fr-FR-HenriNeural';
+const SILENCE_TRIM = meta.silenceTrim ?? true;
+const SILENCE_THRESHOLD_DB = meta.silenceThresholdDb ?? -40;
+const SILENCE_MIN_DUR = meta.silenceMinDur ?? 0.2;
 
 mkdirSync(AUDIO_DIR, {recursive: true});
 mkdirSync(OUT_DIR, {recursive: true});
@@ -192,9 +195,59 @@ async function step1_VO() {
       '--write-media', VO_PATH,
     ]);
   }
-  const dur = ffprobeDuration(VO_PATH);
-  console.log(`    VO durata: ${dur.toFixed(2)}s`);
+  let dur = ffprobeDuration(VO_PATH);
+  console.log(`    VO durata raw: ${dur.toFixed(2)}s`);
+
+  if (SILENCE_TRIM) {
+    const RAW_PATH = path.join(AUDIO_DIR, 'voiceover-raw.mp3');
+    cpSync(VO_PATH, RAW_PATH);
+    const TRIMMED = path.join(AUDIO_DIR, '.voiceover-trim.mp3');
+    await run(FFMPEG, [
+      '-y', '-i', RAW_PATH,
+      '-af', `silenceremove=stop_periods=-1:stop_duration=${SILENCE_MIN_DUR}:stop_threshold=${SILENCE_THRESHOLD_DB}dB`,
+      '-ar', '48000', '-ac', '2', '-b:a', '192k',
+      TRIMMED,
+    ]);
+    cpSync(TRIMMED, VO_PATH);
+    const newDur = ffprobeDuration(VO_PATH);
+    const saved = dur - newDur;
+    console.log(`    silence-trim: ${dur.toFixed(2)}s → ${newDur.toFixed(2)}s (-${saved.toFixed(2)}s, -${(saved/dur*100).toFixed(1)}%)`);
+    dur = newDur;
+  }
   return dur;
+}
+
+async function step1b_alignPlan() {
+  const PLAN_PATH = path.join(VIDEO_DIR, 'clip-plan.json');
+  const PROMPTS_PATH = path.join(VIDEO_DIR, 'prompts.md');
+  if (!existsSync(PROMPTS_PATH)) {
+    console.log(`\n[1b] no prompts.md → skip allineamento`);
+    return null;
+  }
+  console.log(`\n[1b] align-plan: whisper + match + B-roll auto-append`);
+  const align = path.join(ROOT, 'scripts', '_align-plan.mjs');
+  await run('node', [align, slug]);
+  if (!existsSync(PLAN_PATH)) return null;
+  const plan = JSON.parse(readFileSync(PLAN_PATH, 'utf8'));
+  const totalClips = Object.values(plan).reduce((s, p) => s + (p.clip_files?.length || 1), 0);
+  // Verifica clip esistenti
+  const existing = new Set(
+    readdirSync(CLIPS_DIR)
+      .filter((f) => /^\d{2,3}\.mp4$/.test(f))
+      .map((f) => parseInt(f, 10))
+  );
+  const needed = new Set();
+  for (const p of Object.values(plan)) for (const c of p.clip_files) needed.add(c);
+  const missing = [...needed].filter((c) => !existing.has(c)).sort((a, b) => a - b);
+  if (missing.length > 0) {
+    console.log(`\n  ⚠ Mancano ${missing.length} clip su ${needed.size}. Mancanti: ${missing.join(', ')}`);
+    console.log(`  Aggiorna TOTAL_CLIPS=${Math.max(...needed)} in scripts/_run-${slug}.mjs e lancia:`);
+    console.log(`    node scripts/_run-${slug}.mjs`);
+    console.log(`  Poi rilancia: npm run video ${slug}`);
+    process.exit(0);
+  }
+  console.log(`    ✓ tutte le ${needed.size} clip presenti`);
+  return totalClips;
 }
 
 async function step2_concat() {
@@ -352,6 +405,7 @@ async function step4_render(durationSeconds) {
 async function main() {
   console.log(`▶ make-video ${slug}`);
   const voDur = await step1_VO();
+  await step1b_alignPlan();
   let bgDur = await step2_concat();
   bgDur = await step2b_extendBgIfShort(bgDur, voDur);
   step3_publish();

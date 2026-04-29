@@ -220,6 +220,31 @@
 
 ---
 
+
+
+
+---
+
+## Clip B-roll allineamento (auto-generato)
+
+B-roll/cutaway delle frasi più lunghe (>5.6s).
+Mappatura frase→clip in `clip-plan.json`.
+
+**048** — _"E che oggi, secondo la leggenda, sta ancora là sotto, da 800 anni, a tenere in piedi la Sicilia con le sue spalle."_  (B-roll #1 per frase 3)
+> 5-second cinematic video clip: epic wide underwater shot of the silhouette of a powerful young man bracing his shoulders against an enormous broken stone column rising into infinite cobalt darkness above, golden shafts of sunlight pierce down from far above, vivid emerald green particles drift, camera slowly orbits, ultra saturated colors, deep cobalt blue, intense color grading, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
+**049** — _"La leggenda di Colapesce arriva alle orecchie del re. Federico II, l'imperatore più potente d'Europa, vuole vederlo con i suoi occhi."_  (B-roll #1 per frase 26)
+> 5-second cinematic video clip: wide cinematic shot of the imposing medieval Castello Maniace at sunset on a Sicilian cliff, vivid coral-orange sky, golden eagle banners fluttering in the warm wind, vivid blue Mediterranean below, camera slowly cranes upward, ultra saturated colors, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
+**050** — _"Lo getta nel punto più profondo del mare di Messina, dove il fondo scende a centinaia di metri."_  (B-roll #1 per frase 37)
+> 5-second cinematic video clip: aerial shot from above as the golden royal ring tumbles in slow motion through deep blue sky toward the deep cobalt Messina strait below, vivid orange-pink sunset reflected on the water, the ring glints sun, slowly disappearing into the depths, ultra saturated colors, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
+**051** — _"Colapesce è ancora là sotto. E la Sicilia, fragile come un equilibrio, sta in piedi grazie a lui."_  (B-roll #1 per frase 47)
+> 5-second cinematic video clip: epic ultra-wide hero shot from below the Sicilian seabed, the silhouette of Cola eternally bracing the column with golden light streaming around him from above, the entire vivid coral-orange and turquoise Sicilian island silhouetted on the water surface far above, camera slowly pushes upward toward the light, ultra saturated colors, intense color grading, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
+**052** — _"Colapesce è ancora là sotto. E la Sicilia, fragile come un equilibrio, sta in piedi grazie a lui."_  (B-roll #2 per frase 47)
+> 5-second cinematic video clip: epic ultra-wide hero shot from below the Sicilian seabed, the silhouette of Cola eternally bracing the column with golden light streaming around him from above, the entire vivid coral-orange and turquoise Sicilian island silhouetted on the water surface far above, camera slowly pushes upward toward the light, ultra saturated colors, intense color grading, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+
 ## Note operative meta.ai
 
 - **PRIMA di inviare**: cliccare bottone "Crea video" sulla home (attiva chip "Crea")

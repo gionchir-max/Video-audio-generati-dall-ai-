@@ -159,7 +159,7 @@
 > 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle wide shot of an immense 2005 St Peter's Square at noon packed with 4 million mourners, vast white papal coffin on a vivid crimson velvet carpet at the basilica steps, blazing gold rim light catches a pristine white open Bible on the coffin, vivid cobalt sky, vivid emerald cypresses frame the colonnade, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
 **29** — _"Verrà canonizzato nel 2014. È San Giovanni Paolo II."_
-> 5-second cinematic video clip: hyper-saturated colors, dramatic medium shot of a giant 2014 vivid gold-framed portrait of the Slavic Catholic Pope with serene smile and luminous halo unfurling from the central balcony of St Peter's Basilica during canonization, blazing gold afternoon light, vivid crimson velvet drapes, vivid cobalt sky, vast cheering crowd below, photorealistic cinematic, Canon EOS R5, 9:16 vertical
+> 5-second cinematic video clip: hyper-saturated colors, dramatic medium shot of a giant ornate gold-framed canonization portrait painting of an elderly POLISH Eastern European Slavic Catholic Pope from the late 1990s with a broad square strong-jawed Slavic face, FULL CHESTNUT-GREY HAIR combed back from a high forehead, thick dark heavy eyebrows that contrast with his hair, deep-set bright blue eyes, full broad straight nose, robust athletic build, ivory white papal cassock with gold pectoral cross, serene fatherly half-smile, luminous gold halo behind his head — DEFINITELY NOT a Latin American Pope, NOT a thin face, NOT round soft features — unfurling from the central balcony of St Peter's Basilica, blazing gold afternoon light, vivid crimson velvet drapes, vivid cobalt sky, vast cheering crowd below, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
 ---
 
@@ -184,6 +184,12 @@
 ---
 
 
+
+
+
+
+
+
 ---
 
 ## Clip B-roll allineamento (auto-generato)
@@ -191,61 +197,16 @@
 B-roll/cutaway delle frasi più lunghe (>5.6s).
 Mappatura frase→clip in `clip-plan.json`.
 
-**034** — _"Si chiama Karol Wojtyła. Tu lo conosci come Giovanni Paolo II."_  (B-roll #1 per frase 3)
-> 5-second cinematic video clip: hyper-saturated colors, wide establishing shot on the face of the Slavic Catholic Pope with broad square Slavic face, sleek silver-grey hair combed back, thick dark eyebrows, deep-set bright blue eyes that lock directly into the camera, full broad nose, warm fatherly half-smile, ivory white papal zucchetto, gold pectoral cross gleaming, blazing crimson Vatican backdrop, vivid gold rim light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**035** — _"Sua madre muore quando lui ha 9 anni. Suo padre poco dopo. A 20 anni è completamente orfano."_  (B-roll #1 per frase 5)
-> 5-second cinematic video clip: hyper-saturated colors, orbit shot of a vintage gold-framed sepia family photograph on a small wooden Polish kitchen table, depicting a stern father, gentle mother, two boys, blazing gold candle flickering beside it, vivid crimson velvet cloth, vivid cobalt window in the background, golden warm light, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**036** — _"Cresce sotto l'occupazione nazista. Per sopravvivere lavora 12 ore al giorno in una cava di pietra."_  (B-roll #1 per frase 6)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic low-angle detail shot inside a 1940s gray Polish stone quarry, the tall athletic young Polish Slavic man with chestnut hair, broad Slavic face, deep-set bright blue eyes, in worker grey shirt and rough overalls, swings a heavy iron pickaxe against limestone, blazing gold dust, vivid crimson sunset behind, vivid cobalt sky, vivid emerald winter shrubs, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**037** — _"La sera però recita Shakespeare in un teatro clandestino. Scrive poesie. Sogna di diventare attore."_  (B-roll #1 per frase 7)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot inside a 1940s candlelit clandestine theater cellar in Cracow, the tall athletic young Polish Slavic man with chestnut hair and broad Slavic face stands on a small wooden stage in a black tunic, mid-monologue with arms raised, blazing gold candlelight, vivid crimson velvet curtain, vivid cobalt shadowed walls, vivid emerald drapes, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**038** — _"Nel '42 cambia idea. Entra in un seminario clandestino. Per i nazisti, è un crimine punito con la morte."_  (B-roll #1 per frase 8)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot inside a hidden 1942 Polish seminary cellar, the tall athletic young Polish Slavic man with chestnut hair, broad Slavic face, deep-set bright blue eyes, in a plain black cassock kneels before a small altar with a flickering candle, holds a worn black leather Bible, blazing gold candlelight, vivid crimson cloth on the altar, vivid cobalt shadows, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**039** — _"Ordinato sacerdote nel '46. Vescovo a 38 anni. Cardinale a 47."_  (B-roll #1 per frase 9)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic low-angle tilt-down detail shot of the Slavic Catholic clergyman with broad Slavic face and chestnut hair turning silver at the temples, in a black cassock with red sash and vivid crimson zucchetto skull cap and large gold pectoral cross, standing in a 1960s gothic Polish cathedral, blazing gold stained glass light streams, vivid emerald velvet drapes, vivid cobalt arches, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**040** — _"Il 16 ottobre del '78, da San Pietro, esce una fumata bianca. Il nome del nuovo Papa è impronunciabile per gli italiani."_  (B-roll #1 per frase 10)
+**034** — _"Il 16 ottobre del '78, da San Pietro, esce una fumata bianca. Il nome del nuovo Papa è impronunciabile per gli italiani."_  (B-roll #1 per frase 10)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle medium close-up of the 1978 Sistine Chapel chimney releasing thick white smoke against a vivid crimson Vatican rooftop, blazing gold sunset clouds, vivid cobalt sky, packed crowd in St Peter's Square below cheers, vivid emerald cypresses, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**041** — _"In Brasile riempie stadi da mezzo milione di persone. In Polonia sfida apertamente il regime comunista."_  (B-roll #1 per frase 14)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle aerial medium close-up of a packed 1980s tropical stadium with 500.000 people holding vivid crimson and emerald banners, the Slavic Catholic Pope on a tall white altar in the center under blazing gold spotlights, vivid cobalt sky, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**042** — _"Quando torna in patria nel '79, parla a 3 milioni di polacchi inginocchiati. È la scintilla di Solidarność."_  (B-roll #1 per frase 15)
+**035** — _"Quando torna in patria nel '79, parla a 3 milioni di polacchi inginocchiati. È la scintilla di Solidarność."_  (B-roll #1 per frase 15)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle medium close-up of a vast 1979 Polish open-air mass at Warsaw Victory Square, three million Polish faithful kneeling on cobblestones holding vivid crimson and ivory rosaries, the Slavic Catholic Pope in white papal vestments stands on a giant white altar in the distance, blazing gold sunlight, vivid cobalt sky, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**043** — _"Il 13 maggio dell'81, in Piazza San Pietro, un proiettile lo colpisce allo stomaco."_  (B-roll #1 per frase 16)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic low-angle tilt-down detail shot of the Slavic Catholic Pope in white papal cassock standing in his open white popemobile in a sunny 1981 St Peter's Square, suddenly flinching forward grabbing his side, blazing gold afternoon sun, vivid crimson Vatican guards run forward, vivid cobalt sky, vivid emerald colonnade plants, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**044** — _"Il Papa perde il 75 per cento del sangue. Lo salvano per miracolo."_  (B-roll #1 per frase 18)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot inside a 1981 hospital operating room, the Slavic Catholic Pope lies on a white surgical table with his white papal cassock removed, surgeons in green gowns work intensely under bright blazing gold surgical lamps, vivid crimson blood-stained cloths, vivid cobalt monitors, vivid emerald walls, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**045** — _"Due anni dopo entra nel carcere di Rebibbia. Si siede accanto al suo attentatore. Lo perdona."_  (B-roll #1 per frase 19)
-> 5-second cinematic video clip: hyper-saturated colors, intimate over-the-shoulder shot inside a 1983 Roman prison cell, the Slavic Catholic Pope in pristine ivory white papal cassock and white zucchetto sits on a metal stool beside a young dark-haired Mediterranean man in grey prison clothes, both heads bowed close together in conversation, the Pope's hand on the prisoner's wrist, blazing gold lamp, vivid crimson stone walls, vivid cobalt iron-barred window, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**046** — _"Quando il Muro di Berlino cade nell'89, Gorbaciov stesso dichiara. Senza il Papa polacco non sarebbe successo."_  (B-roll #1 per frase 21)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle medium close-up of jubilant Berliners climbing on top of the 1989 Berlin Wall at night, smashing the concrete with hammers and chisels, blazing gold floodlights illuminate the crumbling barrier, vivid crimson East German graffiti, vivid cobalt night sky, vivid emerald flares wave above the crowd, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**047** — _"Nel 2000 entra per primo come Pontefice nella Sinagoga di Roma. Chiama gli ebrei fratelli maggiori."_  (B-roll #1 per frase 23)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic medium close-up of the Slavic Catholic Pope in pristine ivory white papal cassock walking into the ornate Sinagoga of Rome interior, vivid cobalt blue ceiling with golden Stars of David, blazing gold menorahs, vivid crimson velvet seats, vivid emerald hanging lamps, congregation rising to greet him, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**048** — _"Dal 2001 il Parkinson lo paralizza lentamente. Le mani tremano. La voce si spezza."_  (B-roll #1 per frase 25)
-> 5-second cinematic video clip: hyper-saturated colors, intimate medium wide shot of the elderly Slavic Catholic Pope with deep-set bright blue eyes lined with age, sleek silver-grey hair, in white papal cassock, his trembling hand grips a tall silver pastoral staff topped with a gold crucifix, blazing gold lamp light catches age-marks on his face, vivid crimson velvet drape behind, vivid cobalt shadow, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**049** — _"Ma rifiuta di nascondersi. Si mostra al mondo malato e fragile. Insegna anche a morire."_  (B-roll #1 per frase 26)
-> 5-second cinematic video clip: hyper-saturated colors, dramatic tilt-down detail shot of the elderly Slavic Catholic Pope sitting bent in his open white popemobile waving a slow trembling hand to an emotional crowd in 2004 St Peter's Square, blazing gold late-afternoon light, vivid crimson Vatican guards beside him, vivid cobalt sky, vivid emerald colonnade plants, faithful in tears in foreground, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**050** — _"4 milioni di pellegrini arrivano a Roma per i suoi funerali. La folla grida una sola cosa. Santo subito."_  (B-roll #1 per frase 28)
+**036** — _"4 milioni di pellegrini arrivano a Roma per i suoi funerali. La folla grida una sola cosa. Santo subito."_  (B-roll #1 per frase 28)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic high-angle medium close-up of an immense 2005 St Peter's Square at noon packed with 4 million mourners, vast white papal coffin on a vivid crimson velvet carpet at the basilica steps, blazing gold rim light catches a pristine white open Bible on the coffin, vivid cobalt sky, vivid emerald cypresses frame the colonnade, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
-**051** — _"Ha governato la Chiesa per quasi 27 anni. Il terzo pontificato più lungo della storia."_  (B-roll #1 per frase 30)
-> 5-second cinematic video clip: hyper-saturated colors, pull-back medium shot on a giant ornate gold-framed Vatican wall mural depicting all popes in chronological circles, the Slavic Catholic Pope's mosaic portrait third from the top right, blazing gold rim light catches his halo, vivid crimson velvet curtain frames the wall, vivid cobalt shadowy room, photorealistic cinematic, Canon EOS R5, 9:16 vertical
-
-**052** — _"Era nato nella povertà di una città polacca occupata dai nazisti. È diventato la voce spirituale di un miliardo di cattolici."_  (B-roll #1 per frase 31)
+**037** — _"Era nato nella povertà di una città polacca occupata dai nazisti. È diventato la voce spirituale di un miliardo di cattolici."_  (B-roll #1 per frase 31)
 > 5-second cinematic video clip: hyper-saturated colors, dramatic split-screen-feel reverse-tracking shot starting on a ramshackle 1930s Polish stone street under grey skies, then dissolving to a sweeping aerial of a vast 1990s St Peter's Square at golden hour packed with a million pilgrims, blazing gold rays cut through clouds, vivid crimson Vatican rooftops, vivid cobalt sky, photorealistic cinematic, Canon EOS R5, 9:16 vertical
 
 ## Note operative meta.ai

@@ -1,0 +1,10 @@
+{
+  "banner": "MICHAEL SCHUMACHER: IL CAMPIONE",
+  "bannerSeconds": 10,
+  "voice": "it-IT-DiegoNeural",
+  "rate": "+12%",
+  "music": "music.mp3",
+  "musicVolume": 0.15,
+  "skipTts": true,
+  "silenceTrim": false
+}

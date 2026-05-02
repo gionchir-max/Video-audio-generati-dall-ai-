@@ -163,6 +163,13 @@ function applyVoiceFixes(text, voice) {
 }
 
 async function step1_VO() {
+  // Skip TTS if user provided custom voiceover.mp3
+  if (meta.skipTts && existsSync(VO_PATH)) {
+    const dur = ffprobeDuration(VO_PATH);
+    console.log(`\n[1/4] skipTts=true → riuso ${path.relative(ROOT, VO_PATH)} (${dur.toFixed(2)}s)`);
+    return dur;
+  }
+
   // Pre-process story.txt with voice-specific pronunciation fixes
   const rawStory = readFileSync(STORY_PATH, 'utf8');
   const fixedStory = applyVoiceFixes(rawStory, VOICE);
@@ -223,6 +230,11 @@ async function step1b_alignPlan() {
   if (!existsSync(PROMPTS_PATH)) {
     console.log(`\n[1b] no prompts.md → skip allineamento`);
     return null;
+  }
+  if (existsSync(PLAN_PATH)) {
+    console.log(`\n[1b] clip-plan.json già presente → skip align-plan (elimina il file per rigenerare)`);
+    const plan = JSON.parse(readFileSync(PLAN_PATH, 'utf8'));
+    return plan;
   }
   console.log(`\n[1b] align-plan: whisper + match + B-roll auto-append`);
   const align = path.join(ROOT, 'scripts', '_align-plan.mjs');

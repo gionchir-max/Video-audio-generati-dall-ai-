@@ -3,6 +3,10 @@ node_modules/
 cache/
 whisper.cpp/
 
+# --- Python venv TTS (XTTS v2 locale) ---
+venv-tts/
+.chrome-profile-metaai/
+
 # --- secrets ---
 .env
 .env.local
